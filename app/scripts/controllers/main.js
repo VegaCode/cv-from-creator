@@ -8,7 +8,7 @@
  * Controller of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
-.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('MainCtrl', ['$scope', '$http', 'testFactory', function($scope, $http, testFactory) {
   // Grid data.
   var _Id = [];
   var _Class = [];
@@ -46,35 +46,6 @@ angular.module('biprojectDevelopmentApp')
 
   $http.get('https://tools.brandinstitute.com/BIWebServices/api/TemplateItems').success(function(result){
 
-    _Id.push(result[0].$id);
-    _Class.push(result[0].Class);
-    _Color.push(result[0].Color);
-    _Created.push(result[0].Created);
-    _CreatedBy.push(result[0].CreatedBy);
-    _DataSourceUrl.push(result[0].DataSourceUrl);
-    _DataType.push(result[0].DataType);
-    _DefaultValue.push(result[0].DefaultValue);
-    _GridConfig.push(result[0].GridConfig);
-    _Group.push(result[0].Group);
-    _Input.push(result[0].Input);
-    _InputControlStatus.push(result[0].InputControlStatus);
-    _InputType.push(result[0].InputType);
-    _InputTypeId.push(result[0].InputTypeId);
-    _IsActive.push(result[0].IsActive);
-    _Label.push(result[0].Label);
-    _ListOrientation.push(result[0].ListOrientation);
-    _Name.push(result[0].Name);
-    _Option.push(result[0].Option);
-    _PlaceHolder.push(result[0].PlaceHolder);
-    _Question.push(result[0].Question);
-    _SortValue.push(result[0].SortValue);
-    _TemplateId.push(result[0].TemplateId);
-    _TemplateItemId.push(result[0].TemplateItemId);
-    _TemplateName.push(result[0].TemplateName);
-    _ToolTip.push(result[0].ToolTip);
-    _ToolTipPlacement.push(result[0].ToolTipPlacement);
-    _Updated.push(result[0].Updated);
-    _UpdatedBy.push(result[0].UpdatedBy);
 
     $scope.myData = [
       {
@@ -116,7 +87,7 @@ angular.module('biprojectDevelopmentApp')
       width: 150,
       height: 30
   };
-  
+
   // called when a button is clicked.
   $scope.onClick = function (event) {
       $scope.buttonData.text = "Clicked";
@@ -126,5 +97,28 @@ angular.module('biprojectDevelopmentApp')
       text: "Click me"
   };
   $scope.checked = true;
+
+  $scope.componentModel = [
+    {
+      "ProjectId": Id,
+      "ProjetFieldId": FieldId,
+      "Type": Type,
+      "Access": Access,
+      "Status": Status,
+      "Answer": Answer,
+      "OptionList": OptionList,
+      "OptionListOrientation": OptionListOrientation,
+      "ToolTip": ToolTip,
+      "ToolTipPlacement": ToolTipPlacement,
+      "ToolTipTrigger": ToolTipTrigger,
+      "PlaceHolder": PlaceHolder,
+      "Label": Label,
+      "Name": Name,
+      "GirdConfiguration": GridConfiguration,
+      "GridValue": GridValue
+    }
+  ];
+
+  $scope.fromFactory = testFactory.test();
 
 }]);
