@@ -220,7 +220,7 @@ module.exports = function (grunt) {
             }
           }
       }
-    }, 
+    },
 
     // Renames files for browser caching purposes
     filerev: {
@@ -473,6 +473,8 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin'
   ]);
+
+  grunt.loadNpmTasks('grunt-browser-sync');
 
   grunt.registerTask('default', [
     'newer:jshint',
