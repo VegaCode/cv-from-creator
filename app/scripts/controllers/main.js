@@ -116,6 +116,7 @@ angular.module('biprojectDevelopmentApp')
       width: 150,
       height: 30
   };
+  
   // called when a button is clicked.
   $scope.onClick = function (event) {
       $scope.buttonData.text = "Clicked";
