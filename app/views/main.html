@@ -32,7 +32,6 @@
     <!-- PICK TEMPLATE -->
     <div class="jumbotron" style="text-align:left">
       <div ng-repeat="project in chooseProject.projects " ><div><span><strong>Project : </strong></span><a ng-click="chooseProject.gotToProject(project.ProjectName)" style="cursor:pointer;">{{project.ProjectName}}</a></div></div>
-
     </div>
     <div class="row">
       <div class="col-md-12" style="margin: 10px 0px 0px 11px;">
@@ -96,6 +95,7 @@
         <ng-md-icon tooltip="{{chooseTemplate.tooltip}}" tooltip-trigger="mouseenter" icon="{{chooseTemplate.icon}}" ng-click="chooseTemplate.goToLayout()" ng-attr-style="{{chooseTemplate.iconFill}}; cursor: pointer;" size="42" class="pull-right"></ng-md-icon>
       </div>
     </div>
+
 
     <!-- END OF PICKING TEMPLATE -->
 
