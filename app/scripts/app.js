@@ -24,16 +24,33 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+      .when('/project', {
+        templateUrl: 'views/project.html',
+        controller: 'ProjectCtrl',
+        controllerAs: 'project'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/template', {
+        templateUrl: 'views/template.html',
+        controller: 'TemplateCtrl',
+        controllerAs: 'template'
       })
+      .when('/:projectId', {
+          templateUrl: 'views/main.html',
+          controller: 'MainCtrl',
+          controllerAs: 'main',
+          resolve: {
+                      queryString: function($q, $location, $route) {
+                          var deferred = $q.defer();
+                          var queryString =  $route.current.params.projectId;
+                          if (queryString !== undefined) {
+                              deferred.resolve(queryString);
+                          } else {
+                              deferred.reject('not_id');
+                          }
+                          return deferred.promise;
+                      }
+                  }
+        })
       .otherwise({
         redirectTo: '/'
       });

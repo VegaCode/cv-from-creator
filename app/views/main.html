@@ -6,21 +6,12 @@
 }
 </style>
 
-<div ng-controller="MainCtrl">
+<div>
     <div class="container-fluid">
-        <div ng-controller="MainCtrl">
+        <div >
           <br><br><br>
-          <div id="grid1" ui-grid="{ data: myData }" class="grid" ui-grid-resize-columns></div>
+          <div id="grid1" ui-grid="{ data: main.myData }" class="grid" ui-grid-resize-columns></div>
         </div>
-
-        <jqx-button jqx-instance="buttonInstance" jqx-height="settings.height" jqx-width="settings.width">Button</jqx-button>
-        <jqx-toggle-button jqx-settings="settings">Toggle Button</jqx-toggle-button>
-        <br />
-        <br>
-        <jqx-check-box ng-model="checked">Click me to toggle the disabled state</jqx-check-box>
-        <br />
-        <br />
-        <jqx-button jqx-on-click="onClick(event)" ng-disabled="checked" jqx-settings="settings"><span>{{buttonData.text}}</span></jqx-button>
+        <jqx-button jqx-instance="main.buttonInstance" jqx-height="main.settings.height" jqx-width="main.settings.width">Button</jqx-button>
     </div>
     </div>
-</div>
