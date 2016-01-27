@@ -9,108 +9,33 @@
  */
 angular.module('biprojectDevelopmentApp')
 
-.controller('MainCtrl', ['$scope', '$http','queryString', 'testFactory', function($scope, $http, queryString, testFactory) {
+.controller('MainCtrl', ['$scope', '$http', 'getProjectFields', 'queryString',function($scope, $http, getProjectFields, queryString) {
 
   // Grid data.
-  var _ProjectId = [];
-  var _Class = [];
-  var _Color = [];
-  var _Created = [];
-  var _CreatedBy = [];
-  var _DataSourceUrl = [];
-  var _DataType = [];
-  var _DefaultValue = [];
-  var _GridConfig = [];
-  var _Group = [];
-  var _Input = [];
-  var _InputControlStatus = [];
-  var _FieldTypeId = [];
-  var _ProjectFieldId = [];
-  var _IsActive = [];
-  var _Label = [];
-  var _ListOrientation = [];
-  var _Name = [];
-  var _Option = [];
-  var _PlaceHolder = [];
-  var _Question = [];
-  var _SortValue = [];
-  var _TemplateId = [];
-  var _TemplateItemId = [];
-  var _TemplateName = [];
-  var _ToolTip = [];
-  var _ToolTipPlacement = [];
-  var _Updated = [];
-  var _UpdatedBy = [];
-  // var _PopOverPlacement = [];
-  // var _PopOverTitle = [];
-  // webBaseUrl = 'http://localhost:9000/#/';
-  // webBaseUrl = 'https://tools.brandinstitute.com/BIWebServices/';
+  $scope._ProjectId = [];
+  $scope._ProjectFieldId = [];
+  $scope._FieldTypeId = [];
+  $scope._SortValue = [];
+  $scope._Access = [];
+  $scope._Status = [];
+  $scope._IsActive = [];
+  $scope._OptionList = [];
+  $scope._OptionListOrientation = [];
+  $scope._ToolTip = [];
+  $scope._ToolTipPlacement = [];
+  $scope._ToolTipTrigger = [];
+  $scope._Label = [];
+  $scope._PlaceHolder = [];
+  $scope._Answer = [];
+  $scope._VersionControl = [];
+  $scope._TemplateName = [];
+  $scope._GridConfig = [];
 
-  $http.get('https://tools.brandinstitute.com/BIWebServices/api/TemplateItems').success(function(result){
-
-    _ProjectId.push(queryString);
-    _Class.push(result[0].Class);
-    _Color.push(result[0].Color);
-    _Created.push(result[0].Created);
-    _CreatedBy.push(result[0].CreatedBy);
-    _DataSourceUrl.push(result[0].DataSourceUrl);
-    _DataType.push(result[0].DataType);
-    _DefaultValue.push(result[0].DefaultValue);
-    _GridConfig.push(result[0].GridConfig);
-    _Group.push(result[0].Group);
-    _Input.push(result[0].Input);
-    _InputControlStatus.push(result[0].InputControlStatus);
-    _FieldTypeId.push(result[0].FieldTypeId);
-    _ProjectFieldId.push(result[0].ProjectFieldId);
-    _IsActive.push(result[0].IsActive);
-    _Label.push(result[0].Label);
-    _ListOrientation.push(result[0].ListOrientation);
-    _Name.push(result[0].Name);
-    _Option.push(result[0].Option);
-    _PlaceHolder.push(result[0].PlaceHolder);
-    _Question.push(result[0].Question);
-    _SortValue.push(result[0].SortValue);
-    _TemplateId.push(result[0].TemplateId);
-    _TemplateItemId.push(result[0].TemplateItemId);
-    _TemplateName.push(result[0].TemplateName);
-    _ToolTip.push(result[0].ToolTip);
-    _ToolTipPlacement.push(result[0].ToolTipPlacement);
-    _Updated.push(result[0].Updated);
-    _UpdatedBy.push(result[0].UpdatedBy);
-
-    $scope.myData = [
-      {
-        "Id": _ProjectId[0],
-        "Class": _Class[0],
-        "Color": _Color[0],
-        "Created": _Created[0],
-        "CreatedBy": _CreatedBy[0],
-        "DataSourceUrl": _DataSourceUrl[0],
-        "DataType": _DataType[0],
-        "DefaultValue": _DefaultValue[0],
-        "GridConfig": _GridConfig[0],
-        "Group": _Group[0],
-        "Input": _Input[0],
-        "InputControlStatus": _InputControlStatus[0],
-        "FieldTypeId": _FieldTypeId[0],
-        "ProjectFieldId": _ProjectFieldId[0],
-        "IsActive": _IsActive[0],
-        "Label": _Label[0],
-        "ListOrientation": _ListOrientation[0],
-        "Name": _Name[0],
-        "PlaceHolder": _PlaceHolder[0],
-        "Question": _Question[0],
-        "SortValue": _SortValue[0],
-        "TemplateId": _TemplateId[0],
-        "TemplateItemId": _TemplateItemId[0],
-        "TemplateName": _TemplateName[0],
-        "ToolTip": _ToolTip[0],
-        "ToolTipPlacement": _ToolTipPlacement[0],
-        "Updated": _Updated[0],
-        "UpdatedBy": _UpdatedBy[0]
-      }
-    ];
-  });
+    // $scope.myData = [
+    //   {
+    //     "Id": _ProjectId[0],
+    //   }
+    // ];
 
   $scope.buttonInstance = {};
   $scope.settings =
@@ -129,27 +54,27 @@ angular.module('biprojectDevelopmentApp')
   };
   $scope.checked = true;
 
-  $scope.componentModel = [
-    {
-      "ProjectId": Id,
-      "ProjetFieldId": FieldId,
-      "Type": Type,
-      "Access": Access,
-      "Status": Status,
-      "Answer": Answer,
-      "OptionList": OptionList,
-      "OptionListOrientation": OptionListOrientation,
-      "ToolTip": ToolTip,
-      "ToolTipPlacement": ToolTipPlacement,
-      "ToolTipTrigger": ToolTipTrigger,
-      "PlaceHolder": PlaceHolder,
-      "Label": Label,
-      "Name": Name,
-      "GirdConfiguration": GridConfiguration,
-      "GridValue": GridValue
-    }
-  ];
+  $scope.fromFactory = getProjectFields.getProjectFields();
 
-  $scope.fromFactory = testFactory.test();
+  $scope.fromFactory.map = function(obj){
+    $scope._ProjectId.push(obj.ProjectId);
+    $scope._ProjectFieldId.push(obj.ProjectFieldId);
+    $scope._FieldTypeId.push(obj.FieldTypeId);
+    $scope._SortValue.push(obj.SortValue);
+    $scope._Access.push(obj.Access);
+    $scope._Status.push(obj.Status);
+    $scope._IsActive.push(obj.IsActive);
+    $scope._OptionList.push(obj.OptionList);
+    $scope._OptionListOrientation.push(obj.OptionListOrientation);
+    $scope._ToolTip.push(obj.ToolTip);
+    $scope._ToolTipPlacement.push(obj.ToolTipPlacement);
+    $scope._ToolTipTrigger.push(obj.ToolTipTrigger);
+    $scope._Label.push(obj.Label);
+    $scope._PlaceHolder.push(obj.PlaceHolder);
+    $scope._Answer.push(obj.Answer);
+    $scope._VersionControl.push(obj.VersionControl);
+    $scope._TemplateName.push(obj.TemplateName);
+    $scope._GridConfig.push(obj.GridConfig);
+  };
 
 }]);

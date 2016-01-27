@@ -35,7 +35,7 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['wiredep']
+        tasks: ['wiredep', 'bsReload:css']
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
@@ -423,6 +423,24 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    // testing multiple browsers and devices
+    browserSync: {
+      dev: {
+          options: {
+              proxy: "localhost:9000",
+              ghostmode: true,
+              spawn: false,
+              injectChanges: true,
+              // port: 8080,
+              tunnel: "testing", // < Used for iPhone testing
+              watchTask: true // < VERY important
+          }
+        }
+    },
+    bsReload:{
+      css: "main.css"
     }
   });
 
@@ -433,6 +451,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
+      'browserSync',
       'clean:server',
       'wiredep',
       'concurrent:server',
