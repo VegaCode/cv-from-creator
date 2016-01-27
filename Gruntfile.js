@@ -35,7 +35,7 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['wiredep']
+        tasks: ['wiredep', 'bsReload']
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
@@ -416,7 +416,20 @@ module.exports = function (grunt) {
         'svgmin'
       ]
     },
-
+    browserSync: {
+      dev: {
+          options: {
+              proxy: "localhost:9000",
+              ghostmode: true,
+              // port: 8080,
+              // tunnel: "testing", // < Used for iPhone testing
+              watchTask: true // < VERY important
+          }
+        }
+    },
+    bsReload:{
+      css:"main.css"
+    },
     // Test settings
     karma: {
       unit: {
@@ -438,6 +451,7 @@ module.exports = function (grunt) {
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
+      'browserSync',
       'watch'
     ]);
   });
