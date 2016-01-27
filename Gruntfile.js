@@ -35,11 +35,7 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-<<<<<<< HEAD
         tasks: ['wiredep', 'bsReload:css']
-=======
-        tasks: ['wiredep', 'bsReload']
->>>>>>> c67e6b35cf0423c26b455c4357403a0dbbc079eb
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
