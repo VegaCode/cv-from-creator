@@ -415,7 +415,7 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
-    },  
+    },
     // Test settings
     karma: {
       unit: {
@@ -430,10 +430,10 @@ module.exports = function (grunt) {
           options: {
               proxy: "localhost:9000",
               ghostmode: true,
-              spawn: false,
-              injectChanges: true,
-              // port: 8080,
-              tunnel: "testing", // < Used for iPhone testing
+              // spawn: false,
+              // injectChanges: true,
+              // // port: 8080,
+              // tunnel: "testing", // < Used for iPhone testing
               watchTask: true // < VERY important
           }
         }
@@ -456,7 +456,6 @@ module.exports = function (grunt) {
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
-      'browserSync',
       'watch'
     ]);
   });
