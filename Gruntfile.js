@@ -415,21 +415,7 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
-    },
-    browserSync: {
-      dev: {
-          options: {
-              proxy: "localhost:9000",
-              ghostmode: true,
-              // port: 8080,
-              // tunnel: "testing", // < Used for iPhone testing
-              watchTask: true // < VERY important
-          }
-        }
-    },
-    bsReload:{
-      css:"main.css"
-    },
+    },  
     // Test settings
     karma: {
       unit: {
