@@ -8,7 +8,9 @@
  * Controller of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
-.controller('MainCtrl', ['$scope', '$http','queryString', function($scope, $http, queryString) {
+
+.controller('MainCtrl', ['$scope', '$http','queryString', 'testFactory', function($scope, $http, queryString, testFactory) {
+
   // Grid data.
   var _ProjectId = [];
   var _Class = [];
@@ -116,7 +118,7 @@ angular.module('biprojectDevelopmentApp')
       width: 150,
       height: 30
   };
-  
+
   // called when a button is clicked.
   $scope.onClick = function (event) {
       $scope.buttonData.text = "Clicked";
@@ -126,5 +128,28 @@ angular.module('biprojectDevelopmentApp')
       text: "Click me"
   };
   $scope.checked = true;
+
+  $scope.componentModel = [
+    {
+      "ProjectId": Id,
+      "ProjetFieldId": FieldId,
+      "Type": Type,
+      "Access": Access,
+      "Status": Status,
+      "Answer": Answer,
+      "OptionList": OptionList,
+      "OptionListOrientation": OptionListOrientation,
+      "ToolTip": ToolTip,
+      "ToolTipPlacement": ToolTipPlacement,
+      "ToolTipTrigger": ToolTipTrigger,
+      "PlaceHolder": PlaceHolder,
+      "Label": Label,
+      "Name": Name,
+      "GirdConfiguration": GridConfiguration,
+      "GridValue": GridValue
+    }
+  ];
+
+  $scope.fromFactory = testFactory.test();
 
 }]);
