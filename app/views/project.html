@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 <bi-form-creator style="{{project.mystyle}}" sourceData ="project.awesomeThings"></bi-form-creator>
+=======
+>>>>>>> cvega-development
 <!-- TEMPLATE -->
-<div class="page page-table col-lg-12">
+<!-- <div class="page page-table col-lg-12">
     <div class="row clearfix">
         <!--Header-->
         <div class="col-md-12 column" style="padding-bottom: 15px;padding-top: 10px;">
@@ -8,23 +11,23 @@
                 <div class="col-md-2 column">
                         <div class="glyphicon glyphicon-home"  popover-title="Home"
                         style="font-size: 36px; cursor:pointer;color:grey"
-                        ng-click="formCreator.goHome()" ></div>
+                        ng-click="project.goHome()" ></div>
                         <div class="glyphicon glyphicon-cog"
                         style="font-size: 36px; cursor:pointer;color:grey;"
-                        ng-click="formCreator.goEditTemplate()"></div>
+                        ng-click="project.goEditTemplate()"></div>
                 </div>
                 <div class="col-md-4 column">
                     <div class="btn btn-primary" style="margin: 10px;" type="button">
-                        Project Name : <span class="badge">{{formCreator.projectName}}</span>
+                        Project Name : <span class="badge">{{project.projectName}}</span>
                     </div>
                 </div>
                 <div class="col-md-3 column">
                     <div class="btn btn-success" style="margin: 10px;" type="button">
-                        Template: <span class="badge">{{formCreator.template}}</span>
+                        Template: <span class="badge">{{project.template}}</span>
                     </div>
                 </div>
                 <div class="col-md-3 column">
-                    <img ng-src="{{formCreator.projectLogoImagePath}}" width="125" class="pull-right" />
+                    <img ng-src="{{project.projectLogoImagePath}}" width="125" class="pull-right" />
                 </div>
             </div>
         </div>
@@ -32,8 +35,8 @@
     <!--Body-->
     <hr>
     <form class="form-horizontal" role="form">
-        <div ng-repeat="formElement in  formCreator.formElementsData track by $index">
-            <div xv-form-creator source-data="formElement">
+        <div ng-repeat="formElement in  project.formElementsData track by $index">
+            <div bi-form-creator datasrc="formElement">
             </div>
         </div>
     </form>

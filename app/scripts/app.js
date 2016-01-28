@@ -21,7 +21,10 @@ angular
     'ui.grid',
     'ui.grid.resizeColumns',
     'jqwidgets',
+<<<<<<< HEAD
     'ngMdIcons',
+=======
+>>>>>>> cvega-development
     'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
@@ -53,6 +56,7 @@ angular
         controller: 'TemplateCtrl',
         controllerAs: 'template'
       })
+<<<<<<< HEAD
       .when('/template/:projectChosen', {
         templateUrl: 'views/template.html',
         controller: 'TemplateCtrl',
@@ -71,6 +75,25 @@ angular
           }
         }
       })
+=======
+      .when('/:projectId', {
+          templateUrl: 'views/main.html',
+          controller: 'MainCtrl',
+          controllerAs: 'main',
+          resolve: {
+            queryString: function($q, $location, $route) {
+                          var deferred = $q.defer();
+                          var queryString =  $route.current.params.projectId;
+                          if (queryString !== undefined) {
+                              deferred.resolve(queryString);
+                          } else {
+                              deferred.reject('not_id');
+                          }
+                          return deferred.promise;
+                      }
+                  }
+        })
+>>>>>>> cvega-development
       .otherwise({
         redirectTo: '/'
       });

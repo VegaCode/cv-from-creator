@@ -13,6 +13,7 @@ angular.module('biprojectDevelopmentApp')
 
   var self = this;
   // Grid data.
+<<<<<<< HEAD
   self.ProjectId = [];
   self.ProjectFieldId = [];
   self.FieldTypeId = [];
@@ -31,6 +32,27 @@ angular.module('biprojectDevelopmentApp')
   self.VersionControl = [];
   self.TemplateName = [];
   self.GridConfig = [];
+=======
+  var id = queryString;
+  $scope._ProjectId = [];
+  $scope._ProjectFieldId = [];
+  $scope._FieldTypeId = [];
+  $scope._SortValue = [];
+  $scope._Access = [];
+  $scope._Status = [];
+  $scope._IsActive = [];
+  $scope._OptionList = [];
+  $scope._OptionListOrientation = [];
+  $scope._ToolTip = [];
+  $scope._ToolTipPlacement = [];
+  $scope._ToolTipTrigger = [];
+  $scope._Label = [];
+  $scope._PlaceHolder = [];
+  $scope._Answer = [];
+  $scope._VersionControl = [];
+  $scope._TemplateName = [];
+  $scope._GridConfig = [];
+>>>>>>> cvega-development
 
   self.fromFactory = getProjectFields.getProjectFields();
 
