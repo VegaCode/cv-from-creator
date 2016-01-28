@@ -20,10 +20,29 @@ angular
     'ngTouch',
     'ui.grid',
     'ui.grid.resizeColumns',
-    'jqwidgets'
+    'jqwidgets',
+    'ngMdIcons',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
+    .when('/:projectId', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main',
+        resolve: {
+                    queryString: function($q, $location, $route) {
+                        var deferred = $q.defer();
+                        var queryString =  $route.current.params.projectId;
+                        if (queryString !== undefined) {
+                            deferred.resolve(queryString);
+                        } else {
+                            deferred.reject('not_id');
+                        }
+                        return deferred.promise;
+                    }
+                }
+      })
       .when('/project', {
         templateUrl: 'views/project.html',
         controller: 'ProjectCtrl',
@@ -34,23 +53,24 @@ angular
         controller: 'TemplateCtrl',
         controllerAs: 'template'
       })
-      .when('/:projectId', {
-          templateUrl: 'views/main.html',
-          controller: 'MainCtrl',
-          controllerAs: 'main',
-          resolve: {
-                      queryString: function($q, $location, $route) {
-                          var deferred = $q.defer();
-                          var queryString =  $route.current.params.projectId;
-                          if (queryString !== undefined) {
-                              deferred.resolve(queryString);
-                          } else {
-                              deferred.reject('not_id');
-                          }
-                          return deferred.promise;
-                      }
-                  }
-        })
+      .when('/template/:projectChosen', {
+        templateUrl: 'views/template.html',
+        controller: 'TemplateCtrl',
+        controllerAs: 'template',
+        resolve: {
+          route: function($q, $window, $route) {
+            var deferred = $q.defer();
+            var queryString = $route.current.params.projectChosen;
+            if (queryString !== undefined) {
+              deferred.resolve(queryString);
+            } else {
+              deferred.reject('not_id');
+              //$window.location.href = '/chooseProject';
+            }
+            return deferred.promise;
+          }
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });

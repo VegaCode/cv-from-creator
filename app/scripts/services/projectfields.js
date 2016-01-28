@@ -7,7 +7,29 @@
  * # MainCtrl
  * Controller of the biprojectDevelopmentApp
  */
+ var  webBaseUrl;
+ webBaseUrl = 'https://tools.brandinstitute.com/BIWebServices/';
+
 angular.module('biprojectDevelopmentApp')
+.factory('bidocsGetNRDGTemplates', [
+    '$http','$q',
+    function($http, $q) {
+        var apiCall, deferred, factory,  _getTemplates;
+        factory = {};
+        deferred = $q.defer();
+        apiCall = 'api/BIDOCS_ProjectPreSearch/';
+        _getTemplates = function() {
+            $http.get(webBaseUrl + apiCall).success(function(results) {
+               deferred.resolve(results);
+            }).error(function(err) {
+               deferred.reject(err);
+            });
+            return deferred.promise;
+        };
+        factory.getTemplates = _getTemplates;
+        return factory;
+    }
+])
 .factory('getProjectFields', function(){
   return {
     getProjectFields: function(){

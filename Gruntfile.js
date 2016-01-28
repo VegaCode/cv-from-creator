@@ -450,10 +450,10 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'browserSync',
       'clean:server',
       'wiredep',
       'concurrent:server',
+      'browserSync',
       'postcss:server',
       'connect:livereload',
       'watch'

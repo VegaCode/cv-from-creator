@@ -6,7 +6,7 @@
 }
 </style>
 
-<div ng-controller="MainCtrl">
+<div>
   <!-- SEARCH PROJECT -->
     <div class="container-fluid">
         <div class="row">
@@ -14,7 +14,7 @@
                 <div class="col-lg-6">
                     <div class="input-group">
                     <span class="input-group-addon" id="basic-addon2">Search</span>
-                        <input type="search" id="projectSearch" class="form-control" placeholder="project name" ng-keyup="chooseProject.search($event)" autofocus ng-model="chooseProject.searchKey">
+                        <input type="search" id="projectSearch" class="form-control" placeholder="project name" ng-keyup="main.search($event)" autofocus ng-model="main.searchKey">
                     </div><!-- /input-group -->
                 </div>
                 <div class="col-lg-6" style="cursor:pointer;">
@@ -28,7 +28,7 @@
         <!-- /.row -->
     </div>
     <div class="jumbotron" style="text-align:left">
-      <div ng-repeat="project in main.projects " ><div><span><strong>Project : </strong></span><a ng-click="chooseProject.gotToProject(main._ProjectId)" style="cursor:pointer;">{{main._ProjectId}}</a></div></div>
+      <div ng-repeat="project in main.projects track by $index" ><div><span><strong>Project : </strong></span><a ng-click="main.gotToProject(project.ProjectId)" style="cursor:pointer;">{{project.ProjectId}}</a></div></div>
     </div>
     <!-- END OF SEARCHING PROJECT -->
 

@@ -1,9 +1,3 @@
-<h1>hello world</h1>
-<p ng-repeat="item in template.awesomeThings">
-  {{item}}
-</p>
-
-
 <!-- PICK TEMPLATE -->
 <div class="row">
     <div class="col-md-12" style="margin: 10px 0px 0px 11px;">
@@ -17,8 +11,8 @@
                             <span class="sr-only">Split button!</span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li ng-repeat="choice in chooseTemplate.items">
-                                <a href data-templateId="{{choice.TemplateId}}" ng-click="chooseTemplate.selectedTemplate($event)">{{choice.Description}}</a>
+                            <li ng-repeat="choice in template.items">
+                                <a href data-templateId="{{choice.TemplateId}}" ng-click="template.selectedTemplate($event)">{{choice.Description}}</a>
                             </li>
                         </ul>
                     </div>
@@ -30,7 +24,7 @@
                         <h4>  <span class="label label-info">Project Name </span></h4>
                     </div>
                     <div class="col-md-12">
-                        <h4 style="padding-top: 10px;">  <span class="alert alert-info">{{chooseTemplate.projectName}}</span> </h4>
+                        <h4 style="padding-top: 10px;">  <span class="alert alert-info">{{template.projectName}}</span> </h4>
                     </div>
                 </div>
             </div>
@@ -40,13 +34,13 @@
                         <h4>    <span class="label label-success">Template Name</span> </h4>
                     </div>
                     <div class="col-md-12">
-                        <h4 style="padding-top: 10px;"> <span class="alert alert-{{chooseTemplate.templateTextClassFill}}">{{chooseTemplate.templateName}}</span></h4>
+                        <h4 style="padding-top: 10px;"> <span class="alert alert-{{template.templateTextClassFill}}">{{template.templateName}}</span></h4>
                     </div>
                 </div>
             </div>
         </div>
         <hr>
-        <ng-md-icon tooltip="{{chooseTemplate.tooltip}}" tooltip-trigger="mouseenter" icon="{{chooseTemplate.icon}}" ng-click="chooseTemplate.goToLayout()" ng-attr-style="{{chooseTemplate.iconFill}}; cursor: pointer;" size="42" class="pull-right"></ng-md-icon>
+        <ng-md-icon tooltip="{{template.tooltip}}" tooltip-trigger="mouseenter" icon="{{template.icon}}" ng-click="template.goToLayout()" ng-attr-style="{{template.iconFill}}; cursor: pointer;" size="42" class="pull-right"></ng-md-icon>
     </div>
 </div>
 

@@ -10,6 +10,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css" />
     <!-- endbower -->
     <link rel="stylesheet" href="bower_components/jqwidgets/jqwidgets/styles/jqx.base.css" />
     <!-- endbuild -->
@@ -18,16 +19,15 @@
     <!-- endbuild -->
      <script>document.createElement('bi-form-creator')</script>
   </head>
-  <body ng-app="biprojectDevelopmentApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    <body ng-app="biprojectDevelopmentApp">
+      <!--[if lte IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
 
-    <div class="container">
-      <div ng-view=""></div>
-    </div>
-
-
+      <div class="container">
+        <div ng-view=""></div>
+      </div>
+    </body>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -54,20 +54,23 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
     <!-- endbower -->
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/jqwidgets/jqwidgets/jqxcore.js"></script>
     <script src="bower_components/jqwidgets/jqwidgets/jqxangular.js"></script>
     <script src="bower_components/jqwidgets/jqwidgets/jqxdata.js"></script>
     <script src="bower_components/jqwidgets/jqwidgets/jqxbuttons.js"></script>
     <script src="bower_components/jqwidgets/jqwidgets/jqxcheckbox.js"></script>
+    <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/services/projectfields.js"></script>
+    <script src="scripts/directives/bi-form-creator.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/project.js"></script>
     <script src="scripts/controllers/template.js"></script>
-    <script src="scripts/services/projectfields.js"></script>
-    <script src="scripts/directives/bi-form-creator.js"></script>
     <!-- endbuild -->
-</body>
+
 </html>
