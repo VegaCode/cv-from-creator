@@ -8,10 +8,6 @@
  * Controller of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
-  .controller('ProjectCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('ProjectCtrl',[ 'getProjectFields', function (getProjectFields) {
+     this.formElementsData = getProjectFields.getProjectFields();
+  }]);

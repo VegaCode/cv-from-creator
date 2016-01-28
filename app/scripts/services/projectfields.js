@@ -10,6 +10,7 @@
 angular.module('biprojectDevelopmentApp')
 .factory('getProjectFields', function(){
   return {
+
     getProjectFields: function(){
       return [{
     "ProjectId":"0",
@@ -22,14 +23,15 @@ angular.module('biprojectDevelopmentApp')
     "OptionList":"",
     "OptionListOrientation":"",
     "ToolTip":"hello tooltip",
-    "ToolTipPlacement":"right",
-    "ToolTipTrigger": "hover",
-    "Label":"General Information",
+    "ToolTipPlacement":"top",
+    "ToolTipTrigger": "mouseenter",
+    "Label":"General Information Text Directive questions label",
     "PlaceHolder":"Text Place holder",
-    "Answer":"",
+    "Answer":"I'm an answer",
     "VersionControl": "<span>hello version</span>",
     "TemplateName":"RX",
-    "GridConfig":""
+    "GridConfig":"",
+    "directive":"<bi-text>Text Directive</bi-text>"
   },
     {
     "ProjectId":"2",
@@ -43,13 +45,14 @@ angular.module('biprojectDevelopmentApp')
     "OptionListOrientation":"",
     "ToolTip":"hello tooltip",
     "ToolTipPlacement":"right",
-    "ToolTipTrigger": "hover",
+    "ToolTipTrigger": "mouseenter",
     "Label":"Gretting",
     "PlaceHolder":"Text Place holder",
     "Answer":"Hello World!",
     "VersionControl": "<span>hello version</span>",
     "TemplateName":"RX",
-    "GridConfig":""
+    "GridConfig":"",
+    "directive":"<bi-text-area>Text area directive</bi-text-area>"
   },
 
     {"ProjectId":"3",
@@ -63,13 +66,14 @@ angular.module('biprojectDevelopmentApp')
     "OptionListOrientation":"inline",
     "ToolTip":"hello tooltip",
     "ToolTipPlacement":"right",
-    "ToolTipTrigger": "hover",
+    "ToolTipTrigger": "mouseenter",
     "Label":"General List",
     "PlaceHolder":"Text Place holder",
     "Answer":"1",
     "VersionControl": "<span>hello version</span>",
     "TemplateName":"RX",
-    "GridConfig":""
+    "GridConfig":"",
+    "directive":"<bi-grid>grid Directive</bi-grid>"
   },
 
     {"ProjectId":"4",
@@ -83,13 +87,14 @@ angular.module('biprojectDevelopmentApp')
     "OptionListOrientation":"inline",
     "ToolTip":"hello tooltip",
     "ToolTipPlacement":"right",
-    "ToolTipTrigger": "hover",
+    "ToolTipTrigger": "mouseenter",
     "Label":"General Radio List",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
     "VersionControl": "<span>hello version</span>",
     "TemplateName":"RX",
-    "GridConfig":""
+    "GridConfig":"",
+    "directive":"<bi-label>label Directive</bi-label>"
   },
   {"ProjectId":"5",
     "ProjectFieldId":"125",
@@ -102,13 +107,14 @@ angular.module('biprojectDevelopmentApp')
     "OptionListOrientation":"",
     "ToolTip":"hello tooltip",
     "ToolTipPlacement":"right",
-    "ToolTipTrigger": "hover",
+    "ToolTipTrigger": "mouseenter",
     "Label":"General Grid",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
     "VersionControl": "<span>hello version</span>",
     "TemplateName":"RX",
-    "GridConfig":"C"
+    "GridConfig":"",
+    "directive":"<bi-label>label Directive</bi-label>"
     },
 
     {"ProjectId":"6",
@@ -122,13 +128,14 @@ angular.module('biprojectDevelopmentApp')
     "OptionListOrientation":"",
     "ToolTip":"hello tooltip",
     "ToolTipPlacement":"right",
-    "ToolTipTrigger": "hover",
+    "ToolTipTrigger": "mouseenter",
     "Label":"General DropDown",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
     "VersionControl": "<span>hello version</span>",
     "TemplateName":"RX",
-    "GridConfig":""
+    "GridConfig":"",
+    "directive":"<bi-title>title Directive</bi-title>"
   },
 
 {
@@ -143,13 +150,14 @@ angular.module('biprojectDevelopmentApp')
     "OptionListOrientation":"",
     "ToolTip":"hello tooltip",
     "ToolTipPlacement":"right",
-    "ToolTipTrigger": "hover",
+    "ToolTipTrigger": "mouseenter",
     "Label":"Title of Project",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
     "VersionControl": "<span>hello version</span>",
     "TemplateName":"RX",
-    "GridConfig":""
+    "GridConfig":"",
+    "directive":"<bi-sub-title>sub-title Directive</bi-sub-title>"
   },
 
     {"ProjectId":"8",
@@ -163,13 +171,14 @@ angular.module('biprojectDevelopmentApp')
     "OptionListOrientation":"",
     "ToolTip":"hello tooltip",
     "ToolTipPlacement":"right",
-    "ToolTipTrigger": "hover",
+    "ToolTipTrigger": "mouseenter",
     "Label":"Subtitle of Project",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
     "VersionControl": "<span>hello version</span>",
     "TemplateName":"RX",
-    "GridConfig":""
+    "GridConfig":"",
+    "directive":"<bi-dropdown>dropdown Directive</bi-dropdown>"
   },
     {
     "ProjectId":"9",
@@ -183,14 +192,58 @@ angular.module('biprojectDevelopmentApp')
     "OptionListOrientation":"",
     "ToolTip":"Logo of the Companyhello tooltip",
     "ToolTipPlacement":"right",
-    "ToolTipTrigger": "hover",
+    "ToolTipTrigger": "mouseenter",
     "Label":"Picture/ Logo of Company",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
     "VersionControl": "<span>hello version</span>",
     "TemplateName":"RX",
-    "GridConfig":""
-  }];
+    "GridConfig":"",
+    "directive":"<bi-typeahead>typeahead Directive</bi-typeahead>"
+  },
+    {
+    "ProjectId":"10",
+    "ProjectFieldId":"130",
+    "FieldTypeId":"Picture",
+    "SortValue":"2",
+    "Access":"YES",
+    "Status": "",
+    "IsActive": "1",
+    "OptionList":"",
+    "OptionListOrientation":"",
+    "ToolTip":"Logo of the Companyhello tooltip",
+    "ToolTipPlacement":"right",
+    "ToolTipTrigger": "mouseenter",
+    "Label":"Picture/ Logo of Company",
+    "PlaceHolder":"Text Place holder",
+    "Answer":"",
+    "VersionControl": "<span>hello version</span>",
+    "TemplateName":"RX",
+    "GridConfig":"",
+    "directive":"<bi-radio-list>radio-list Directive</bi-radio-list>"
+  },
+    {
+    "ProjectId":"11",
+    "ProjectFieldId":"130",
+    "FieldTypeId":"Picture",
+    "SortValue":"2",
+    "Access":"YES",
+    "Status": "",
+    "IsActive": "1",
+    "OptionList":"",
+    "OptionListOrientation":"",
+    "ToolTip":"Logo of the Companyhello tooltip",
+    "ToolTipPlacement":"right",
+    "ToolTipTrigger": "mouseenter",
+    "Label":"Picture/ Logo of Company",
+    "PlaceHolder":"Text Place holder",
+    "Answer":"",
+    "VersionControl": "<span>hello version</span>",
+    "TemplateName":"RX",
+    "GridConfig":"",
+    "directive":"<bi-check-list>check-list Directive</bi-check-list>"
+  }
+];
     }
   };
 });

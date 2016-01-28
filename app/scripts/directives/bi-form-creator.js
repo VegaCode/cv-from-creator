@@ -4,38 +4,28 @@
  * @ngdoc function
  * @name biprojectDevelopmentApp.controller:AboutCtrl
  * @description
- * # AboutCtrl
+ * # Directives
  * Controller of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
-  .directive('biFormCreator', function () {
+  .directive('biFormCreator', function ($compile) {
     return {
-           restrict: "EA",
-           scope:{
-               sourceData:'='
-           },
-            link:function (scope, element, attrs) {
-            //element.css('color','red')
-          },
-          controllerAs:'biForm',
-           template:'<h1 ng-style="{{biForm.mystyle}}">hello world</h1>',
-           controller:function () {
-            var self = this;
-             self.mystyle = '{color:"blue"}';
-           }
-       };
-      // return {
-      //     restrict: 'A',
-      //     transclude: true,
-      //     scope: {
-      //           sourceData: '='
-      //       },
-      //       link: function($scope, $http, $modal){
-      //
-      //       },
-      //       template:'<p ng-repeat="item in project.awesomeThings">{{item}}</p>',
-      //       controller: function($scope, $http, $modal){
-      //
-      //       }
-      // }
+      restrict: "EA",
+      scope: {datasrc : '='},
+      link : function (scope, element) {
+        element.append($compile(scope.datasrc.directive)(scope));
+      }
+    };
+
+  })
+  .directive('biText', function () {
+        return {
+               restrict: "EA",          
+               templateUrl:'views/components/bi-text.html',
+               controller:function () {
+                var self = this;
+                self.IsActive=true;
+                 self.mystyle = '{color:"blue"}';
+               }
+           };
   });
