@@ -12,6 +12,7 @@ angular.module('biprojectDevelopmentApp')
 .controller('MainCtrl', ['$scope', '$http', 'getProjectFields', 'queryString',function($scope, $http, getProjectFields, queryString) {
 
   // Grid data.
+  var id = queryString;
   $scope._ProjectId = [];
   $scope._ProjectFieldId = [];
   $scope._FieldTypeId = [];

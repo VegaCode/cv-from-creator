@@ -20,7 +20,8 @@ angular
     'ngTouch',
     'ui.grid',
     'ui.grid.resizeColumns',
-    'jqwidgets'
+    'jqwidgets',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -39,7 +40,7 @@ angular
           controller: 'MainCtrl',
           controllerAs: 'main',
           resolve: {
-                      queryString: function($q, $location, $route) {
+            queryString: function($q, $location, $route) {
                           var deferred = $q.defer();
                           var queryString =  $route.current.params.projectId;
                           if (queryString !== undefined) {
