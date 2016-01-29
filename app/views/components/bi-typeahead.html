@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  	<div class="row">
+  		<div class="col-md-12">
+        <div class="row">
+				<div class="col-md-5">
+          <label class="text-primary" ng-show="datasrc.IsActive">{{datasrc.Label}}</label>
+				</div>
+				<div class="col-md-6">
+                    <input type="text"
+                    style="height: 100%;"
+                    typeahead="name for name in datasrc.OptionList.split(',') | filter:$viewValue | limitTo:8"
+                    typeahead-on-select="datasrc.onSelect($item, $model, $label)"
+                    class="form-control"
+                    placeholder={{datasrc.PlaceHolder}}
+                    data-ProjectId=" {{datasrc.ProjectId}}"
+                    data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+                    ng-model="datasrc.selectedName"
+                    ng-keyup="datasrc.logKey($event)">{{name}}
+				</div>
+				<div class="col-md-1">
+            <div class="col-md-6">
+              <input style="float: right;" type="checkbox"/>
+  			  	</div>
+  			  	<div class="col-md-6">
+              <span style="float: right;"
+              uib-tooltip="{{datasrc.ToolTip}}"
+              tooltip-placement="right"
+              toolTip-trigger="{{datasrc.ToolTipTrigger}}"
+              data-ProjectId=" {{datasrc.ProjectId}}"
+              class="glyphicon glyphicon-tag"
+              aria-hidden="true">
+              </span>
+  				 </div>
+				</div>
+			</div>
+  		</div>
+  	</div>
+</div>

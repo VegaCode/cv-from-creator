@@ -210,7 +210,7 @@ angular.module('biprojectDevelopmentApp')
     "Access":"YES",
     "Status": "",
     "IsActive": "1",
-    "OptionList":"",
+    "OptionList":"One,Two,Three,Four,Five",
     "OptionListOrientation":"",
     "ToolTip":"Logo of the Companyhello tooltip",
     "ToolTipPlacement":"right",

@@ -1,0 +1,40 @@
+<div class="container-fluid">
+   <div class="row">
+       <div class="col-md-12">
+           <div class="row">
+               <div class="col-md-5">
+   	       <label class="text-primary" ng-show="datasrc.IsActive">{{datasrc.Label}}</label>
+	   </div>
+	   <div class="col-md-6">
+	       <textarea type="{{datasrc.DataType}}"
+	        class="form-control"
+	        placeholder="{{datasrc.PlaceHolder}}"
+	        value="{{datasrc.Answer}}"
+	        uib-tooltip="{{datasrc.ToolTip}}"
+	        tooltip-placement="{{datasrc.ToolTipPlacement}}"
+	        toolTip-trigger="{{datasrc.ToolTipTrigger}}"
+	        data-ProjectId=" {{datasrc.ProjectId}}"
+	        data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+	        ng-readonly="false"
+	        ng-model="datasrc.Answer"
+	        ng-show="datasrc.IsActive"/>
+	   </div>
+	   <div class="col-md-1">
+	       <div class="col-md-6">
+	           <input style="float: right;" type="checkbox"/>
+	       </div>
+	       <div class="col-md-6">
+	           <span style="float: right;"
+	            uib-tooltip="{{datasrc.ToolTip}}"
+	            tooltip-placement="right"
+	            toolTip-trigger="{{datasrc.ToolTipTrigger}}"
+	            data-ProjectId=" {{datasrc.ProjectId}}"
+	            class="glyphicon glyphicon-tag"
+	            aria-hidden="true">
+	           </span>
+	       </div>
+	    </div>
+            </div>
+        </div>
+    </div>
+</div>
