@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  	<div class="row">
+      <div class="col-md-5">
+         <label class="text-primary"
+            ng-show="datasrc.IsActive">
+            {{datasrc.Label}}
+         </label>
+      </div>
+        <div class="col-md-6">
+            <div class="{{datasrc.OptionListOrientation}}"
+            style="margin-left: -20px; margin-top: -10px"
+            ng-repeat="optionsArray in CheckListCtrl.optionsArrayToDisplay track by $index">
+               <div ng-repeat="option in optionsArray track by $index"
+               class="{{datasrc.OptionListOrientation}}">
+                   <input type="checkbox"
+                   value="{{option}}"
+                   data-projectId=" {{datasrc.ProjectId}}"
+                   data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+                   ng-model="selected"
+                   ng-show="datasrc.IsActive"/>
+                   {{option}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -76,36 +76,57 @@ angular.module('biprojectDevelopmentApp')
   .directive('biTypeahead', function () {
         return {
                restrict: "EA",
-               transclude: true,
-               replace: true,
                templateUrl:'views/components/bi-typeahead.html',
                controller:function () {
                 var self = this;
                 self.IsActive=true;
                  self.mystyle = '{color:"blue"}';
-                 self.onSelect = function(slideName) {
-                    var foundMatch = false;
-                    var amount = 0;
-                    if(self.testName.indexOf(slideName) < 0){
-                      while(foundMatch === false){
-                        if(slideName === self.slides[amount].SlideDescription){
-                          var numberOfPage = self.slides[amount].$id;
-                          self.selectSlide(parseInt(numberOfPage)-1);
-                          foundMatch = true;
-                        }else {
-                          amount += 1;
-                          foundMatch = false;
-                        }
-                      }
-                    }else{
-                        self.selectedName = slideName;
-                        if (parseInt(self.pageNumber) === 1) {
-                            self.progressBarValue = 0;
-                        } else {
-                            self.progressBarValue = (parseInt(self.pageNumber) * self.progressBarUnit);
-                        }
-                      }
-                    };
+
                }
+           };
+  })
+  .directive('biImage', function () {
+        return {
+               restrict: "EA",
+               templateUrl:'views/components/bi-image.html',
+               controller:function () {
+                var self = this;
+                self.IsActive=true;
+                 self.mystyle = '{color:"blue"}';
+               }
+           };
+  })
+  .directive('biCheckList', function () {
+        return {
+               restrict: "EA",
+               templateUrl:'views/components/bi-check-list.html',
+               controller:function ($scope) {
+                var self = this;
+                self.IsActive=true;
+                 self.mystyle = '{color:"blue"}';
+                 self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
+                 self.optionsArrayToDisplay = [];
+                 while (self.arraysOfOptions.length > 0){
+                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,4));
+                 }
+               },
+               controllerAs: 'CheckListCtrl'
+           };
+  })
+  .directive('biRadioList', function () {
+        return {
+               restrict: "EA",
+               templateUrl:'views/components/bi-radio-list.html',
+               controller:function ($scope) {
+                var self = this;
+                self.IsActive=true;
+                 self.mystyle = '{color:"blue"}';
+                 self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
+                 self.optionsArrayToDisplay = [];
+                 while (self.arraysOfOptions.length > 0){
+                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,4));
+                 }
+               },
+               controllerAs: 'RadioListCtrl'
            };
   });

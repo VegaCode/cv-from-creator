@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  	<div class="row">
+      <div class="col-md-5">
+         <label class="text-primary"
+            ng-show="datasrc.IsActive">
+            {{datasrc.Label}}
+         </label>
+      </div>
+        <div class="col-md-6">
+            <div class="{{datasrc.OptionListOrientation}}"
+            style="margin-left: -20px; margin-top: -10px"
+            ng-repeat="optionsArray in RadioListCtrl.optionsArrayToDisplay track by $index">
+               <div class="{{datasrc.OptionListOrientation}}"
+               ng-repeat="option in optionsArray track by $index">
+                <input type="radio"
+                name="datasrc.ProjectFieldId"
+                data-projectId=" {{datasrc.ProjectId}}"
+                data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+                ng-model="datasrc.Answer"
+                ng-show="datasrc.IsActive"/>
+                {{option}}
+            </div>
+        </div>
+    </div>
+</div>
