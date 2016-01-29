@@ -6,18 +6,18 @@
           <label class="text-primary" ng-show="datasrc.IsActive">{{datasrc.Label}}</label>
 				</div>
 				<div class="col-md-6">
-            <input type="{{datasrc.DataType}}"
-            class="form-control"
-            placeholder="{{datasrc.PlaceHolder}}"
-            value="{{datasrc.Answer}}"
-            uib-tooltip="{{datasrc.ToolTip}}"
-            tooltip-placement="{{datasrc.ToolTipPlacement}}"
-            toolTip-trigger="{{datasrc.ToolTipTrigger}}"
-            data-ProjectId=" {{datasrc.ProjectId}}"
-            data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
-            ng-readonly="false"
-            ng-model="datasrc.Answer"
-            ng-show="datasrc.IsActive"/>
+               <input type="{{datasrc.DataType}}"
+               class="form-control"
+               placeholder="{{datasrc.PlaceHolder}}"
+               value="{{datasrc.Answer}}"
+               uib-tooltip="{{datasrc.ToolTip}}"
+               tooltip-placement="{{datasrc.ToolTipPlacement}}"
+               toolTip-trigger="{{datasrc.ToolTipTrigger}}"
+               data-ProjectId=" {{datasrc.ProjectId}}"
+               data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+               ng-readonly="false"
+               ng-model="datasrc.Answer"
+               ng-show="datasrc.IsActive"/>
 				</div>
 				<div class="col-md-1">
             <div class="col-md-6">
@@ -25,9 +25,9 @@
   			  	</div>
   			  	<div class="col-md-6">
               <span style="float: right;"
-              uib-tooltip="{{datasrc.ToolTip}}"
+              uib-tooltip-template="'../views/components/tool-tip-template.html'"
               tooltip-placement="right"
-              toolTip-trigger="{{datasrc.ToolTipTrigger}}"
+              toolTip-trigger="click"
               data-ProjectId=" {{datasrc.ProjectId}}"
               class="glyphicon glyphicon-tag"
               aria-hidden="true">
@@ -36,5 +36,6 @@
 				</div>
 			</div>
   		</div>
+
   	</div>
 </div>

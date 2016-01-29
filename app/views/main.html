@@ -1,11 +1,4 @@
 <!doctype html>
-<style type="text/css" src="">
-  .grid {
-  width: 3000px;
-  height: 500px;
-}
-</style>
-
 <div>
   <!-- SEARCH PROJECT -->
     <div class="container-fluid">
@@ -14,24 +7,22 @@
                 <div class="col-lg-6">
                     <div class="input-group">
                     <span class="input-group-addon" id="basic-addon2">Search</span>
-                        <input type="search" id="projectSearch" class="form-control" placeholder="project name" ng-keyup="main.search($event)" autofocus ng-model="main.searchKey">
-                    </div><!-- /input-group -->
+                        <input type="search"
+                        class="form-control"
+                        placeholder="type project name"
+                        autofocus
+                        ng-keyup="main.search($event)"
+                        ng-model="main.searchKey">
+                    </div>
                 </div>
-                <div class="col-lg-6" style="cursor:pointer;">
-                <!--     <ng-md-icon popover="Type the first 3 letters of the name of the project" icon="help" style="fill: #242F65" size="32" style="float:right; cursor: pointer;"></ng-md-icon> -->
-                </div>
-
             </div>
-            <!-- /.col-lg-12 -->
-                 <hr>
+            <hr>
         </div>
-        <!-- /.row -->
     </div>
+      <!-- LIST PROJECTS -->
     <div class="jumbotron" style="text-align:left">
-      <div ng-repeat="project in main.projects track by $index" ><div><span><strong>Project : </strong></span><a ng-click="main.gotToProject(project.ProjectId)" style="cursor:pointer;">{{project.ProjectId}}</a></div></div>
+      <div ng-repeat="project in main.projects track by $index" ><div><span><strong>Project : </strong></span>
+        <a ng-click="main.gotToProject(project.ProjectName)"
+        style="cursor:pointer;">{{project.ProjectName}}</a></div></div>
     </div>
-    <!-- END OF SEARCHING PROJECT -->
-
-
-
 </div>

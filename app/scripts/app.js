@@ -26,12 +26,32 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/project', {
+      .when('/', {
+          templateUrl: 'views/main.html',
+          controller: 'MainCtrl',
+          controllerAs: 'main'
+        })
+      .when('/project/:project/:template/:templateid', {
         templateUrl: 'views/project.html',
         controller: 'ProjectCtrl',
-        controllerAs: 'project'
+        controllerAs: 'project',
+        resolve: {
+            queryStringCheck: function($q, $location, $route) {
+                var deferred = $q.defer();
+                var projectName = $route.current.params.project;
+                var template = $route.current.params.template;
+                var templateid = $route.current.params.templateid;
+                if (template !== undefined) {
+                    deferred.resolve(projectName + ',' + templateid);
+                } else {
+                    deferred.reject('not_id');
+                    $location.path('/chooseProject');
+                }
+                return deferred.promise;
+            }
+        }
       })
-      .when('/template/:projectChosen', {
+      .when('/chooseTemplate/:projectChosen', {
         templateUrl: 'views/template.html',
         controller: 'TemplateCtrl',
         controllerAs: 'template',
@@ -49,23 +69,6 @@ angular
           }
         }
       })
-      .when('/:projectId', {
-          templateUrl: 'views/main.html',
-          controller: 'MainCtrl',
-          controllerAs: 'main',
-          resolve: {
-            queryString: function($q, $location, $route) {
-                          var deferred = $q.defer();
-                          var queryString =  $route.current.params.projectId;
-                          if (queryString !== undefined) {
-                              deferred.resolve(queryString);
-                          } else {
-                              deferred.reject('not_id');
-                          }
-                          return deferred.promise;
-                      }
-                  }
-        })
       .otherwise({
         redirectTo: '/'
       });

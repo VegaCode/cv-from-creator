@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name biprojectDevelopmentApp.controller:AboutCtrl
+ * @name biprojectDevelopmentApp.controller:TemplateCtrl
  * @description
- * # AboutCtrl
+ * # TemplateCtrl
  * Controller of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
@@ -16,6 +16,7 @@ angular.module('biprojectDevelopmentApp')
     self.templateName = 'NO TEMPLATE';
     self.goButtonEnable = true;
     self.icon = 'lock_outline';
+    self.labelColor = 'danger';
     self.tooltip = 'Please select a template before continue';
     var templateid ='';
     bidocsGetNRDGTemplates.getTemplates().then(function(result) {
@@ -30,13 +31,14 @@ angular.module('biprojectDevelopmentApp')
       self.icon = 'play_circle_fill';
       self.tooltip = 'GO!';
       templateid = eve.target.dataset.templateid;
+      self.labelColor = 'success';
     };
 
     self.goToLayout = function() {
       if (self.templateName !== 'NO TEMPLATE') {
           var template = self.templateName;
           var project = self.projectName;
-            $location.path('/setProject/' + project + '/' + template + '/' + templateid);
+            $location.path('/project/' + project + '/' + template + '/' + templateid);
       }
     };
   }]);

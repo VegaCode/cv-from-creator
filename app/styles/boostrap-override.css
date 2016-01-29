@@ -1,0 +1,10 @@
+.tooltip-inner {
+    min-width: 300px !important;
+    background-color: #FFF !important;
+    border: solid 1px lightgrey !important;
+    color:#EC197A !important;
+}
+
+.tooltip-arrow {
+        border-right-color:lightgrey !important;
+}

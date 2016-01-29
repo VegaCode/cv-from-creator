@@ -11,6 +11,25 @@
  webBaseUrl = 'https://tools.brandinstitute.com/BIWebServices/';
 
 angular.module('biprojectDevelopmentApp')
+.factory('bidocsGetProject', [
+    '$http','$q',
+    function($http, $q) {
+        var apiCall, deferred, factory,  _getProject;
+        factory = {};
+        deferred = $q.defer();
+        apiCall = 'api/BIDOCS_GetProject/?projectName=';
+        _getProject = function(projectName) {
+            $http.get(webBaseUrl + apiCall + projectName).success(function(results) {
+               deferred.resolve(results);
+            }).error(function(err) {
+               deferred.reject(err);
+            });
+            return deferred.promise;
+        };
+        factory.getProject = _getProject;
+        return factory;
+    }
+])
 .factory('bidocsGetNRDGTemplates', [
     '$http','$q',
     function($http, $q) {
@@ -30,6 +49,7 @@ angular.module('biprojectDevelopmentApp')
         return factory;
     }
 ])
+
 .factory('getProjectFields', function(){
   return {
 
@@ -44,13 +64,13 @@ angular.module('biprojectDevelopmentApp')
     "IsActive": "1In Progress",
     "OptionList":"",
     "OptionListOrientation":"",
-    "ToolTip":"hello tooltip",
+    "ToolTip":"<h1>hello world</h1>",
     "ToolTipPlacement":"top",
     "ToolTipTrigger": "mouseenter",
     "Label":"General Information Text Directive questions label",
     "PlaceHolder":"Text Place holder",
     "Answer":"I'm an answer",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"cesar oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-text>Text Directive</bi-text>"
@@ -71,7 +91,7 @@ angular.module('biprojectDevelopmentApp')
     "Label":"Gretting",
     "PlaceHolder":"Text Place holder",
     "Answer":"Hello World!",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-text-area>Text area directive</bi-text-area>"
@@ -92,7 +112,7 @@ angular.module('biprojectDevelopmentApp')
     "Label":"General List",
     "PlaceHolder":"Text Place holder",
     "Answer":"1",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-grid>grid Directive</bi-grid>"
@@ -113,7 +133,7 @@ angular.module('biprojectDevelopmentApp')
     "Label":"General Radio List",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-label>label Directive</bi-label>"
@@ -133,7 +153,7 @@ angular.module('biprojectDevelopmentApp')
     "Label":"General Grid",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-label>label Directive</bi-label>"
@@ -148,13 +168,13 @@ angular.module('biprojectDevelopmentApp')
     "IsActive": "1In Progress",
     "OptionList":"Start, Complete",
     "OptionListOrientation":"",
-    "ToolTip":"hello tooltip",
+    "ToolTip":'<bi-version-control src="datasrc"></bi-version-control>',
     "ToolTipPlacement":"right",
     "ToolTipTrigger": "mouseenter",
     "Label":"General DropDown",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-title>title Directive</bi-title>"
@@ -176,7 +196,7 @@ angular.module('biprojectDevelopmentApp')
     "Label":"Title of Project",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-sub-title>sub-title Directive</bi-sub-title>"
@@ -189,15 +209,15 @@ angular.module('biprojectDevelopmentApp')
     "Access":"YES",
     "Status": "",
     "IsActive": "1",
-    "OptionList":"",
-    "OptionListOrientation":"",
+    "OptionList":"one,two,three,four",
+    "OptionListOrientation":"inline",
     "ToolTip":"hello tooltip",
     "ToolTipPlacement":"right",
     "ToolTipTrigger": "mouseenter",
-    "Label":"Subtitle of Project",
+    "Label":"Dropdown component",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-dropdown>dropdown Directive</bi-dropdown>"
@@ -218,7 +238,7 @@ angular.module('biprojectDevelopmentApp')
     "Label":"Picture/ Logo of Company",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-typeahead>typeahead Directive</bi-typeahead>"
@@ -236,10 +256,10 @@ angular.module('biprojectDevelopmentApp')
     "ToolTip":"Logo of the Companyhello tooltip",
     "ToolTipPlacement":"right",
     "ToolTipTrigger": "mouseenter",
-    "Label":"Picture/ Logo of Company",
+    "Label":"Radio List",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-radio-list>radio-list Directive</bi-radio-list>"
@@ -260,7 +280,7 @@ angular.module('biprojectDevelopmentApp')
     "Label":"Picture/ Logo of Company",
     "PlaceHolder":"Text Place holder",
     "Answer":"",
-    "VersionControl": "<span>hello version</span>",
+    "VersionControl": '[{"oldValue":"Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
     "TemplateName":"RX",
     "GridConfig":"",
     "directive":"<bi-check-list>check-list Directive</bi-check-list>"
