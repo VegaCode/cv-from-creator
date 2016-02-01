@@ -39,15 +39,19 @@ angular.module('biprojectDevelopmentApp')
         return {
                restrict: "EA",
                templateUrl:'views/components/bi-text.html',
-               controller:function () {
+               controller:function ($scope) {
                 var self = this;
                 self.IsActive=true;
                 self.text = '<div>Some text</div>';
-                self.isOpen = false;
-                self.demo = {
-                  isOpen: false,
-                  count: 0,
-                  selectedDirection: 'right'
+                $scope.showMenuToggle = function(){
+                  if ($scope.hideToggle !== true){
+                     $scope.hideToggle = true;
+                     $scope.showToggle = true;
+                  }
+                  else{
+                    $scope.hideToggle = false;
+                    $scope.showToggle = false;
+                  }
                 };
               }, controllerAs:'biTextCtrl'
            };
