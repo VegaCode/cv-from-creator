@@ -22,7 +22,8 @@ angular
     'ui.grid.resizeColumns',
     'jqwidgets',
     'ngMdIcons',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngMaterial'
   ])
   .config(function ($routeProvider) {
     $routeProvider

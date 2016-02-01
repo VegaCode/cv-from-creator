@@ -1,7 +1,22 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-11">
             <h1 class="text-mute text-center" data-ProjectId="{{datasrc.ProjectId}}" ng-show="datasrc.IsActive">{{datasrc.Label}}</h1>
         </div>
+        <div class="col-md-1">
+     <div class="col-md-6">
+       <input style="float: right;" type="checkbox"/>
+     </div>
+     <div class=" col-md-6">
+       <span style="float: right;"
+       uib-tooltip-template="'../views/components/tool-tip-template.html'"
+       tooltip-placement="right"
+       toolTip-trigger="click"
+       data-ProjectId=" {{datasrc.ProjectId}}"
+       class="glyphicon glyphicon-tag"
+       aria-hidden="true">
+       </span>
+     </div>
+     </div>
     </div>
 </div>
