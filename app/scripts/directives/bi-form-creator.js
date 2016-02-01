@@ -28,12 +28,12 @@ angular.module('biprojectDevelopmentApp')
                     template += "<span class='text-left' style= 'max-width:400px;float:left;word-wrap:break-word;'>" +
                       obj.oldValue +"</span><i><span style='color:#666; font-size-adjust:0.5; float:right;'>" +
                       obj.adminUser + " " + obj.datetime + "</span></i></br><hr>";
-                    })
-                  }
+                    });
+                  };
                   createVersionControl(JSON.parse(scope.src.VersionControl));
                 element.append($compile(template)(scope));
               }
-          }
+          };
   })
   .directive('biText', function () {
         return {
@@ -43,6 +43,12 @@ angular.module('biprojectDevelopmentApp')
                 var self = this;
                 self.IsActive=true;
                 self.text = '<div>Some text</div>';
+                self.isOpen = false;
+                self.demo = {
+                  isOpen: false,
+                  count: 0,
+                  selectedDirection: 'right'
+                };
               }, controllerAs:'biTextCtrl'
            };
   })
@@ -50,7 +56,7 @@ angular.module('biprojectDevelopmentApp')
         return {
                restrict: "EA",
                templateUrl:'views/components/bi-dropdown.html',
-               controller:function ($scope) {
+               controller:function () {
                 var self = this;
                 self.IsActive = true;
                }

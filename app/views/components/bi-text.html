@@ -1,4 +1,68 @@
 <div class="container-fluid">
+   <div ng-cloak >
+     <md-content class="md-padding" layout-xs="column" layout="row">
+       <div flex-xs flex-gt-xs="100" layout="column">
+         <md-card>
+            <md-fab-toolbar md-open="biTextCtrl.isOpen"
+            count="biTextCtrl.count"
+            style="background-color: #286090"
+            md-direction="{{biTextCtrl.selectedDirection}}">
+             <md-fab-trigger class="align-with-text">
+               <md-button>
+                 <md-icon ng-md-icon icon="arrow_drop_up"></md-icon>
+               </md-button>
+             </md-fab-trigger>
+             <md-toolbar>
+               <md-fab-actions class="md-toolbar-tools">
+                  <md-button aria-label="checkbox">
+                    <input style="float: right;" type="checkbox"/>
+                  </md-button>
+                 <md-button style="float: right;"
+                 uib-tooltip-template="'../views/components/tool-tip-template.html'"
+                 tooltip-placement="right"
+                 toolTip-trigger="click"
+                 data-ProjectId=" {{datasrc.ProjectId}}"
+                 aria-hidden="true">
+                    <md-icon ng-md-icon
+                    icon="loyalty" style="color: white;">
+                    </md-icon>
+                 </md-button>
+               </md-fab-actions>
+             </md-toolbar>
+           </md-fab-toolbar>
+            <md-card-title>
+               <md-card-title-text>
+                  <label class="text-primary md-headline" ng-show="datasrc.IsActive">{{datasrc.Label}}</label>
+               </md-card-title-text>
+               <md-card-actions layout="column">
+               </md-card-actions>
+            </md-card-title>
+            <md-card-content layout="row">
+                           <div class="col-md-11">
+                              <input type="{{datasrc.DataType}}"
+                              class="form-control"
+                              placeholder="{{datasrc.PlaceHolder}}"
+                              value="{{datasrc.Answer}}"
+                              uib-tooltip="{{datasrc.ToolTip}}"
+                              tooltip-placement="{{datasrc.ToolTipPlacement}}"
+                              toolTip-trigger="{{datasrc.ToolTipTrigger}}"
+                              data-ProjectId=" {{datasrc.ProjectId}}"
+                              data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+                              ng-readonly="false"
+                              ng-model="datasrc.Answer"
+                              ng-show="datasrc.IsActive"/>
+                           </div>
+            </md-card-content>
+         </md-card>
+       </div>
+     </md-content>
+   </div>
+</div>
+
+
+<!-- BELOW IS OLD CODE -->
+
+<!-- <div class="container-fluid">
   	<div class="row">
   		<div class="col-md-12">
         <div class="row">
@@ -21,7 +85,7 @@
 				</div>
 				<div class="col-md-1">
             <div class="col-md-6">
-              <input class="hidden-xs hidden-sm" style="float: right;" type="checkbox"/>
+              <input style="float: right;" type="checkbox"/>
   			  	</div>
   			  	<div class=" col-md-6">
               <span style="float: right;"
@@ -29,7 +93,7 @@
               tooltip-placement="right"
               toolTip-trigger="click"
               data-ProjectId=" {{datasrc.ProjectId}}"
-              class="glyphicon glyphicon-tag hidden-xs hidden-sm"
+              class="glyphicon glyphicon-tag"
               aria-hidden="true">
               </span>
   				 </div>
@@ -37,4 +101,4 @@
 			</div>
   		</div>
   	</div>
-</div>
+</div> -->
