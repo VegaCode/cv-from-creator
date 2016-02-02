@@ -1,147 +1,60 @@
 <div class="container-fluid">
-  <div class="row" >
-    <div class="col-xs-12 hidden-md ">
-    <div ng-if="!hideToggle" style=" height:4px;
-    background-color: #ffffff;
-    text-align: right;
-    cursor:pointer;
-    margin: 0 5px">
-      <span  class="glyphicon glyphicon-minus"
-      ng-hide="hideToggle"
-      ng-click="showMenuToggle()"
-      style="color: #B5D5BD; font-size: 25px;"></span>
+  <div class="row">
+    <div class="col-md-12 ">
+      <div ng-if="!hideToggle" style="height:4px;
+                                        background-color:white;
+                                        text-align: right;
+                                        margin: 0 5px">
+        <span class="glyphicon glyphicon-minus text-primary" ng-hide="hideToggle" ng-click="showMenuToggle()"
+        style="font-size: 25px;margin:-9px -23px;cursor:pointer;"></span>
+      </div>
+      <div class="row">
+      <div ng-if="hideToggle"   style=" height:30px;
+                                      background-color: lightblue;
+                                      text-align: right;
+                                      cursor:pointer;
+                                      margin: 0 auto;
+                                          width: 100%;">
+
+        <div class="row" style="padding:4px 10px; float:right">
+          <div class="col-md-4">
+            <input style="width:100% height:20px;" type="checkbox"/>
+          </div>
+          <div class="col-md-4">
+            <span style="float: right; color:#ffffff;font-size:20px;" uib-tooltip-template="'../views/components/tool-tip-template.html'"
+            tooltip-placement="bottom" toolTip-trigger="click" data-ProjectId=" {{datasrc.ProjectId}}"
+            class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+          </div>
+          <div class="col-md-4">
+            <span class="glyphicon glyphicon-remove" ng-click="showMenuToggle()" style="color:#ffffff; font-size: 20px;"></span>
+          </div>
+      </div>
+
+      </div>
     </div>
   </div>
-
-<!-- VISIBLE ONLY FOR PHONE -->
-    <div class="col-xs-12 visible-xs"
-    ng-if="hideToggle"
-    style="display: block; height:30px;
-    background-color: #B5D5BD;
-    text-align: right;
-    cursor:pointer;
-    width: 87%;
-    margin-left: 22px" >
-      <div class="col-xs-4 text-center">
-        <md-checkbox></md-checkbox>
-      </div>
-      <div class="col-xs-4 text-center">
-        <ng-md-icon icon="history" pink-me style="color: #ffffff; font-size: 25px;"
-        uib-tooltip-template="'../views/components/tool-tip-template.html'"
-        tooltip-placement="bottom"
-        toolTip-trigger="click"
-        data-ProjectId=" {{datasrc.ProjectId}}"
-        aria-hidden="true">
-        </ng-md-icon>
-      </div>
-        <div class="col-xs-4 text-center">
-          <ng-md-icon icon="highlight_remove" ng-show="showToggle"
-          ng-click="showMenuToggle()" style="color: #ffffff; font-size: 25px;">
-          </ng-md-icon>
-        </div>
-     </div>
-
-     <!-- VISIBLE ONLY FOR TABLETS -->
-     <div class="col-sm-12 visible-sm"
-     ng-if="hideToggle"
-     style="display: block; height:30px;
-     background-color: #B5D5BD;
-     text-align: right;
-     cursor:pointer;
-     width: 94%;
-     margin-left: 22px" >
-     <div class="col-sm-4 text-center">
-       <md-checkbox></md-checkbox>
-     </div>
-     <div class="col-sm-4 text-center">
-       <ng-md-icon icon="history" pink-me style="color: #ffffff; font-size: 25px;"
-       uib-tooltip-template="'../views/components/tool-tip-template.html'"
-       tooltip-placement="bottom"
-       toolTip-trigger="click"
-       data-ProjectId=" {{datasrc.ProjectId}}"
-       aria-hidden="true">
-       </ng-md-icon>
-     </div>
-       <div class="col-sm-4 text-center">
-         <ng-md-icon icon="highlight_remove" ng-show="showToggle"
-         ng-click="showMenuToggle()" style="color: #ffffff; font-size: 25px;">
-         </ng-md-icon>
-       </div>
-    </div>
-  </div>
-
-<!-- START CARDS -->
-  <md-card>
     <md-card-title>
-   <md-card-title-text>
-     <span class="md-headline text-primary" ng-show="datasrc.IsActive">{{datasrc.Label}}</span>
-   </md-card-title-text>
- </md-card-title>
-   <md-card-content>
-     <div class="row" style="padding-top: 20px;">
-         <div class="col-md-12">
-                <input type="{{datasrc.DataType}}"
-                class="form-control"
-                placeholder="{{datasrc.PlaceHolder}}"
-                value="{{datasrc.Answer}}"
-                uib-tooltip="{{datasrc.ToolTip}}"
-                tooltip-placement="{{datasrc.ToolTipPlacement}}"
-                toolTip-trigger="{{datasrc.ToolTipTrigger}}"
-                data-ProjectId=" {{datasrc.ProjectId}}"
-                data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
-                ng-readonly="false"
-                ng-model="datasrc.Answer"
-                ng-show="datasrc.IsActive"/>
-         </div>
-     </div>
-   </md-card-content>
-  </md-card>
-
+      <md-card-title-text class="text-primary">
+        <span class="md-headline"  style="font-size:18px" ng-show="datasrc.IsActive">{{datasrc.Label}}</span>
+        <!-- <span class="md-subhead text-default">Card subheader</span> -->
+      </md-card-title-text>
+     </md-card-title>
+     <md-card-content>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-4">
+          <input type="{{datasrc.DataType}}"
+          class="form-control"
+          placeholder="{{datasrc.PlaceHolder}}"
+          value="{{datasrc.Answer}}"
+          uib-tooltip="{{datasrc.ToolTip}}"
+          tooltip-placement="{{datasrc.ToolTipPlacement}}"
+          toolTip-trigger="{{datasrc.ToolTipTrigger}}"
+          data-ProjectId=" {{datasrc.ProjectId}}"
+          data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+          ng-readonly="false"
+          ng-model="datasrc.Answer"
+          ng-show="datasrc.IsActive"/>
+        </div>
+      </div>
+    </md-card-content>
 </div>
-
-
-
-
-
-<!-- BELOW IS OLD CODE -->
-
-<!-- <div class="container-fluid">
-  	<div class="row">
-  		<div class="col-md-12">
-        <div class="row">
-				<div class="col-md-5">
-          <label class="text-primary" ng-show="datasrc.IsActive">{{datasrc.Label}}</label>
-				</div>
-				<div class="col-md-6">
-               <input type="{{datasrc.DataType}}"
-               class="form-control"
-               placeholder="{{datasrc.PlaceHolder}}"
-               value="{{datasrc.Answer}}"
-               uib-tooltip="{{datasrc.ToolTip}}"
-               tooltip-placement="{{datasrc.ToolTipPlacement}}"
-               toolTip-trigger="{{datasrc.ToolTipTrigger}}"
-               data-ProjectId=" {{datasrc.ProjectId}}"
-               data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
-               ng-readonly="false"
-               ng-model="datasrc.Answer"
-               ng-show="datasrc.IsActive"/>
-				</div>
-				<div class="col-md-1">
-            <div class="col-md-6">
-              <input style="float: right;" type="checkbox"/>
-  			  	</div>
-  			  	<div class=" col-md-6">
-              <span style="float: right;"
-              uib-tooltip-template="'../views/components/tool-tip-template.html'"
-              tooltip-placement="right"
-              toolTip-trigger="click"
-              data-ProjectId=" {{datasrc.ProjectId}}"
-              class="glyphicon glyphicon-tag"
-              aria-hidden="true">
-              </span>
-  				 </div>
-				</div>
-			</div>
-  		</div>
-  	</div>
-</div> -->
