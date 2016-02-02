@@ -49,126 +49,30 @@ angular.module('biprojectDevelopmentApp')
         return factory;
     }
 ])
+.factory('globalVariables', [
+    function() {
+        var factory, _projectName = [], _templateName = [],
+        _setVariables, _getVariables;
+        factory = {};
+        _setVariables = function(projectVariable, templateVariable) {
+          _projectName.push(projectVariable);
+          _templateName.push(templateVariable);
+        };
+        _getVariables = function(){
+          var str = _projectName[0] + _templateName[0];
+          return str;
+        };
+        factory.setVariable = _setVariables;
+        factory.getVariable = _getVariables;
+        return factory;
+    }
+])
 
 .factory('getProjectFields', function(){
   return {
 
     getProjectFields: function(){
       return [{
-    "ProjectId":"0",
-    "ProjectFieldId":"1210",
-    "FieldTypeId":"Text",
-    "SortValue":"2",
-    "Access":"YES",
-    "Status": "In Progress",
-    "IsActive": "1In Progress",
-    "OptionList":"",
-    "OptionListOrientation":"",
-    "ToolTip":"<h1>hello world</h1>",
-    "ToolTipPlacement":"top",
-    "ToolTipTrigger": "mouseenter",
-    "Label":"General Information Text Directive questions label",
-    "PlaceHolder":"Text Place holder",
-    "Answer":"I'm an answer",
-    "VersionControl": '[{"oldValue":"cesar oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
-    "TemplateName":"RX",
-    "GridConfig":"",
-    "width": "100%",
-    "ImageUrl":"",
-    "directive":"<bi-text>Text Directive</bi-text>"
-  },{
-    "ProjectId":"0",
-    "ProjectFieldId":"1210",
-    "FieldTypeId":"Text",
-    "SortValue":"2",
-    "Access":"YES",
-    "Status": "In Progress",
-    "IsActive": "1In Progress",
-    "OptionList":"",
-    "OptionListOrientation":"",
-    "ToolTip":"<h1>hello world</h1>",
-    "ToolTipPlacement":"top",
-    "ToolTipTrigger": "mouseenter",
-    "Label":"General Information Text Directive questions label",
-    "PlaceHolder":"Text Place holder",
-    "Answer":"I'm an answer",
-    "VersionControl": '[{"oldValue":"cesar oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
-    "TemplateName":"RX",
-    "GridConfig":"",
-    "width": "100%",
-    "ImageUrl":"",
-    "directive":"<bi-text>Text Directive</bi-text>"
-  },
-  {
-    "ProjectId":"0",
-    "ProjectFieldId":"1210",
-    "FieldTypeId":"Text",
-    "SortValue":"2",
-    "Access":"YES",
-    "Status": "In Progress",
-    "IsActive": "1In Progress",
-    "OptionList":"",
-    "OptionListOrientation":"",
-    "ToolTip":"<h1>hello world</h1>",
-    "ToolTipPlacement":"top",
-    "ToolTipTrigger": "mouseenter",
-    "Label":"General Information Text Directive questions label",
-    "PlaceHolder":"Text Place holder",
-    "Answer":"I'm an answer",
-    "VersionControl": '[{"oldValue":"cesar oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
-    "TemplateName":"RX",
-    "GridConfig":"",
-    "width": "100%",
-    "ImageUrl":"",
-    "directive":"<bi-text>Text Directive</bi-text>"
-  },
-  {
-    "ProjectId":"0",
-    "ProjectFieldId":"1210",
-    "FieldTypeId":"Text",
-    "SortValue":"2",
-    "Access":"YES",
-    "Status": "In Progress",
-    "IsActive": "1In Progress",
-    "OptionList":"",
-    "OptionListOrientation":"",
-    "ToolTip":"<h1>hello world</h1>",
-    "ToolTipPlacement":"top",
-    "ToolTipTrigger": "mouseenter",
-    "Label":"General Information Text Directive questions label",
-    "PlaceHolder":"Text Place holder",
-    "Answer":"I'm an answer",
-    "VersionControl": '[{"oldValue":"cesar oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
-    "TemplateName":"RX",
-    "GridConfig":"",
-    "width": "100%",
-    "ImageUrl":"",
-    "directive":"<bi-text>Text Directive</bi-text>"
-  },
-  {
-    "ProjectId":"0",
-    "ProjectFieldId":"1210",
-    "FieldTypeId":"Text",
-    "SortValue":"2",
-    "Access":"YES",
-    "Status": "In Progress",
-    "IsActive": "1In Progress",
-    "OptionList":"",
-    "OptionListOrientation":"",
-    "ToolTip":"<h1>hello world</h1>",
-    "ToolTipPlacement":"top",
-    "ToolTipTrigger": "mouseenter",
-    "Label":"General Information Text Directive questions label",
-    "PlaceHolder":"Text Place holder",
-    "Answer":"I'm an answer",
-    "VersionControl": '[{"oldValue":"cesar oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"},{"oldValue":"oldValueoldValueoldValueoldValueoldValueoldValue oldValueOld record 1Old record 1Old record 1Old record 1Old record 1Old record 1","datetime":": June /  29 / 2015 Time:  04:09:01 PM","adminUser":"cvega"},{"oldValue":"Other record 2","datetime":": July /  22 / 2015 Time:  04:09:01 PM","adminUser":"cacev"}]',
-    "TemplateName":"RX",
-    "GridConfig":"",
-    "width": "100%",
-    "ImageUrl":"",
-    "directive":"<bi-text>Text Directive</bi-text>"
-  },
-  {
     "ProjectId":"0",
     "ProjectFieldId":"1210",
     "FieldTypeId":"Text",

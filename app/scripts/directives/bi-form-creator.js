@@ -158,4 +158,22 @@ angular.module('biprojectDevelopmentApp')
                },
                controllerAs: 'RadioListCtrl'
            };
-  });
+  })
+  .directive('pinkMe', function blurElemDirective() {
+ return {
+   restrict: 'A',
+   link: function (scope, element) {
+     element.bind('click', function () {
+       var color = element.css('color');
+       if(color === 'rgb(255, 255, 255)'||color === '#ffffff' ||
+       color === 'hsl(0, 100%, 100%)'|| color === 'rgb(255, 255, 255)'||
+       color === 'hsl(360, 100%, 100%)'||color === '#ffffff'){//test if color is black or white
+
+         element.css('color', '#F65489');
+       }else{
+         element.css('color', '#ffffff');
+       }
+     });
+   }
+ };
+});
