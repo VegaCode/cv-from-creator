@@ -67,7 +67,7 @@ angular.module('biprojectDevelopmentApp')
                templateUrl:'views/components/bi-text-area.html',
                controller:function ($scope) {
                  var self = this;
-                 self.IsActive=true;                                  
+                 self.IsActive=true;
                }
            };
   })
@@ -132,7 +132,7 @@ angular.module('biprojectDevelopmentApp')
                  self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
                  self.optionsArrayToDisplay = [];
                  while (self.arraysOfOptions.length > 0){
-                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,4));
+                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
                  }
                },
                controllerAs: 'CheckListCtrl'
@@ -148,7 +148,7 @@ angular.module('biprojectDevelopmentApp')
                  self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
                  self.optionsArrayToDisplay = [];
                  while (self.arraysOfOptions.length > 0){
-                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,4));
+                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
                  }
                },
                controllerAs: 'RadioListCtrl'
