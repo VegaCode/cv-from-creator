@@ -1,36 +1,24 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
+   <tool-bar-menu></tool-bar-menu>
+    <md-card-title>
+      <md-card-title-text class="text-primary">
+        <span class="md-headline"  style="font-size:18px" ng-show="datasrc.IsActive">{{datasrc.Label}}</span>
+        <!-- <span class="md-subhead text-default">Card subheader</span> -->
+      </md-card-title-text>
+     </md-card-title>
+     <md-card-content>
       <div class="row">
-        <div class="col-md-5">
-          <label class="text-primary" ng-show="datasrc.IsActive">{{datasrc.Label}}</label>
-        </div>
-        <div class="col-md-6">
-          <select name="{{datasrc.Label}} "
-          class="form-control" focus="someFocusVariable"
-          data-projectId=" {{datasrc.ProjectID}}"
-          data-ProjectInputControlId="{{datasrc.ProjectInputControlId}}"
-          ng-model="answer"
-          ng-show="datasrc.IsActive"
-          ng-options="item for item in datasrc.OptionList.split(',')">
-          <option value="">Choose One</option>
-          </select>
-        </div>
-        <!-- checbox and tag -->
-        <div class="col-md-1">
-          <div class="col-md-6">
-            <input style="float: right;" type="checkbox"/>
-          </div>
-          <div class="col-md-6">
-            <span style="float: right;" uib-tooltip="{{datasrc.ToolTip}}"
-            tooltip-placement="right"
-            toolTip-trigger="{{datasrc.ToolTipTrigger}}"
-            data-ProjectId=" {{datasrc.ProjectId}}"
-            class="glyphicon glyphicon-tag"
-            aria-hidden="true"></span>
-          </div>
+        <div class="col-md-8 col-md-offset-4">
+           <select name="{{datasrc.Label}} "
+     class="form-control" focus="someFocusVariable"
+     data-projectId=" {{datasrc.ProjectID}}"
+     data-ProjectInputControlId="{{datasrc.ProjectInputControlId}}"
+     ng-model="answer"
+     ng-show="datasrc.IsActive"
+     ng-options="item for item in datasrc.OptionList.split(',')">
+     <option value="">Choose One</option>
+     </select>
         </div>
       </div>
-    </div>
-  </div>
+    </md-card-content>
 </div>

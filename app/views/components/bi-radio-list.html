@@ -1,40 +1,29 @@
 <div class="container-fluid">
-  	<div class="row">
-      <div class="col-md-5">
-         <label class="text-primary"
-            ng-show="datasrc.IsActive">
-            {{datasrc.Label}}
-         </label>
-      </div>
-        <div class="col-md-6">
-            <div class="{{datasrc.OptionListOrientation}}"
-            style="margin-left: -20px; margin-top: -10px"
-            ng-repeat="optionsArray in RadioListCtrl.optionsArrayToDisplay track by $index">
-               <div class="{{datasrc.OptionListOrientation}}"
-               ng-repeat="option in optionsArray track by $index">
-                <input type="radio"
-                name="datasrc.ProjectFieldId"
-                data-projectId=" {{datasrc.ProjectId}}"
-                data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
-                ng-model="datasrc.Answer"
-                ng-show="datasrc.IsActive"/>
-                {{option}}
-            </div>
+   <tool-bar-menu></tool-bar-menu>
+    <md-card-title>
+      <md-card-title-text class="text-primary">
+        <span class="md-headline"  style="font-size:18px" ng-show="datasrc.IsActive">{{datasrc.Label}}</span>
+        <!-- <span class="md-subhead text-default">Card subheader</span> -->
+      </md-card-title-text>
+     </md-card-title>
+     <md-card-content>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-4">
+           <div class="{{datasrc.OptionListOrientation}}"
+           style="margin-left: -20px; margin-top: -10px"
+           ng-repeat="optionsArray in RadioListCtrl.optionsArrayToDisplay track by $index">
+             <div class="{{datasrc.OptionListOrientation}}"
+             ng-repeat="option in optionsArray track by $index">
+               <input type="radio"
+               name="datasrc.ProjectFieldId"
+               data-projectId=" {{datasrc.ProjectId}}"
+               data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+               ng-model="datasrc.Answer"
+               ng-show="datasrc.IsActive"/>
+               {{option}}
+           </div>
+           </div>
         </div>
-    </div>
-    <div class="col-md-1">
-    <div class="col-md-6">
-      <input style="float: right;" type="checkbox"/>
-    </div>
-    <div class=" col-md-6">
-      <span style="float: right;"
-      uib-tooltip-template="'../views/components/tool-tip-template.html'"
-      tooltip-placement="right"
-      toolTip-trigger="click"
-      data-ProjectId=" {{datasrc.ProjectId}}"
-      class="glyphicon glyphicon-tag"
-      aria-hidden="true">
-      </span>
-    </div>
-    </div>
+      </div>
+    </md-card-content>
 </div>
