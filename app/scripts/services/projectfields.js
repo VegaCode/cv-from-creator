@@ -48,6 +48,24 @@
         return factory;
     }
 ])
+.factory('globalVariables', [
+    function() {
+        var factory, _projectName = [], _templateName = [],
+        _setVariables, _getVariables;
+        factory = {};
+        _setVariables = function(projectVariable, templateVariable) {
+          _projectName.push(projectVariable);
+          _templateName.push(templateVariable);
+        };
+        _getVariables = function(){
+          var str = _projectName[0] + _templateName[0];
+          return str;
+        };
+        factory.setVariable = _setVariables;
+        factory.getVariable = _getVariables;
+        return factory;
+    }
+])
 
 .factory('getProjectFields', function(){
   return {

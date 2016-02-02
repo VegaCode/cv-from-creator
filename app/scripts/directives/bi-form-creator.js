@@ -132,7 +132,7 @@ angular.module('biprojectDevelopmentApp')
                  self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
                  self.optionsArrayToDisplay = [];
                  while (self.arraysOfOptions.length > 0){
-                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,4));
+                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
                  }
                },
                controllerAs: 'CheckListCtrl'
@@ -148,9 +148,30 @@ angular.module('biprojectDevelopmentApp')
                  self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
                  self.optionsArrayToDisplay = [];
                  while (self.arraysOfOptions.length > 0){
-                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,4));
+                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
                  }
+                 $('input[type="radio"]').each(function( ) {
+                   $(this).blur();
+                 });
                },
                controllerAs: 'RadioListCtrl'
            };
-  });
+  })
+  .directive('pinkMe', function blurElemDirective() {
+ return {
+   restrict: 'A',
+   link: function (scope, element) {
+     element.bind('click', function () {
+       var color = element.css('color');
+       if(color === 'rgb(255, 255, 255)'||color === '#ffffff' ||
+       color === 'hsl(0, 100%, 100%)'|| color === 'rgb(255, 255, 255)'||
+       color === 'hsl(360, 100%, 100%)'||color === '#ffffff'){//test if color is black or white
+
+         element.css('color', '#F65489');
+       }else{
+         element.css('color', '#ffffff');
+       }
+     });
+   }
+ };
+});

@@ -1,24 +1,26 @@
 <div class="row" ng-controller="generalController">
-  <div class="col-md-12 ">
+  <div class="col-md-12">
     <div ng-if="!hideToggle" style="height:4px;background-color:white;text-align: right;margin: 0 5px">
-      <span class="glyphicon glyphicon-minus text-primary" ng-hide="hideToggle" ng-click="showMenuToggle()"
-      style="font-size: 25px;margin:-9px -23px;cursor:pointer;"></span>
+      <span class="glyphicon glyphicon-minus text-primary" ng-click="showMenuToggle()" ng-hide="hideToggle" style="font-size: 25px;margin:-9px -23px;cursor:pointer;"></span>
     </div>
     <div class="row">
-    <div ng-if="hideToggle"   style=" height:30px;  background-color: lightblue;text-align:right;cursor:pointer;margin: 0 auto;width:100%;">
-      <div class="row" style="padding:4px 10px; float:right">
-        <div class="col-md-4">
-          <input style="width:100% height:20px;" type="checkbox"/>
+      <div ng-if="hideToggle" style=" height:30px;  background-color: lightblue;text-align:right;cursor:pointer;margin: 0 auto;width:100%;">
+        <div class="row" style="padding:4px 10px; float:right">
+          <div class="col-xs-4">
+            <md-checkbox></md-checkbox>
+          </div>
+          <div class="col-xs-4">
+            <ng-md-icon aria-hidden="true" data-ProjectId=" {{datasrc.ProjectId}}"
+            icon="history" pink-me style="float: right; color:#ffffff;font-size:20px;"
+            toolTip-trigger="click" tooltip-placement="left"
+              class="bottom-left"
+            uib-tooltip-template="'../views/components/tool-tip-template.html'"></ng-md-icon>
+          </div>
+          <div class="col-xs-4">
+            <ng-md-icon icon="clear" ng-click="showMenuToggle()" style="color:#ffffff; font-size: 20px;"></ng-md-icon>
+          </div>
         </div>
-        <div class="col-md-4">
-          <span style="float: right; color:#ffffff;font-size:20px;" uib-tooltip-template="'../views/components/tool-tip-template.html'"
-          tooltip-placement="bottom" toolTip-trigger="click" data-ProjectId=" {{datasrc.ProjectId}}"
-          class="glyphicon glyphicon-tag" aria-hidden="true"></span>
-        </div>
-        <div class="col-md-4">
-          <span class="glyphicon glyphicon-remove" ng-click="showMenuToggle()" style="color:#ffffff; font-size: 20px;"></span>
-        </div>
-    </div>
+      </div>
     </div>
   </div>
 </div>
