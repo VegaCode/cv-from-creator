@@ -1,38 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12 ">
-      <div ng-if="!hideToggle" style="height:4px;
-                                        background-color:white;
-                                        text-align: right;
-                                        margin: 0 5px">
-        <span class="glyphicon glyphicon-minus text-primary" ng-hide="hideToggle" ng-click="showMenuToggle()"
-        style="font-size: 25px;margin:-9px -23px;cursor:pointer;"></span>
-      </div>
-      <div class="row">
-      <div ng-if="hideToggle"   style=" height:30px;
-                                      background-color: lightblue;
-                                      text-align: right;
-                                      cursor:pointer;
-                                      margin: 0 auto;
-                                          width: 100%;">
-
-        <div class="row" style="padding:4px 10px; float:right">
-          <div class="col-md-4">
-            <input style="width:100% height:20px;" type="checkbox"/>
-          </div>
-          <div class="col-md-4">
-            <span style="float: right; color:#ffffff;font-size:20px;" uib-tooltip-template="'../views/components/tool-tip-template.html'"
-            tooltip-placement="bottom" toolTip-trigger="click" data-ProjectId=" {{datasrc.ProjectId}}"
-            class="glyphicon glyphicon-tag" aria-hidden="true"></span>
-          </div>
-          <div class="col-md-4">
-            <span class="glyphicon glyphicon-remove" ng-click="showMenuToggle()" style="color:#ffffff; font-size: 20px;"></span>
-          </div>
-      </div>
-
-      </div>
-    </div>
-  </div>
+   <tool-bar-menu></tool-bar-menu>
     <md-card-title>
       <md-card-title-text class="text-primary">
         <span class="md-headline"  style="font-size:18px" ng-show="datasrc.IsActive">{{datasrc.Label}}</span>

@@ -17,6 +17,12 @@ angular.module('biprojectDevelopmentApp')
       }
     };
   })
+  .directive('toolBarMenu', function ($compile) {
+    return {
+    restrict: "EA",
+    templateUrl:'views/components/tool-bar-menu.html'
+    };
+  })
   .directive('biVersionControl', function ($compile) {
     return {
       restrict: "EA",
@@ -42,18 +48,7 @@ angular.module('biprojectDevelopmentApp')
                controller:function ($scope) {
                 var self = this;
                 self.IsActive=true;
-                self.text = '<div>Some text</div>';
-                $scope.showMenuToggle = function(){
-                  if ($scope.hideToggle !== true){
-                     $scope.hideToggle = true;
-                     $scope.showToggle = true;
-                  }
-                  else{
-                    $scope.hideToggle = false;
-                    $scope.showToggle = false;
-                  }
-                };
-              }, controllerAs:'biTextCtrl'
+              }
            };
   })
   .directive('biDropdown', function () {
@@ -70,9 +65,9 @@ angular.module('biprojectDevelopmentApp')
         return {
                restrict: "EA",
                templateUrl:'views/components/bi-text-area.html',
-               controller:function () {
-                var self = this;
-                self.IsActive=true;
+               controller:function ($scope) {
+                 var self = this;
+                 self.IsActive=true;                                  
                }
            };
   })
