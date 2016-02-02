@@ -150,6 +150,9 @@ angular.module('biprojectDevelopmentApp')
                  while (self.arraysOfOptions.length > 0){
                    self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
                  }
+                 $('input[type="radio"]').each(function( ) {
+                   $(this).blur();
+                 });
                },
                controllerAs: 'RadioListCtrl'
            };
