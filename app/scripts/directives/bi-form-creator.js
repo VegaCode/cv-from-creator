@@ -31,7 +31,7 @@ angular.module('biprojectDevelopmentApp')
                   var template='';
                   var createVersionControl = function (versionControlArrray) {
                     versionControlArrray.forEach(function (obj) {
-                    template += "<span class='text-left' style= 'max-width:400px;float:left;word-wrap:break-word;'>" +
+                    template += "<span class='text-left' style= 'max-width:1000px;float:left;word-wrap:break-word;'>" +
                       obj.oldValue +"</span><i><span style='color:#666; font-size-adjust:0.5; float:right;'>" +
                       obj.adminUser + " " + obj.datetime + "</span></i></br><hr>";
                     });
@@ -67,7 +67,7 @@ angular.module('biprojectDevelopmentApp')
                templateUrl:'views/components/bi-text-area.html',
                controller:function ($scope) {
                  var self = this;
-                 self.IsActive=true;                                  
+                 self.IsActive=true;
                }
            };
   })
