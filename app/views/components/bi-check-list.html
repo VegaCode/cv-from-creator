@@ -1,8 +1,8 @@
-<div class="container-fluid">
+<div class="container-fluid" >
   <tool-bar-menu></tool-bar-menu>
   <md-card-title>
     <md-card-title-text class="text-primary">
-      <span class="md-headline" ng-show="datasrc.IsActive" style="font-size:18px">{{datasrc.Label}}</span>
+      <span class="md-headline" style="font-size:18px">{{datasrc.Label}}</span>
       <!-- <span class="md-subhead text-default">Card subheader</span> -->
     </md-card-title-text>
   </md-card-title>
@@ -11,8 +11,13 @@
       <div class="col-md-8 col-md-offset-4 col-xs-12">
         <div class="{{datasrc.OptionListOrientation}}" ng-repeat="optionsArray in CheckListCtrl.optionsArrayToDisplay track by $index" style="margin-left: -20px; margin-top: -10px">
           <div class="{{datasrc.OptionListOrientation}}" ng-repeat="option in optionsArray track by $index">
-            <label style="cursor:pointer;">
-              <input data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}" ng-model="selected" ng-show="datasrc.IsActive" type="checkbox" value="{{option}}"/>
+            <label style="cursor:pointer;" >
+              <md-checkbox class="md-primary" data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+              data-projectId=" {{datasrc.ProjectId}}"
+              ng-change="CheckListCtrl.toggle()"
+              name="option"
+              ng-true-value="'YES'" ng-false-value="'NO'"
+              ng-model="CheckListCtrl.answer"></md-checkbox>
               {{option}}
             </label>
           </div>

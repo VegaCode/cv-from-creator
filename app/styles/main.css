@@ -63,8 +63,26 @@ body {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
+
+  }
+  .tooltip.bottom  {
+      left: -303px !important;
   }
 
+  .tooltip.bottom .tooltip-inner {
+      background-color:rgb(35, 93, 221)!important;
+      color:#000 !important ;
+      /*TO GROW THE INNER TOOLTIP INNER*/
+      min-width: 400px !important ;
+      text-align: left !important;
+  }
+
+
+  .tooltip.top .tooltip-inner {
+      background-color:rgb(35, 93, 221);
+      font-size: large !important;
+      padding-bottom: 2px !important;
+  }
   /* Remove the padding we set earlier */
   .header,
   .marketing,

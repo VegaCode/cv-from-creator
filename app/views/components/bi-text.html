@@ -2,7 +2,7 @@
    <tool-bar-menu></tool-bar-menu>
     <md-card-title>
       <md-card-title-text class="text-primary">
-        <span class="md-headline"  style="font-size:18px" ng-show="datasrc.IsActive">{{datasrc.Label}}</span>
+        <span class="md-headline"  style="font-size:18px">{{datasrc.Label}}</span>
         <!-- <span class="md-subhead text-default">Card subheader</span> -->
       </md-card-title-text>
      </md-card-title>
@@ -20,7 +20,8 @@
           data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
           ng-readonly="false"
           ng-model="datasrc.Answer"
-          ng-show="datasrc.IsActive"/>
+          ng-disabled="{{datasrc.Access}}"
+         />
         </div>
       </div>
     </md-card-content>

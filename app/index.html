@@ -4,7 +4,17 @@
     <meta charset="utf-8">
     <title>BIProjectDevelopment</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Android 2.3.x/3.x:  -->
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
+    <!-- Android 4.x -->
+    <meta name="viewport" content="width=620, user-scalable=no" />
+    <!-- Android 4.x , iOS/Safari (4.x/5.x tested) -->
+    <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0" />
+    <!-- Safari 7.1 -->
+    <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0, minimal-ui" />
+    <!-- Chrome -->
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,user-scalable=no" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -31,7 +41,7 @@
               <md-toolbar md-primary>
                 <div class="md-toolbar-tools">
                   <h3 class="ng-binding">BI Form Creator Module</h3>
-                  <span flex="" class="flex">  <div class="col-md-12 column">
+                  <!-- <span flex="" class="flex">  <div class="col-md-12 column">
                       <div class="row clearfix">
                         <div class="col-md-4 column">
                           <div class="btn btn-success" type="button">
@@ -54,7 +64,7 @@
                           </div>
                         </div>
                       </div>
-                    </div></span>
+                    </div></span> -->
                 </div>
               </md-toolbar>
         <div ng-view=""></div>
@@ -107,6 +117,7 @@
     <script src="scripts/controllers/project.js"></script>
     <script src="scripts/controllers/template.js"></script>
     <script src="scripts/controllers/general-controller.js"></script>
+    <script src="scripts/controllers/tool-bar-menu.js"></script>
     <!-- endbuild -->
 
 </html>
