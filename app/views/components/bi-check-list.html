@@ -3,7 +3,6 @@
   <md-card-title>
     <md-card-title-text class="text-primary">
       <span class="md-headline" style="font-size:18px">{{datasrc.Label}}</span>
-      <!-- <span class="md-subhead text-default">Card subheader</span> -->
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
@@ -11,15 +10,12 @@
       <div class="col-md-8 col-md-offset-4 col-xs-12">
         <div class="{{datasrc.OptionListOrientation}}" ng-repeat="optionsArray in CheckListCtrl.optionsArrayToDisplay track by $index" style="margin-left: -20px; margin-top: -10px">
           <div class="{{datasrc.OptionListOrientation}}" ng-repeat="option in optionsArray track by $index">
-            <label style="cursor:pointer;" >
-              <md-checkbox class="md-primary" data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
-              data-projectId=" {{datasrc.ProjectId}}"
-              ng-change="CheckListCtrl.toggle()"
-              name="option"
-              ng-true-value="'YES'" ng-false-value="'NO'"
-              ng-model="CheckListCtrl.answer"></md-checkbox>
+            <md-checkbox data-projectId=" {{datasrc.ProjectId}}"
+            data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+            value="{{option}}"
+            ng-click="CheckListCtrl.selectedCheckBoxValue(option)">
               {{option}}
-            </label>
+            </md-checkbox>
           </div>
         </div>
       </div>

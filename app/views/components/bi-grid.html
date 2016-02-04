@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row visible-md visible-lg">
+    <div class="grid" data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+    data-ProjectId=" {{datasrc.ProjectId}}"
+    ui-grid="gridOptions"></div>
+  </div>
+
+  <md-card class="visible-xs visible-sm">
+    <md-card-content>
+      <v-accordion class="vAccordion--default" multiple>
+
+        <!-- add expanded attribute to open the section -->
+        <v-pane data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+        data-ProjectId=" {{datasrc.ProjectId}}"
+        enabled
+        ng-repeat="header in myData.header track by $index">
+          <v-pane-header>
+            {{header}}
+          </v-pane-header>
+
+          <v-pane-content>
+            {{myData.id}}
+          </v-pane-content>
+        </v-pane>
+
+      </v-accordion>
+    </md-card-content>
+  </md-card >
+</div>

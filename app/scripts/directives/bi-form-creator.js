@@ -131,32 +131,30 @@ angular.module('biprojectDevelopmentApp')
            };
   })
   .directive('biCheckList', function () {
-        return {
-    restrict: "EA",
-    templateUrl: 'views/components/bi-check-list.html',
-    controller: function($scope) {
-      var self = this;
-      self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
-      self.optionsArrayToDisplay = [];
-      while (self.arraysOfOptions.length > 0) {
-        self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0, 4));
-      };
-      // self.exists = function(item, list) {
-      //   if(list.indexOf(item) > -1)
-      //   return list.indexOf(item) > -1;
-      // }
-      self.selected = [];
-     self.toggle = function () {
+        return { restrict: "EA",
+         templateUrl:'views/components/bi-check-list.html',
+         controller:function ($scope) {
+          var self = this;
+          self.selectedAnswer = [];
+           self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
+           self.optionsArrayToDisplay = [];
+           while (self.arraysOfOptions.length > 0){
+             self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
+           }
 
-
-      //  var idx = list.indexOf(item);
-      //  if (idx > -1) list.splice(idx, 1);
-      //  else list.push(item);
+           self.selectedCheckBoxValue = function(selectedOption){
+             var idx = self.selectedAnswer.indexOf(selectedOption);
+             if (idx < 0) {
+               self.selectedAnswer.push(selectedOption);
+             } else {
+               if (idx > -1) {
+                 self.selectedAnswer.splice(idx, 1);
+               }
+             }
+           };
+         },
+         controllerAs: 'CheckListCtrl'
      };
-    },
-
-    controllerAs: 'CheckListCtrl'
-  };
   })
   .directive('biRadioList', function () {
         return {
@@ -169,9 +167,10 @@ angular.module('biprojectDevelopmentApp')
                  while (self.arraysOfOptions.length > 0){
                    self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
                  }
-                 $('input[type="radio"]').each(function( ) {
-                   $(this).blur();
-                 });
+                 self.selectedRadioButtonValue = function(radioSelection) {
+                   self.selectedRadioButton = "";
+                   self.selectedRadioButton = radioSelection;
+                 };
                },
                controllerAs: 'RadioListCtrl'
            };
@@ -193,4 +192,140 @@ angular.module('biprojectDevelopmentApp')
      });
    }
  };
+})
+.directive('biGrid', function () {
+      return {
+             restrict: "EA",
+             templateUrl:'views/components/bi-grid.html',
+             controller:function ($scope) {
+               $scope.myData = {
+                "id": [
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "appropriately": [
+                  "Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No",
+                  "Not Applicable",
+                  "",
+                  ""
+                ],
+                "dosage": [
+                  "Dosage Form/Route of Administration",
+                  "None",
+                  "",
+                  ""
+                ],
+                "dosing": [
+                  "Interval",
+                  "None",
+                  "",
+                  ""
+                ],
+                "number": [
+                  "0",
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "product": [
+                  "Product Name/Medical Term/Prescription Abbreviation",
+                  "None",
+                  "",
+                  ""
+                ],
+                "testNames": [
+                  "Instructions ->",
+                  "ANSLARA",
+                  "ANZYLARA",
+                  "LARTRANA"
+                ],
+                "projectId": [
+                  "10023",
+                  "10023",
+                  "10023",
+                  "10023"
+                ],
+                "projectInputControlId": [
+                  "10643",
+                  "10643",
+                  "10643",
+                  "10643"
+                ],
+                "rowId": [
+                  "1437499370066",
+                  "1437499432516",
+                  "1437499437886",
+                  "1440188008566"
+                ],
+                "header":[
+                  "id",
+                  "appropriately",
+                  "dosage",
+                  "dosing",
+                  "number",
+                  "product",
+                  "testNames",
+                  "projectId",
+                  "projectInputControlId",
+                  "rowId"
+                  ]
+              };
+
+               $scope.gridOptions = {
+                 headerTemplate: 'views/components/header-template.html',
+                 data: [
+                   {
+                     id: '1',
+                     appropriately: 'Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No',
+                     dosage: 'Dosage Form/Route of Administration',
+                     dosing: 'Interval',
+                     number: '0',
+                     product: 'Product Name/Medical Term/Prescription Abbreviation',
+                     testNames: 'Instructions ->',
+                     projectId: '10023',
+                     projectInputControlId: '10643',
+                     rowId: '1437499370066'
+                   },
+                   {
+                     id: '2',
+                     appropriately: 'Not Applicable',
+                     dosage: 'None',
+                     dosing: 'None',
+                     number: '1',
+                     product: 'None',
+                     testNames: 'ANSLARA',
+                     projectId: '10023',
+                     projectInputControlId: '10643',
+                     rowId: '1437499432516'
+                   },
+                   {
+                     id: '3',
+                     appropriately: '',
+                     dosage: '',
+                     dosing: '',
+                     number: '2',
+                     product: '',
+                     testNames: 'ANZYLARA',
+                     projectId: '10023',
+                     projectInputControlId: '10643',
+                     rowId: '1437499437886'
+                   },
+                   {
+                     id: '4',
+                     appropriately: '',
+                     dosage: '',
+                     dosing: '',
+                     number: '3',
+                     product: '',
+                     testNames: 'LARTRANA',
+                     projectId: '10023',
+                     projectInputControlId: '10643',
+                     rowId: '1440188008566'
+                   },
+                 ]
+               };
+             },
+         };
 });
