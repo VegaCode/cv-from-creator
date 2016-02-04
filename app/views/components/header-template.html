@@ -1,0 +1,13 @@
+<div class="ui-grid-top-panel" style="padding: 5px; height: 30px;">
+  <a class="glyphicon glyphicon-plus" style="width: 4%;"></a>
+  <a class="glyphicon glyphicon-pencil" style="width: 4%;"></a>
+  <a class="glyphicon glyphicon-remove" style="width: 4%;"></a>
+  <a class="glyphicon glyphicon-trash" style="width: 4%;"></a>
+  <a class="glyphicon glyphicon-floppy-save" style="width: 4%;"></a>
+  <a class="glyphicon glyphicon-open" style="width: 4%;"></a>
+</div>
+
+  <div class="ui-grid-top-panel ui-grid-header-cell sortable"
+  ng-repeat="col in colContainer.renderedColumns track by col.colDef.name"
+  ui-grid-header-cell="" col="col">
+  </div>

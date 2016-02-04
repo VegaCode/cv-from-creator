@@ -23,7 +23,8 @@ angular
     'jqwidgets',
     'ngMdIcons',
     'ui.bootstrap',
-    'ngMaterial'
+    'ngMaterial',
+    'vAccordion'
   ])
   .config(function ($routeProvider) {
     $routeProvider

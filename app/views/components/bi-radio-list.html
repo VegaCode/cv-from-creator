@@ -14,12 +14,11 @@
           <div class="{{datasrc.OptionListOrientation}}" ng-repeat="option in optionsArray track by $index">
               <label style="cursor:pointer;">
                 <input data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}"
-                name="datasrc.ProjectFieldId" ng-model="datasrc.Answer" ng-show="datasrc.IsActive" type="radio"/>
+                ng-show="datasrc.IsActive" name="datasrc.FieldTypeId" ng-model="datasrc.Answer"  type="radio"/>
                 {{option}}
               </label>
           </div>
         </div>
-
       </div>
     </div>
   </md-card-content>

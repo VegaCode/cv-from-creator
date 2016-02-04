@@ -27,3 +27,7 @@
         border-right-color:lightgrey !important;
         margin-left: 17px !important;
 }
+
+ .ui-grid-viewport {
+   height: 292px !important;
+ }
