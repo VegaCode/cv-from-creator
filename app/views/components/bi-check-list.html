@@ -2,8 +2,7 @@
   <tool-bar-menu></tool-bar-menu>
   <md-card-title>
     <md-card-title-text class="text-primary">
-      <span class="md-headline" ng-show="datasrc.IsActive" style="font-size:18px">{{datasrc.Label}}</span>
-      <!-- <span class="md-subhead text-default">Card subheader</span> -->
+      <span class="md-headline" style="font-size:18px">{{datasrc.Label}}</span>
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
@@ -11,10 +10,12 @@
       <div class="col-md-8 col-md-offset-4 col-xs-12">
         <div class="{{datasrc.OptionListOrientation}}" ng-repeat="optionsArray in CheckListCtrl.optionsArrayToDisplay track by $index" style="margin-left: -20px; margin-top: -10px">
           <div class="{{datasrc.OptionListOrientation}}" ng-repeat="option in optionsArray track by $index">
-            <label style="cursor:pointer;">
-              <input data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}" ng-model="selected" ng-show="datasrc.IsActive" type="checkbox" value="{{option}}"/>
+            <md-checkbox data-projectId=" {{datasrc.ProjectId}}"
+            data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+            value="{{option}}"
+            ng-click="CheckListCtrl.selectedCheckBoxValue(option)">
               {{option}}
-            </label>
+            </md-checkbox>
           </div>
         </div>
       </div>

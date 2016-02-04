@@ -128,12 +128,23 @@ angular.module('biprojectDevelopmentApp')
                templateUrl:'views/components/bi-check-list.html',
                controller:function ($scope) {
                 var self = this;
-                self.IsActive=true;
+                self.selectedAnswer = [];
                  self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
                  self.optionsArrayToDisplay = [];
                  while (self.arraysOfOptions.length > 0){
                    self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
                  }
+
+                 self.selectedCheckBoxValue = function(selectedOption){
+                   var idx = self.selectedAnswer.indexOf(selectedOption);
+                   if (idx < 0) {
+                     self.selectedAnswer.push(selectedOption);
+                   } else {
+                     if (idx > -1) {
+                       self.selectedAnswer.splice(idx, 1);
+                     }
+                   }
+                 };
                },
                controllerAs: 'CheckListCtrl'
            };
@@ -150,9 +161,10 @@ angular.module('biprojectDevelopmentApp')
                  while (self.arraysOfOptions.length > 0){
                    self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
                  }
-                 $('input[type="radio"]').each(function( ) {
-                   $(this).blur();
-                 });
+                 self.selectedRadioButtonValue = function(radioSelection) {
+                   self.selectedRadioButton = "";
+                   self.selectedRadioButton = radioSelection;
+                 };
                },
                controllerAs: 'RadioListCtrl'
            };
