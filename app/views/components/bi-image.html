@@ -1,9 +1,16 @@
-<div class="row">
-  <div class="col-md-12 column">
-    <img ng-src="{{datasrc.ImageUrl}}"
-    style=" display: block; margin-left: auto; margin-right: auto; padding:10px;"
-    uib-tooltip="{{datasrc.ToolTip}}" tooltip-trigger="hover"
-    tooltip-placement="{{datasrc.ToolTipPlacement}}" width="{{datasrc.width}}"
-    data-projectId=" {{datasrc.ProjectId}}" data-ProjectFieldId="{{datasrc.ProjectFieldId}}"/>
-  </div>
-</div>
+<div class="container-fluid">
+   <div class="row">
+		<div class="col-md-12">
+         <tool-bar-menu></tool-bar-menu>
+		</div>
+	 </div>
+       <div class="row">
+		<div class="col-md-12">
+         <img ng-src="{{datasrc.ImageUrl}}"
+         style=" display: block; margin-left: auto; margin-right: auto; padding:10px;"
+         uib-tooltip="{{datasrc.ToolTip}}" tooltip-trigger="hover"
+         tooltip-placement="{{datasrc.ToolTipPlacement}}" width="{{datasrc.width}}"
+         data-projectId=" {{datasrc.ProjectId}}" data-ProjectFieldId="{{datasrc.ProjectFieldId}}"/>
+		</div>
+	</div>
+	</div>

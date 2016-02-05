@@ -7,16 +7,11 @@
   </md-card-title>
   <md-card-content>
     <div class="row">
-      <div class="col-md-8 col-md-offset-4 col-xs-12">
-        <md-radio-group ng-model="datasrc.Answer">
-          <div class="row" ng-repeat="optionsArray in RadioListCtrl.optionsArrayToDisplay track by $index">
-            <div class="{{datasrc.OptionListOrientation}}" ng-repeat="option in optionsArray track by $index">
-              <md-radio-button  data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}"
-              ng-value="option" ng-click="RadioListCtrl.selectedRadioButtonValue(option)">
-                {{option}}
-              </md-radio-button>
-            </div>
-          </div>
+      <div class="col-md-8 col-md-offset-4 col-xs-12" >
+        <md-radio-group  ng-model="datasrc.Answer" ng-repeat="option in RadioListCtrl.optionsArrayToDisplay track by $index">
+          <md-radio-button class="reponsive-display-list  md-primary" data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}" ng-value="option" ng-click="RadioListCtrl.selectedRadioButtonValue(option)">
+            {{option}}
+          </md-radio-button>
         </md-radio-group>
       </div>
     </div>

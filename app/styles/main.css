@@ -65,6 +65,14 @@ body {
     max-width: 900px;
 
   }
+  .layout, .layout-column, .layout-row {
+    display: -webkit-inline-box !important;
+    float:left;
+}
+  .reponsive-display-list{
+     display:inline !important;
+  }
+
   .tooltip.bottom  {
       left: -303px !important;
   }

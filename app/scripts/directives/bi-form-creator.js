@@ -137,10 +137,11 @@ angular.module('biprojectDevelopmentApp')
           var self = this;
           self.selectedAnswer = [];
            self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
-           self.optionsArrayToDisplay = [];
-           while (self.arraysOfOptions.length > 0){
-             self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
-           }
+           //self.optionsArrayToDisplay = [];
+           self.optionsArrayToDisplay = self.arraysOfOptions;
+          //  while (self.arraysOfOptions.length > 0){
+          //    self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
+          //  }
 
            self.selectedCheckBoxValue = function(selectedOption){
              var idx = self.selectedAnswer.indexOf(selectedOption);
@@ -163,10 +164,11 @@ angular.module('biprojectDevelopmentApp')
                controller:function ($scope) {
                 var self = this;
                  self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
-                 self.optionsArrayToDisplay = [];
-                 while (self.arraysOfOptions.length > 0){
-                   self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
-                 }
+                // self.optionsArrayToDisplay = [];
+                 self.optionsArrayToDisplay =self.arraysOfOptions;
+                //  while (self.arraysOfOptions.length > 0){
+                //    self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
+                //  }
                  self.selectedRadioButtonValue = function(radioSelection) {
                    self.selectedRadioButton = "";
                    self.selectedRadioButton = radioSelection;
@@ -198,7 +200,7 @@ angular.module('biprojectDevelopmentApp')
              restrict: "EA",
              templateUrl:'views/components/bi-grid.html',
              controller:function ($scope) {
-               $scope.myData = {
+               $scope.mobileDataSrc = [{
                 "id": [
                   1,
                   2,
@@ -258,20 +260,21 @@ angular.module('biprojectDevelopmentApp')
                   "1437499432516",
                   "1437499437886",
                   "1440188008566"
-                ],
-                "header":[
-                  "id",
-                  "appropriately",
-                  "dosage",
-                  "dosing",
-                  "number",
-                  "product",
-                  "testNames",
-                  "projectId",
-                  "projectInputControlId",
-                  "rowId"
-                  ]
-              };
+                ]
+              },{
+              "header":[
+                "id",
+                "appropriately",
+                "dosage",
+                "dosing",
+                "number",
+                "product",
+                "testNames",
+                "projectId",
+                "projectInputControlId",
+                "rowId"
+                ]
+              }];
 
                $scope.gridOptions = {
                  headerTemplate: 'views/components/header-template.html',
@@ -299,9 +302,42 @@ angular.module('biprojectDevelopmentApp')
                      projectId: '10023',
                      projectInputControlId: '10643',
                      rowId: '1437499432516'
-                   },
+                   }, {
+                      id: '3',
+                      appropriately: 'Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No',
+                      dosage: 'Dosage Form/Route of Administration',
+                      dosing: 'Interval',
+                      number: '0',
+                      product: 'Product Name/Medical Term/Prescription Abbreviation',
+                      testNames: 'Instructions ->',
+                      projectId: '10023',
+                      projectInputControlId: '10643',
+                      rowId: '1437499370066'
+                    }, {
+                       id: '4',
+                       appropriately: 'Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No',
+                       dosage: 'Dosage Form/Route of Administration',
+                       dosing: 'Interval',
+                       number: '0',
+                       product: 'Product Name/Medical Term/Prescription Abbreviation',
+                       testNames: 'Instructions ->',
+                       projectId: '10023',
+                       projectInputControlId: '10643',
+                       rowId: '1437499370066'
+                     }, {
+                        id: '5',
+                        appropriately: 'Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No',
+                        dosage: 'Dosage Form/Route of Administration',
+                        dosing: 'Interval',
+                        number: '0',
+                        product: 'Product Name/Medical Term/Prescription Abbreviation',
+                        testNames: 'Instructions ->',
+                        projectId: '10023',
+                        projectInputControlId: '10643',
+                        rowId: '1437499370066'
+                      },
                    {
-                     id: '3',
+                     id: '6',
                      appropriately: '',
                      dosage: '',
                      dosing: '',
@@ -313,7 +349,67 @@ angular.module('biprojectDevelopmentApp')
                      rowId: '1437499437886'
                    },
                    {
-                     id: '4',
+                     id: '7',
+                     appropriately: '',
+                     dosage: '',
+                     dosing: '',
+                     number: '3',
+                     product: '',
+                     testNames: 'LARTRANA',
+                     projectId: '10023',
+                     projectInputControlId: '10643',
+                     rowId: '1440188008566'
+                   },
+                   {
+                     id: '8',
+                     appropriately: '',
+                     dosage: '',
+                     dosing: '',
+                     number: '3',
+                     product: '',
+                     testNames: 'LARTRANA',
+                     projectId: '10023',
+                     projectInputControlId: '10643',
+                     rowId: '1440188008566'
+                   },
+                   {
+                     id: '9',
+                     appropriately: '',
+                     dosage: '',
+                     dosing: '',
+                     number: '3',
+                     product: '',
+                     testNames: 'LARTRANA',
+                     projectId: '10023',
+                     projectInputControlId: '10643',
+                     rowId: '1440188008566'
+                   },
+                   {
+                     id: '10',
+                     appropriately: '',
+                     dosage: '',
+                     dosing: '',
+                     number: '3',
+                     product: '',
+                     testNames: 'LARTRANA',
+                     projectId: '10023',
+                     projectInputControlId: '10643',
+                     rowId: '1440188008566'
+                   },
+                   {
+                     id: '11',
+                     appropriately: '',
+                     dosage: '',
+                     dosing: '',
+                     number: '3',
+                     product: '',
+                     testNames: 'LARTRANA',
+                     projectId: '10023',
+                     projectInputControlId: '10643',
+                     rowId: '1440188008566'
+                   },
+                   {
+                     id: '12',
                      appropriately: '',
                      dosage: '',
                      dosing: '',
