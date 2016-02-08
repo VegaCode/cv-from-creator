@@ -1,8 +1,9 @@
 <form class="form-horizontal" role="form">
-  <div ng-repeat="component in  project.componentConfig track by $index" ng-show="{{component.Access}}" style="padding-top: 20px">
+  <div ng-repeat="component in  project.componentConfig track by $index"
+   ng-show="{{component.Access}}" style="padding-top: 20px">
     <div ng-if="component.FieldTypeId !== 'Title' && component.FieldTypeId !== 'Subtitle'
                 && component.FieldTypeId !== 'Grid' && component.FieldTypeId !== 'Label'">
-      <md-card >
+      <md-card>
         <div bi-form-creator datasrc="component"></div>
       </md-card>
     </div>

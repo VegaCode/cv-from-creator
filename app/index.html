@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>BIProjectDevelopment</title>
     <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- Android 2.3.x/3.x:  -->
     <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
@@ -35,7 +36,16 @@
   </head>
     <body ng-app="biprojectDevelopmentApp">
       <!--[if lte IE 8]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser
+      </a> to improve your experience.</p>
+      <![endif]-->
+      <!--[if lt IE 9]>
+      <html class="no_js ie" lang="en">
+      <![endif]-->
+      <!--[if IE 9]>
+      <html class="no_js logged_in ie9" id="logged_in" lang="US">
       <![endif]-->
 
       <div class="container">
@@ -113,9 +123,6 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
-    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
-    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/services/projectfields.js"></script>
     <script src="scripts/directives/bi-form-creator.js"></script>
