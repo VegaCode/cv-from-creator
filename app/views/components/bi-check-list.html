@@ -7,9 +7,9 @@
   </md-card-title>
   <md-card-content>
     <div class="row">
-      <div class="col-md-8 col-md-offset-4 col-xs-12">
+      <div class="col-md-8 col-md-offset-4 col-xs-12" style="width:100%;">
         <md-radio-group layout="row" ng-repeat="option in CheckListCtrl.optionsArrayToDisplay track by $index">
-          <md-checkbox class="reponsive-display-list   md-primary" data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}" ng-click="CheckListCtrl.selectedCheckBoxValue(option)" value="{{option}}">
+          <md-checkbox class="reponsive-display-list md-primary" data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}" ng-click="CheckListCtrl.selectedCheckBoxValue(option)" style="padding-right: 10px;" value="{{option}}">
             {{option}}
           </md-checkbox>
         </md-radio-group>
