@@ -198,7 +198,7 @@ angular.module('biprojectDevelopmentApp')
              restrict: "EA",
              templateUrl:'views/components/bi-grid.html',
              controller:function ($scope) {
-               $scope.myData = {
+                $scope.myData = {
                 "id": [
                   1,
                   2,
@@ -273,6 +273,21 @@ angular.module('biprojectDevelopmentApp')
                   ]
               };
 
+              // $scope.displayId = [];
+              //
+              //   $scope.displayId.push($scope.myData.id);
+              //   $scope.displayId.push($scope.myData.appropriately);
+              //   $scope.displayId.push($scope.myData.dosage);
+              //   $scope.displayId.push($scope.myData.dosing);
+              //   $scope.displayId.push($scope.myData.number);
+              //   $scope.displayId.push($scope.myData.product);
+              //   $scope.displayId.push($scope.myData.testNames);
+              //   $scope.displayId.push($scope.myData.projectId);
+              //   $scope.displayId.push($scope.myData.projectInputControlId);
+              //   $scope.displayId.push($scope.myData.rowId);
+
+
+
                $scope.gridOptions = {
                  headerTemplate: 'views/components/header-template.html',
                  data: [
@@ -326,6 +341,6 @@ angular.module('biprojectDevelopmentApp')
                    },
                  ]
                };
-             },
+             }
          };
 });

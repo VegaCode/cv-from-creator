@@ -10,7 +10,7 @@
       <div class="col-md-8 col-md-offset-4 col-xs-12">
         <div class="{{datasrc.OptionListOrientation}}" ng-repeat="optionsArray in CheckListCtrl.optionsArrayToDisplay track by $index" style="margin-left: -20px; margin-top: -10px">
           <div class="{{datasrc.OptionListOrientation}}" ng-repeat="option in optionsArray track by $index">
-            <md-checkbox data-projectId=" {{datasrc.ProjectId}}"
+            <md-checkbox class="md-primary" data-projectId=" {{datasrc.ProjectId}}"
             data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
             value="{{option}}"
             ng-click="CheckListCtrl.selectedCheckBoxValue(option)">

@@ -11,10 +11,11 @@
         <md-radio-group ng-model="datasrc.Answer">
           <div class="row" ng-repeat="optionsArray in RadioListCtrl.optionsArrayToDisplay track by $index">
             <div class="{{datasrc.OptionListOrientation}}" ng-repeat="option in optionsArray track by $index">
-              <md-radio-button  data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}"
+              <md-radio-button  class="md-primary"  data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}"
               ng-value="option" ng-click="RadioListCtrl.selectedRadioButtonValue(option)">
-                {{option}}
+              {{option}}
               </md-radio-button>
+
             </div>
           </div>
         </md-radio-group>
