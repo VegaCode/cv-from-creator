@@ -15,7 +15,7 @@ angular.module('biprojectDevelopmentApp')
         datasrc: '='
       },
       link: function(scope, element) {
-        element.append($compile(scope.datasrc.directive)(scope));
+        element.empty().append($compile(scope.datasrc.directive)(scope));
       }
     };
   })
