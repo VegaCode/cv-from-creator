@@ -1,6 +1,49 @@
-<!doctype html> <html> <head> <meta charset="utf-8"> <title>BIProjectDevelopment</title> <meta name="description" content=""> <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"> <!-- Android 2.3.x/3.x:  --> <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes"> <!-- Android 4.x --> <meta name="viewport" content="width=620,user-scalable=no"> <!-- Android 4.x , iOS/Safari (4.x/5.x tested) --> <meta name="viewport" content="initial-scale=1,width=device-width,user-scalable=0"> <!-- Safari 7.1 --> <meta name="viewport" content="initial-scale=1,width=device-width,user-scalable=0,minimal-ui"> <!-- Chrome --> <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,width=device-width,user-scalable=no"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.dfd2b2f5.css"> <link rel="stylesheet" href="styles/main.8bd0f983.css"> <script>document.createElement('bi-form-creator')</script> </head> <body ng-app="biprojectDevelopmentApp"> <!--[if lte IE 8]>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BIProjectDevelopment</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Android 2.3.x/3.x:  -->
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
+    <!-- Android 4.x -->
+    <meta name="viewport" content="width=620, user-scalable=no" />
+    <!-- Android 4.x , iOS/Safari (4.x/5.x tested) -->
+    <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0" />
+    <!-- Safari 7.1 -->
+    <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0, minimal-ui" />
+    <!-- Chrome -->
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,user-scalable=no" />
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/v-accordion/dist/v-accordion.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/jqwidgets/jqwidgets/styles/jqx.base.css" />
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/boostrap-override.css" />
+    <!-- endbuild -->
+     <script>document.createElement('bi-form-creator')</script>
+  </head>
+    <body ng-app="biprojectDevelopmentApp">
+      <!--[if lte IE 8]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-      <![endif]--> <div class="container"> <section class="" style="margin-top:15px"> <md-toolbar md-primary> <div class="md-toolbar-tools"> <h3 class="ng-binding">BI Form Creator Module</h3> <!-- <span flex="" class="flex">  <div class="col-md-12 column">
+      <![endif]-->
+
+      <div class="container">
+        <section class="" style="margin-top:15px;">
+              <md-toolbar md-primary>
+                <div class="md-toolbar-tools">
+                  <h3 class="ng-binding">BI Form Creator Module</h3>
+                  <!-- <span flex="" class="flex">  <div class="col-md-12 column">
                       <div class="row clearfix">
                         <div class="col-md-4 column">
                           <div class="btn btn-success" type="button">
@@ -23,10 +66,64 @@
                           </div>
                         </div>
                       </div>
-                    </div></span> --> </div> </md-toolbar> <div ng-view=""></div> </section></div> </body>  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+                    </div></span> -->
+                </div>
+              </md-toolbar>
+        <div ng-view=""></div>
+      </div>
+    </body>
+      </section>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
        ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');</script> <script src="scripts/vendor.26c89951.js"></script> <script src="scripts/scripts.1626b42f.js"></script> </html>
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/v-accordion/dist/v-accordion.js"></script>
+    <!-- endbower -->
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/jqwidgets/jqwidgets/jqxcore.js"></script>
+    <script src="bower_components/jqwidgets/jqwidgets/jqxangular.js"></script>
+    <script src="bower_components/jqwidgets/jqwidgets/jqxdata.js"></script>
+    <script src="bower_components/jqwidgets/jqwidgets/jqxbuttons.js"></script>
+    <script src="bower_components/jqwidgets/jqwidgets/jqxcheckbox.js"></script>
+    <script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/projectfields.js"></script>
+    <script src="scripts/directives/bi-form-creator.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/project.js"></script>
+    <script src="scripts/controllers/template.js"></script>
+    <script src="scripts/controllers/general-controller.js"></script>
+    <script src="scripts/controllers/tool-bar-menu.js"></script>
+    <!-- endbuild -->
+
+</html>
