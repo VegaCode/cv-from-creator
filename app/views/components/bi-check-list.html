@@ -1,4 +1,4 @@
-<div class="container-fluid" >
+<div class="container-fluid">
   <tool-bar-menu></tool-bar-menu>
   <md-card-title>
     <md-card-title-text class="text-primary">
@@ -8,16 +8,11 @@
   <md-card-content>
     <div class="row">
       <div class="col-md-8 col-md-offset-4 col-xs-12">
-        <div class="{{datasrc.OptionListOrientation}}" ng-repeat="optionsArray in CheckListCtrl.optionsArrayToDisplay track by $index" style="margin-left: -20px; margin-top: -10px">
-          <div class="{{datasrc.OptionListOrientation}}" ng-repeat="option in optionsArray track by $index">
-            <md-checkbox class="md-primary" data-projectId=" {{datasrc.ProjectId}}"
-            data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
-            value="{{option}}"
-            ng-click="CheckListCtrl.selectedCheckBoxValue(option)">
-              {{option}}
-            </md-checkbox>
-          </div>
-        </div>
+        <md-radio-group layout="row" ng-repeat="option in CheckListCtrl.optionsArrayToDisplay track by $index">
+          <md-checkbox class="reponsive-display-list   md-primary" data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}" ng-click="CheckListCtrl.selectedCheckBoxValue(option)" value="{{option}}">
+            {{option}}
+          </md-checkbox>
+        </md-radio-group>
       </div>
     </div>
   </md-card-content>

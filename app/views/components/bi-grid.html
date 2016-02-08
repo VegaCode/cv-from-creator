@@ -1,31 +1,24 @@
 <div class="container-fluid">
   <div class="row visible-md visible-lg">
-    <div class="grid" data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
-    data-ProjectId=" {{datasrc.ProjectId}}"
-    ui-grid="gridOptions"></div>
+    <div class="grid" data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}" data-ProjectId=" {{mobileDataSrc.ProjectId}}" ui-grid="gridOptions"></div>
   </div>
-
-  <md-card >
+  <md-card class="visible-xs visible-sm">
+    <!-- <md-card> -->
     <md-card-content>
       <v-accordion class="vAccordion--default" multiple>
-
         <!-- add expanded attribute to open the section -->
-        <v-pane data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
-        data-ProjectId=" {{datasrc.ProjectId}}"
-        enabled data-index = "{{$index}}"
-        ng-repeat="h in myData.header track by $index">
+        <v-pane data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}" data-ProjectId=" {{mobileDataSrc.ProjectId}}" enabled ng-model="mobileDataSrc[1].header" ng-repeat="item in mobileDataSrc[0] track by $index">
+
           <v-pane-header>
-            {{h}}
+            {{mobileDataSrc[1].header[$index]}}
           </v-pane-header>
-
           <v-pane-content>
-            <div ng-repeat='item in myData track by $index'>
-             {{item[0]}}
+            <div ng-repeat="content in item track by $index">
+              {{content}}<br>
             </div>
-
           </v-pane-content>
-        </v-pane>
 
+        </v-pane>
       </v-accordion>
     </md-card-content>
   </md-card >
