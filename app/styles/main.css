@@ -63,7 +63,6 @@ body {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
-
   }
   .layout, .layout-column, .layout-row {
     display: -webkit-inline-box !important;

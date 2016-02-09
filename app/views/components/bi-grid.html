@@ -1,25 +1,28 @@
 <div class="container-fluid">
   <div class="row visible-md visible-lg">
-    <div class="grid" data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}" data-ProjectId=" {{mobileDataSrc.ProjectId}}" ui-grid="gridOptions"></div>
+    <div class="grid" data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}"
+    data-ProjectId=" {{mobileDataSrc.ProjectId}}" ui-grid="gridOptions"></div>
   </div>
-  <md-card class="visible-xs visible-sm">
-    <!-- <md-card> -->
-    <md-card-content>
-      <v-accordion class="vAccordion--default" multiple>
-        <!-- add expanded attribute to open the section -->
-        <v-pane data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}" data-ProjectId=" {{mobileDataSrc.ProjectId}}" enabled ng-model="mobileDataSrc[1].header" ng-repeat="item in mobileDataSrc[0] track by $index">
+  <v-accordion class="vAccordion--default" multiple>
+  <!-- <v-accordion class="vAccordion--default visible-xs visible-sm" multiple> -->
+    <!-- add expanded attribute to open the section -->
+    <v-pane data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}" data-ProjectId=" {{mobileDataSrc.ProjectId}}" enabled ng-model="mobileDataSrc[1].header" ng-repeat="item in mobileDataSrc[0] track by $index">
 
-          <v-pane-header>
-            {{mobileDataSrc[1].header[$index]}}
-          </v-pane-header>
-          <v-pane-content>
-            <div ng-repeat="content in item track by $index">
-              {{content}}<br>
+      <v-pane-header>
+        {{mobileDataSrc[1].header[$index]}}
+      </v-pane-header>
+      <v-pane-content>
+        <div ng-repeat="content in item track by $index">
+          <div class="row">
+            <div class="col-xs-12">
+              <span class="bi-mobile-grid">{{$index+1}}.</span>
+              <textarea ng-auto-expand  class="form-control bi-form-control-mobile-grid" style="border: 0">{{content}}</textarea>
+              <hr>
             </div>
-          </v-pane-content>
+          </div>
+        </div>
+      </v-pane-content>
 
-        </v-pane>
-      </v-accordion>
-    </md-card-content>
-  </md-card >
+    </v-pane>
+  </v-accordion>
 </div>
