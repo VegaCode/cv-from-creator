@@ -6,14 +6,19 @@
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-4 col-xs-12">
-        <md-radio-group layout="row" ng-repeat="option in CheckListCtrl.optionsArrayToDisplay track by $index">
-          <md-checkbox class="reponsive-display-list   md-primary" data-ProjectFieldId="{{datasrc.ProjectFieldId}}" data-projectId=" {{datasrc.ProjectId}}" ng-click="CheckListCtrl.selectedCheckBoxValue(option)" value="{{option}}">
-            {{option}}
+      <div class="col-md-8 col-md-offset-4 col-xs-12" >
+        <md-radio-group layout="row"
+            ng-repeat="option in CheckListCtrl.optionsArrayToDisplay track by $index">
+          <md-checkbox class="reponsive-display-list   md-primary"
+              data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+              data-projectId=" {{datasrc.ProjectId}}"
+              ng-click="CheckListCtrl.selectedCheckBoxValue(option)"
+              value="{{option}}">
+              <div ng-attr-style="width: {{CheckListCtrl.labelSize}} !important">
+                 {{option}}
+              </div>
           </md-checkbox>
         </md-radio-group>
       </div>
-    </div>
   </md-card-content>
 </div>

@@ -147,7 +147,7 @@ angular.module('biprojectDevelopmentApp')
         //  while (self.arraysOfOptions.length > 0){
         //    self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
         //  }
-
+        self.labelSize = (self.arraysOfOptions.reduce(function (a, b) { return a.length > b.length ? a : b; }).length * 9) + 'px';
         self.selectedCheckBoxValue = function(selectedOption) {
           var idx = self.selectedAnswer.indexOf(selectedOption);
           if (idx < 0) {
@@ -178,6 +178,7 @@ angular.module('biprojectDevelopmentApp')
           self.selectedRadioButton = "";
           self.selectedRadioButton = radioSelection;
         };
+        self.labelSize = (self.arraysOfOptions.reduce(function (a, b) { return a.length > b.length ? a : b; }).length * 9) + 'px';
       },
       controllerAs: 'RadioListCtrl'
     };
@@ -297,7 +298,17 @@ angular.module('biprojectDevelopmentApp')
 
 
         $scope.gridOptions = {
-          headerTemplate: 'views/components/header-template.html',
+          headerTemplate: '<div class="ui-grid-top-panel" style="padding: 5px; height: 30px;">'+
+          '  <a class="glyphicon glyphicon-plus" style="width: 4%;"></a>'+
+          '  <a class="glyphicon glyphicon-pencil" style="width: 4%;"></a>'+
+          '  <a class="glyphicon glyphicon-remove" style="width: 4%;"></a>'+
+          '  <a class="glyphicon glyphicon-trash" style="width: 4%;"></a>'+
+          '  <a class="glyphicon glyphicon-floppy-save" style="width: 4%;"></a>'+
+          '  <a class="glyphicon glyphicon-open" style="width: 4%;"></a></div>'+
+          '  <div class="ui-grid-top-panel ui-grid-header-cell sortable"'+
+          '  ng-repeat="col in colContainer.renderedColumns track by col.colDef.name"'+
+          '  ui-grid-header-cell="" col="col">'+
+          '  </div>',
           data: [{
             id: '1',
             appropriately: 'Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No',
