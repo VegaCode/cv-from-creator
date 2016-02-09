@@ -367,7 +367,8 @@ angular.module('biprojectDevelopmentApp')
             "width": "100%",
             "ImageUrl": "",
             "directive": "<bi-dropdown>dropdown Directive</bi-dropdown>"
-          }, {
+          },
+          {
             "ProjectId": "9",
             "ProjectName": "9",
             "ProjectFieldId": "129",
