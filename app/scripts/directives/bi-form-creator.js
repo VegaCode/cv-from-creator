@@ -8,6 +8,48 @@
  * Directives of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
+.directive('ngAutoExpand', function() {
+        return {
+            restrict: 'A',
+            link: function($scope, elem) {
+                elem.bind('keyup', function($event) {
+                    var element = $event.target;
+
+                    if($event.keyCode === 13){
+                                    var t = $event.currentTarget;
+                                    var text =  t.value;
+                                    var ls = text.split('\n');
+                                    var i = ls.length - 1;
+                                    ls[i] = '• ' + ls[i];
+                                    t.value=   ls.join('\n');
+                    }
+
+                    $(element).height(0);
+                    var height = $(element)[0].scrollHeight;
+
+                    // 8 is for the padding
+                    if (height < 20) {
+                        height = 28;
+                    }
+                    $(element).height(height-8);
+                });
+
+                // Expand the textarea as soon as it is added to the DOM
+                setTimeout( function() {
+                    var element = elem;
+
+                    $(element).height(0);
+                    var height = $(element)[0].scrollHeight;
+
+                    // 8 is for the padding
+                    if (height < 20) {
+                        height = 28;
+                    }
+                    $(element).height(height+2);
+                }, 0);
+            }
+        };
+    })
   .directive('biFormCreator', function($compile) {
     return {
       restrict: "EA",
