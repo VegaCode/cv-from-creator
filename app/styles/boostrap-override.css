@@ -88,3 +88,11 @@ md-checkbox.white-frame .md-icon {
 .layout, .layout-column, .layout-row {
    display: -webkit-flex;
 }
+
+/*.vAccordion--default{
+   position: relative;
+}*/
+.bi-mobile-grid{
+    color:#2196F3 !important;
+   padding: 0 5px;
+}
