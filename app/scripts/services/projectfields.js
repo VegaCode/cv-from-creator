@@ -10,6 +10,10 @@
 var webBaseUrl;
 webBaseUrl = 'https://tools.brandinstitute.com/BIWebServices/';
 angular.module('biprojectDevelopmentApp')
+
+  .factory("general", function generalFactory($resource){
+    return $resource ( webBaseUrl + 'api/BIFCWebApi', {}, {});
+  })
   .factory('bidocsGetProject', [
     '$http', '$q',
     function($http, $q) {
@@ -143,7 +147,7 @@ angular.module('biprojectDevelopmentApp')
             "ProjectId": "6",
             "ProjecName": "6",
             "ProjectFieldId": "126",
-            "FieldTypeId": 'Title',
+            "FieldTypeId": 'Subtitle',
             "SortValues": "2",
             "Access": 'true',
             "Status": "In Progress",
@@ -160,7 +164,7 @@ angular.module('biprojectDevelopmentApp')
             "TemplateName": "RX",
             "width": "100%",
             "ImageUrl": "",
-            "directive": "<bi-title>title Directive</bi-title>"
+            "directive": "<bi-sub-title>sub-title Directive</bi-sub-title>"
           }, {
             "ProjectId": "0",
             "ProjectName": "0",

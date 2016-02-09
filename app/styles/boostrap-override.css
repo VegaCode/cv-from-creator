@@ -80,3 +80,15 @@ md-checkbox.white-frame .md-icon {
   margin-right: 14px !important;
   padding: 0 10px;
 }
+
+/*.vAccordion--default{
+   position: relative;
+}*/
+.bi-mobile-grid{
+    color:#2196F3 !important;
+   padding: 0 5px;
+}
+
+:focus {
+outline: none!important;
+}

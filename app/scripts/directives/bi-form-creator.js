@@ -25,7 +25,7 @@ angular.module('biprojectDevelopmentApp')
       templateUrl: 'views/components/tool-bar-menu.html'
     };
   })
-  .directive('biVersionControl', function($compile, $window) {
+  .directive('biVersionControl', function($compile) {
     return {
       restrict: "EA",
       scope: {
@@ -281,21 +281,6 @@ angular.module('biprojectDevelopmentApp')
             "rowId"
           ]
         }];
-
-        // $scope.displayId = [];
-        //
-        //   $scope.displayId.push($scope.myData.id);
-        //   $scope.displayId.push($scope.myData.appropriately);
-        //   $scope.displayId.push($scope.myData.dosage);
-        //   $scope.displayId.push($scope.myData.dosing);
-        //   $scope.displayId.push($scope.myData.number);
-        //   $scope.displayId.push($scope.myData.product);
-        //   $scope.displayId.push($scope.myData.testNames);
-        //   $scope.displayId.push($scope.myData.projectId);
-        //   $scope.displayId.push($scope.myData.projectInputControlId);
-        //   $scope.displayId.push($scope.myData.rowId);
-
-
 
         $scope.gridOptions = {
           headerTemplate: '<div class="ui-grid-top-panel" style="padding: 5px; height: 30px;">'+
