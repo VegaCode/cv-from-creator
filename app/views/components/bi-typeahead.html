@@ -9,13 +9,15 @@
      <md-card-content>
       <div class="row">
         <div class="col-md-8 col-md-offset-4">
-           <input type="text"
+           <input onblur-save type="text"
           uib-typeahead="option for option in datasrc.OptionList.split(',') | filter:$viewValue | limitTo:8"
           class="form-control ng-valid ng-dirty ng-valid-parse ng-touched"
           style="height: 100%;"
           placeholder={{datasrc.PlaceHolder}}
           data-ProjectId=" {{datasrc.ProjectId}}"
           data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+          ng-keyup="typeAheadCtrl.logKey($event)"
+          typeahead-on-select="typeAheadCtrl.onSelect($item, $model, $label)"
           ng-model="selected">
         </div>
       </div>

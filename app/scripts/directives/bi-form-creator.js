@@ -8,7 +8,47 @@
  * Directives of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
-.directive('ngAutoExpand', function() {
+.directive('onblurSave', ['$timeout', function($timeout) {
+      return {
+        restrict: 'A',
+        link: function($scope, element, attrs ) {
+          var ObjectModel = function(fieldid, columnname, rowid, Answer, CreatedBy) {
+                this.fieldid = fieldid;
+                this.columnname = columnname;
+                this.rowid = rowid;
+                this.Answer = Answer;
+                this.CreatedBy = CreatedBy;
+            };
+
+            element.bind('blur', function() {
+                $timeout(function() {
+
+                  if ($scope.datasrc.FieldType === 'Text'){
+                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'Textarea') {
+                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'Radio') {
+                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'Check') {
+                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'Dropdown') {
+                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'Typeahead') {
+                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } 
+                    // factoryToSendInformation.addAnswerObject(answerModel);
+
+                }, 0);
+            });
+            element.bind('onblurSave', function() {
+                $timeout(function() {
+                    $scope.$apply(attrs.focus + '=true');
+                }, 0);
+            });
+        }
+      };
+  }])
+.directive('biAutoExpand', function() {
         return {
             restrict: 'A',
             link: function($scope, elem) {
@@ -50,6 +90,7 @@ angular.module('biprojectDevelopmentApp')
             }
         };
     })
+
   .directive('biFormCreator', function($compile) {
     return {
       restrict: "EA",
@@ -78,7 +119,7 @@ angular.module('biprojectDevelopmentApp')
         var templateFinal = '';
 
         var createVersionControl = function(versionControlArrray) {
-          var counter = 0
+          var counter = 0;
           versionControlArrray.forEach(function(obj) {
             template +=
               '<md-card>' +
@@ -109,6 +150,7 @@ angular.module('biprojectDevelopmentApp')
       templateUrl: 'views/components/bi-text.html',
       controller: function($scope) {
         var self = this;
+        self.answer = $scope.datasrc.Answer;
         //self.componentDisplay = $scope.datasrc.access;
       }
     };
@@ -117,8 +159,12 @@ angular.module('biprojectDevelopmentApp')
     return {
       restrict: "EA",
       templateUrl: 'views/components/bi-dropdown.html',
-      controller: function() {
+      controller: function($scope) {
         var self = this;
+
+        $scope.optionSelected = function(answer){
+          $scope.datasrc.Answer = answer;
+        };
       }
     };
   })
@@ -162,9 +208,24 @@ angular.module('biprojectDevelopmentApp')
     return {
       restrict: "EA",
       templateUrl: 'views/components/bi-typeahead.html',
-      controller: function() {
+      controller: function($scope) {
         var self = this;
-      }
+        $scope.selected = '';
+
+        self.logKey = function(event) {
+          if (event.keyCode === 13) {
+            self.onSelect($scope.selected);
+          }
+        };
+
+        self.onSelect = function (selection) {
+           $scope.datasrc.Answer = selection;
+        };
+        // $scope.optionSelected = function(answer){
+        //   $scope.datasrc.Answer = answer;
+        // };
+      },
+      controllerAs: 'typeAheadCtrl'
     };
   })
   .directive('biImage', function() {
@@ -182,21 +243,21 @@ angular.module('biprojectDevelopmentApp')
       templateUrl: 'views/components/bi-check-list.html',
       controller: function($scope) {
         var self = this;
+
         self.selectedAnswer = [];
         self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
-        //self.optionsArrayToDisplay = [];
         self.optionsArrayToDisplay = self.arraysOfOptions;
-        //  while (self.arraysOfOptions.length > 0){
-        //    self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
-        //  }
         self.labelSize = (self.arraysOfOptions.reduce(function (a, b) { return a.length > b.length ? a : b; }).length * 9) + 'px';
+
         self.selectedCheckBoxValue = function(selectedOption) {
           var idx = self.selectedAnswer.indexOf(selectedOption);
           if (idx < 0) {
             self.selectedAnswer.push(selectedOption);
+            $scope.datasrc.Answer = self.selectedAnswer;
           } else {
             if (idx > -1) {
               self.selectedAnswer.splice(idx, 1);
+              console.log(self.selectedAnswer);
             }
           }
         };
@@ -211,15 +272,7 @@ angular.module('biprojectDevelopmentApp')
       controller: function($scope) {
         var self = this;
         self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
-        // self.optionsArrayToDisplay = [];
         self.optionsArrayToDisplay = self.arraysOfOptions;
-        //  while (self.arraysOfOptions.length > 0){
-        //    self.optionsArrayToDisplay.push(self.arraysOfOptions.splice(0,6));
-        //  }
-        self.selectedRadioButtonValue = function(radioSelection) {
-          self.selectedRadioButton = "";
-          self.selectedRadioButton = radioSelection;
-        };
         self.labelSize = (self.arraysOfOptions.reduce(function (a, b) { return a.length > b.length ? a : b; }).length * 9) + 'px';
       },
       controllerAs: 'RadioListCtrl'

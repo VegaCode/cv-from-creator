@@ -8,8 +8,21 @@
      </md-card-title>
      <md-card-content>
       <div class="row">
-        <div class="col-md-8 col-md-offset-4">
-          <input type="{{datasrc.DataType}}"
+         <div class="col-md-8 col-md-offset-4">
+           <input onblur-save type="{{datasrc.DataType}}"
+           class="form-control"
+           placeholder="{{datasrc.PlaceHolder}}"
+           value="{{datasrc.Answer}}"
+           uib-tooltip="{{datasrc.ToolTip}}"
+           tooltip-placement="{{datasrc.ToolTipPlacement}}"
+           toolTip-trigger="{{datasrc.ToolTipTrigger}}"
+           data-ProjectId=" {{datasrc.ProjectId}}"
+           data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+           ng-model="datasrc.Answer"
+          />
+         </div>
+        <!-- <div class="col-md-8 col-md-offset-4">
+          <input unblur-save type="{{datasrc.DataType}}"
           class="form-control"
           placeholder="{{datasrc.PlaceHolder}}"
           value="{{datasrc.Answer}}"
@@ -21,7 +34,7 @@
           ng-model="datasrc.Answer"
           ng-disabled="{{datasrc.Access}}"
          />
-        </div>
+        </div> -->
       </div>
     </md-card-content>
 </div>

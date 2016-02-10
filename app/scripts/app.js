@@ -19,6 +19,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.grid',
+    'ui.grid.edit',
     'ui.grid.resizeColumns',
     'jqwidgets',
     'ngMdIcons',

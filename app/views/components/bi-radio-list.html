@@ -8,7 +8,7 @@
   <md-card-content>
       <div class="col-md-8 col-md-offset-4 col-xs-12">
         <md-radio-group layout="row" ng-model="datasrc.Answer" ng-repeat="option in RadioListCtrl.optionsArrayToDisplay track by $index" >
-          <md-radio-button
+          <md-radio-button onblur-save
           class="reponsive-display-list"
            data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
            data-projectId=" {{datasrc.ProjectId}}" ng-value="option"
