@@ -7,7 +7,6 @@
   <!-- <v-accordion class="vAccordion--default visible-xs visible-sm" multiple> -->
     <!-- add expanded attribute to open the section -->
     <v-pane data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}" data-ProjectId=" {{mobileDataSrc.ProjectId}}" enabled ng-model="mobileDataSrc[1].header" ng-repeat="item in mobileDataSrc[0] track by $index">
-
       <v-pane-header>
         {{mobileDataSrc[1].header[$index]}}
       </v-pane-header>
@@ -15,7 +14,7 @@
         <div ng-repeat="content in item track by $index">
           <div class="row">
             <div class="col-xs-12">
-              <span class="bi-mobile-grid">{{$index+1}}.</span>
+              {{$index+1}}.
               <textarea ng-auto-expand  class="form-control bi-form-control-mobile-grid" style="border: 0">{{content}}</textarea>
               <hr>
             </div>

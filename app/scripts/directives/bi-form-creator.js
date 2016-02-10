@@ -200,6 +200,7 @@ angular.module('biprojectDevelopmentApp')
             }
           }
         };
+        self.labelSize = (self.arraysOfOptions.reduce(function (a, b) { return a.length > b.length ? a : b; }).length * 9) + 'px';
       },
       controllerAs: 'CheckListCtrl'
     };
@@ -220,6 +221,7 @@ angular.module('biprojectDevelopmentApp')
           self.selectedRadioButton = "";
           self.selectedRadioButton = radioSelection;
         };
+        self.labelSize = (self.arraysOfOptions.reduce(function (a, b) { return a.length > b.length ? a : b; }).length * 9) + 'px';
       },
       controllerAs: 'RadioListCtrl'
     };
