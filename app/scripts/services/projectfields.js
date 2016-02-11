@@ -12,7 +12,7 @@ webBaseUrl = 'http://localhost:64378/';
 webBaseUrl = 'https://tools.brandinstitute.com/BIWebServices/';
 angular.module('biprojectDevelopmentApp')
 
-  .factory("general", function generalFactory($resource){
+  .factory("General", function generalFactory($resource){
     return $resource ( webBaseUrl + 'api/BIFCWebApi', {}, {});
   })
   .factory('bidocsGetProject', [

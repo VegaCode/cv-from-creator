@@ -12,6 +12,11 @@ angular.module('biprojectDevelopmentApp')
       return {
         restrict: 'A',
         link: function($scope, element, attrs ) {
+
+          var mobileColumnName = '', mobileRowId = '', oldValue = '', newValue = '';
+          $scope.str = '';
+          $scope.answer = '';
+
           var ObjectModel = function(fieldid, columnname, rowid, Answer, CreatedBy) {
                 this.fieldid = fieldid;
                 this.columnname = columnname;
@@ -20,22 +25,67 @@ angular.module('biprojectDevelopmentApp')
                 this.CreatedBy = CreatedBy;
             };
             element.bind('blur', function() {
+              // the following variables are for the accordion.
+              // DO NOT change the number since it corresponds to the position in the html
+              mobileColumnName = this.attributes[0].textContent;
+              mobileRowId = this.attributes[1].textContent;
+              oldValue = this.defaultValue;
+              newValue = this.value;
+                $timeout(function() {
                   if ($scope.datasrc.FieldType === 'Text'){
-                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
                   } else if ($scope.datasrc.FieldType === 'Textarea') {
-                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
                   } else if ($scope.datasrc.FieldType === 'Radio') {
-                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
                   } else if ($scope.datasrc.FieldType === 'Check') {
-                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
                   } else if ($scope.datasrc.FieldType === 'Dropdown') {
-                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
                   } else if ($scope.datasrc.FieldType === 'Typeahead') {
-                    $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'Grid') {
+                    // this will only work for mobile Grid.
+                    // latptops and desktops have their own saving method shown in directive 'biGrid' at line 540
+                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, mobileColumnName, mobileRowId, newValue, 'Admin');
                   }
-                    // factoryToSendInformation.addAnswerObject(answerModel);
-                    console.log($scope.Answer);
 
+                  // this piece of code is used to remove the array and send the information as a string
+                  if($scope.response.Answer.length > 0){
+                    $scope.str = JSON.stringify($scope.response.Answer);
+                    $scope.answer = $scope.str.replace('[', '');
+                    $scope.answer = $scope.answer.replace(']', '');
+                    for(var i = 0; i < $scope.response.Answer.length; i++ ){
+                      $scope.answer = $scope.answer.replace('","', ',');
+                    }
+                  }else{
+                    $scope.answer = JSON.stringify($scope.response.Answer);
+                  }
+
+                  // USED for converting JSON string of fieldid to integer
+                  $scope.str = JSON.stringify($scope.response.fieldid);
+                  $scope.fieldid = $scope.str.replace('"', '');
+                  $scope.fieldid = $scope.fieldid.replace('"', '');
+
+                  // USED for converting JSON string to integer
+                  if(JSON.stringify($scope.response.rowid) !== '""'){
+                    $scope.str = JSON.stringify($scope.response.rowid);
+                    $scope.rowid = $scope.str.replace('"', '');
+                    $scope.rowid = $scope.rowid.replace('"', '');
+                  }else{
+                    $scope.rowid = JSON.stringify($scope.response.rowid);
+                  }
+
+                  var data = '[dbo].[pd_AddAnswer]' + ' '+ $scope.fieldid + ',' +
+                  JSON.stringify($scope.response.columnname) + ',' + $scope.rowid + ',' +
+                  $scope.answer+ ',' + JSON.stringify($scope.response.CreatedBy);
+                  console.log(data);
+                }, 0);
+            });
+            element.bind('onblurSave', function() {
+                $timeout(function() {
+                    $scope.$apply(attrs.focus + '=true');
+                }, 0);
             });
         }
       };
@@ -212,9 +262,6 @@ angular.module('biprojectDevelopmentApp')
         self.onSelect = function (selection) {
            $scope.datasrc.Answer = selection;
         };
-        // $scope.optionSelected = function(answer){
-        //   $scope.datasrc.Answer = answer;
-        // };
       },
       controllerAs: 'typeAheadCtrl'
     };
@@ -248,7 +295,6 @@ angular.module('biprojectDevelopmentApp')
           } else {
             if (idx > -1) {
               self.selectedAnswer.splice(idx, 1);
-              console.log(self.selectedAnswer);
             }
           }
         };
@@ -292,6 +338,8 @@ angular.module('biprojectDevelopmentApp')
       restrict: "EA",
       templateUrl: 'views/components/bi-grid.html',
       controller: function($scope) {
+        $scope.gridOptions = {};
+
         $scope.mobileDataSrc = [{
           "id": [
             1,
@@ -513,6 +561,19 @@ angular.module('biprojectDevelopmentApp')
             projectInputControlId: '10643',
             rowId: '1440188008566'
           }, ]
+
+        };
+        $scope.gridOptions.onRegisterApi = function(gridApi) {
+          //set gridApi on scope
+          $scope.gridApi = gridApi;
+          gridApi.edit.on.afterCellEdit($scope, function(rowEntity, colDef, newValue, oldValue) {
+            $scope.rowEntity = rowEntity;
+            $scope.colDef = colDef;
+            $scope.newValue = newValue;
+            $scope.oldValue = oldValue;
+
+            //Do your REST call here via $http.get or $http.post
+          });
         };
       }
     };
