@@ -8,7 +8,7 @@
  * Directives of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
-.directive('onblurSave', ['$timeout', function($timeout) {
+  .directive('onblurSave', ['$timeout', function($timeout) {
       return {
         restrict: 'A',
         link: function($scope, element, attrs ) {
@@ -19,10 +19,7 @@ angular.module('biprojectDevelopmentApp')
                 this.Answer = Answer;
                 this.CreatedBy = CreatedBy;
             };
-
             element.bind('blur', function() {
-                $timeout(function() {
-
                   if ($scope.datasrc.FieldType === 'Text'){
                     $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
                   } else if ($scope.datasrc.FieldType === 'Textarea') {
@@ -35,20 +32,15 @@ angular.module('biprojectDevelopmentApp')
                     $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
                   } else if ($scope.datasrc.FieldType === 'Typeahead') {
                     $scope.Answer = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } 
+                  }
                     // factoryToSendInformation.addAnswerObject(answerModel);
+                    console.log($scope.Answer);
 
-                }, 0);
-            });
-            element.bind('onblurSave', function() {
-                $timeout(function() {
-                    $scope.$apply(attrs.focus + '=true');
-                }, 0);
             });
         }
       };
   }])
-.directive('biAutoExpand', function() {
+  .directive('biAutoExpand', function() {
         return {
             restrict: 'A',
             link: function($scope, elem) {
@@ -90,7 +82,6 @@ angular.module('biprojectDevelopmentApp')
             }
         };
     })
-
   .directive('biFormCreator', function($compile) {
     return {
       restrict: "EA",
@@ -98,7 +89,7 @@ angular.module('biprojectDevelopmentApp')
         datasrc: '='
       },
       link: function(scope, element) {
-        element.empty().append($compile(scope.datasrc.directive)(scope));
+        element.empty().append($compile(scope.datasrc.Directive)(scope));
       }
     };
   })
