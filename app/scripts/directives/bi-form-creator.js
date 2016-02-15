@@ -8,7 +8,7 @@
  * Directives of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
-.directive('applicationHeader', function() {
+  .directive('applicationHeader', function() {
   return {
     restrict: "EA",
     template: '<section class="" style="margin-top:15px;">'+
@@ -66,57 +66,57 @@ angular.module('biprojectDevelopmentApp')
               mobileRowId = this.attributes[1].textContent;
               oldValue = this.defaultValue;
               newValue = this.value;
-                $timeout(function() {
-                  if ($scope.datasrc.FieldType === 'TEXT'){
-                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'TEXT-AREA') {
-                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'RADIO-LIST') {
-                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'CHECK-LIST') {
-                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'DROPDOWN') {
-                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'TYPEAHEAD') {
-                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'GRID') {
-                    // this will only work for mobile Grid.
-                    // latptops and desktops have their own saving method shown in directive 'biGrid' at line 540
-                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, mobileColumnName, mobileRowId, newValue, 'Admin');
-                  }
-
-                  // this piece of code is used to remove the array and send the information as a string
-                  if($scope.response.Answer.length > 0){
-                    $scope.str = JSON.stringify($scope.response.Answer);
-                    $scope.answer = $scope.str.replace('[', '');
-                    $scope.answer = $scope.answer.replace(']', '');
-                    for(var i = 0; i < $scope.response.Answer.length; i++ ){
-                      $scope.answer = $scope.answer.replace('","', ',');
-                    }
-                  }else{
-                    $scope.answer = JSON.stringify($scope.response.Answer);
-                  }
-
-                  // USED for converting JSON string of fieldid to integer
-                  $scope.str = JSON.stringify($scope.response.fieldid);
-                  $scope.fieldid = $scope.str.replace('"', '');
-                  $scope.fieldid = $scope.fieldid.replace('"', '');
-
-                  // USED for converting JSON string to integer
-                  if(JSON.stringify($scope.response.rowid) !== '""'){
-                    $scope.str = JSON.stringify($scope.response.rowid);
-                    $scope.rowid = $scope.str.replace('"', '');
-                    $scope.rowid = $scope.rowid.replace('"', '');
-                  }else{
-                    $scope.rowid = JSON.stringify($scope.response.rowid);
-                  }
-
-                  var data = '[dbo].[pd_AddAnswer]' + ' '+ $scope.fieldid + ',' +
-                  JSON.stringify($scope.response.columnname) + ',' + $scope.rowid + ',' +
-                  $scope.answer+ ',' + JSON.stringify($scope.response.CreatedBy);
-                  console.log(data);
-                }, 0);
-            });
+            //     $timeout(function() {
+            //       if ($scope.datasrc.FieldType === 'TEXT'){
+            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+            //       } else if ($scope.datasrc.FieldType === 'TEXT-AREA') {
+            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+            //       } else if ($scope.datasrc.FieldType === 'RADIO-LIST') {
+            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+            //       } else if ($scope.datasrc.FieldType === 'CHECK-LIST') {
+            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+            //       } else if ($scope.datasrc.FieldType === 'DROPDOWN') {
+            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+            //       } else if ($scope.datasrc.FieldType === 'TYPEAHEAD') {
+            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+            //       } else if ($scope.datasrc.FieldType === 'GRID') {
+            //         // this will only work for mobile Grid.
+            //         // latptops and desktops have their own saving method shown in directive 'biGrid' at line 540
+            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, mobileColumnName, mobileRowId, newValue, 'Admin');
+            //       }
+            //
+            //       // this piece of code is used to remove the array and send the information as a string
+            //       if($scope.response.Answer.length > 0){
+            //         $scope.str = JSON.stringify($scope.response.Answer);
+            //         $scope.answer = $scope.str.replace('[', '');
+            //         $scope.answer = $scope.answer.replace(']', '');
+            //         for(var i = 0; i < $scope.response.Answer.length; i++ ){
+            //           $scope.answer = $scope.answer.replace('","', ',');
+            //         }
+            //       }else{
+            //         $scope.answer = JSON.stringify($scope.response.Answer);
+            //       }
+            //
+            //       // USED for converting JSON string of fieldid to integer
+            //       $scope.str = JSON.stringify($scope.response.fieldid);
+            //       $scope.fieldid = $scope.str.replace('"', '');
+            //       $scope.fieldid = $scope.fieldid.replace('"', '');
+            //
+            //       // USED for converting JSON string to integer
+            //       if(JSON.stringify($scope.response.rowid) !== '""'){
+            //         $scope.str = JSON.stringify($scope.response.rowid);
+            //         $scope.rowid = $scope.str.replace('"', '');
+            //         $scope.rowid = $scope.rowid.replace('"', '');
+            //       }else{
+            //         $scope.rowid = JSON.stringify($scope.response.rowid);
+            //       }
+            //
+            //       var data = '[dbo].[pd_AddAnswer]' + ' '+ $scope.fieldid + ',' +
+            //       JSON.stringify($scope.response.columnname) + ',' + $scope.rowid + ',' +
+            //       $scope.answer+ ',' + JSON.stringify($scope.response.CreatedBy);
+            //       console.log(data);
+            //     }, 0);
+             });
             element.bind('onblurSave', function() {
                 $timeout(function() {
                     $scope.$apply(attrs.focus + '=true');
