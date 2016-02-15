@@ -1,5 +1,6 @@
 <!doctype html>
-<div>
+<div class="container">
+  <application-header></application-header>
   <!-- SEARCH PROJECT -->
     <div class="container-fluid">
         <div class="row">
@@ -25,21 +26,20 @@
         <a ng-click="main.gotToProject(project.ProjectName)"
         style="cursor:pointer;">{{project.ProjectName}}</a></div></div>
     </div>
-</div>
+    <section class="panel panel-default">
+      <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Wizard Form</strong></div>
+      <div class="panel-body">
+        <div class="vertical wizard clearfix" data-ui-wizard-form="" role="application" id="steps-uid-1"><div class="steps clearfix"><ul role="tablist"><li role="tab" class="first current" aria-disabled="false" aria-selected="true"><a id="steps-uid-1-t-0" href="#steps-uid-1-h-0" aria-controls="steps-uid-1-p-0"><span class="current-info audible">current step: </span><span class="number">1.</span> First Step</a></li><li role="tab" class="done" aria-disabled="false" aria-selected="false"><a id="steps-uid-1-t-1" href="#steps-uid-1-h-1" aria-controls="steps-uid-1-p-1"><span class="number">2.</span> Second Step</a></li><li role="tab" class="last done" aria-disabled="false" aria-selected="false"><a id="steps-uid-1-t-2" href="#steps-uid-1-h-2" aria-controls="steps-uid-1-p-2"><span class="number">3.</span> Third Step</a></li></ul></div><div class="content clearfix">
+          <h1 id="steps-uid-1-h-0" tabindex="-1" class="title current">First Step</h1>
+          <div id="steps-uid-1-p-0" role="tabpanel" aria-labelledby="steps-uid-1-h-0" class="body current" aria-hidden="false" style="display: block;">First Content</div>
 
-<section class="panel panel-default">
-        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Wizard Form</strong></div>
-        <div class="panel-body">
-            <div class="vertical wizard clearfix" data-ui-wizard-form="" role="application" id="steps-uid-1"><div class="steps clearfix"><ul role="tablist"><li role="tab" class="first current" aria-disabled="false" aria-selected="true"><a id="steps-uid-1-t-0" href="#steps-uid-1-h-0" aria-controls="steps-uid-1-p-0"><span class="current-info audible">current step: </span><span class="number">1.</span> First Step</a></li><li role="tab" class="done" aria-disabled="false" aria-selected="false"><a id="steps-uid-1-t-1" href="#steps-uid-1-h-1" aria-controls="steps-uid-1-p-1"><span class="number">2.</span> Second Step</a></li><li role="tab" class="last done" aria-disabled="false" aria-selected="false"><a id="steps-uid-1-t-2" href="#steps-uid-1-h-2" aria-controls="steps-uid-1-p-2"><span class="number">3.</span> Third Step</a></li></ul></div><div class="content clearfix">
-                <h1 id="steps-uid-1-h-0" tabindex="-1" class="title current">First Step</h1>
-                <div id="steps-uid-1-p-0" role="tabpanel" aria-labelledby="steps-uid-1-h-0" class="body current" aria-hidden="false" style="display: block;">First Content</div>
+          <h1 id="steps-uid-1-h-1" tabindex="-1" class="title">Second Step</h1>
+          <div id="steps-uid-1-p-1" role="tabpanel" aria-labelledby="steps-uid-1-h-1" class="body" aria-hidden="true" style="display: none;">Second Content</div>
 
-                <h1 id="steps-uid-1-h-1" tabindex="-1" class="title">Second Step</h1>
-                <div id="steps-uid-1-p-1" role="tabpanel" aria-labelledby="steps-uid-1-h-1" class="body" aria-hidden="true" style="display: none;">Second Content</div>
+          <h1 id="steps-uid-1-h-2" tabindex="-1" class="title">Third Step</h1>
+          <div id="steps-uid-1-p-2" role="tabpanel" aria-labelledby="steps-uid-1-h-2" class="body" aria-hidden="true" style="display: none;">Third Content</div>
+        </div><div class="actions clearfix"><ul role="menu" aria-label="Pagination"><li class="disabled" aria-disabled="true"><a href="#previous" role="menuitem">Previous</a></li><li aria-hidden="false" aria-disabled="false" class="" style="display: block;"><a href="#next" role="menuitem">Next</a></li><li aria-hidden="true" style="display: none;"><a href="#finish" role="menuitem">Finish</a></li></ul></div></div>
 
-                <h1 id="steps-uid-1-h-2" tabindex="-1" class="title">Third Step</h1>
-                <div id="steps-uid-1-p-2" role="tabpanel" aria-labelledby="steps-uid-1-h-2" class="body" aria-hidden="true" style="display: none;">Third Content</div>
-            </div><div class="actions clearfix"><ul role="menu" aria-label="Pagination"><li class="disabled" aria-disabled="true"><a href="#previous" role="menuitem">Previous</a></li><li aria-hidden="false" aria-disabled="false" class="" style="display: block;"><a href="#next" role="menuitem">Next</a></li><li aria-hidden="true" style="display: none;"><a href="#finish" role="menuitem">Finish</a></li></ul></div></div>
-
-        </div>
+      </div>
     </section>
+</div>

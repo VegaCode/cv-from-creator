@@ -1,56 +1,59 @@
 <!-- PICK TEMPLATE -->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12" style="margin: 10px 0px 0px 11px;">
-      <div class="row">
-        <div class="col-md-2">
-          <div class="row">
-            <div class="btn-group dropdown" uib-dropdown="">
-              <button id="split-button" type="button" class="btn btn-default">Template</button>
-              <button type="button" class="btn btn-info dropdown-toggle" uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
-                <span class="caret"></span>
-                <span class="sr-only">Split button!</span>
-              </button>
-              <ul uib-dropdown-menu="" role="menu" aria-labelledby="split-button" class="dropdown-menu">
-                <li ng-repeat="choice in template.items">
-                  <a href data-templateId="{{choice.TemplateId}}" ng-click="template.selectedTemplate($event)">{{choice.Description}}</a>
-                </li>
-              </ul>
+<div class="container">
+  <application-header></application-header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12" style="margin: 10px 0px 0px 11px;">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="row">
+              <div class="btn-group dropdown" uib-dropdown="">
+                <button id="split-button" type="button" class="btn btn-default">Template</button>
+                <button type="button" class="btn btn-info dropdown-toggle" uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                  <span class="sr-only">Split button!</span>
+                </button>
+                <ul uib-dropdown-menu="" role="menu" aria-labelledby="split-button" class="dropdown-menu">
+                  <li ng-repeat="choice in template.items">
+                    <a href data-templateId="{{choice.TemplateId}}" ng-click="template.selectedTemplate($event)">{{choice.Description}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md-12">
+                <h4>
+                  <span class="label label-info">Project Name
+                  </span>
+                </h4>
+              </div>
+              <div class="col-md-12">
+                <h4 style="padding-top: 10px;">
+                  <span class="alert alert-info">{{template.projectName}}</span>
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="row ">
+              <div class="col-md-12">
+                <h4>
+                  <span class="label label-{{template.labelColor}}">Template Name</span>
+                </h4>
+              </div>
+              <div class="col-md-12">
+                <h4 style="padding-top: 10px;">
+                  <span class="alert alert-{{template.templateTextClassFill}}">{{template.templateName}}</span>
+                </h4>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-5">
-          <div class="row">
-            <div class="col-md-12">
-              <h4>
-                <span class="label label-info">Project Name
-                </span>
-              </h4>
-            </div>
-            <div class="col-md-12">
-              <h4 style="padding-top: 10px;">
-                <span class="alert alert-info">{{template.projectName}}</span>
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div class="row ">
-            <div class="col-md-12">
-              <h4>
-                <span class="label label-{{template.labelColor}}">Template Name</span>
-              </h4>
-            </div>
-            <div class="col-md-12">
-              <h4 style="padding-top: 10px;">
-                <span class="alert alert-{{template.templateTextClassFill}}">{{template.templateName}}</span>
-              </h4>
-            </div>
-          </div>
-        </div>
+        <hr>
+        <ng-md-icon tooltip="{{template.tooltip}}" tooltip-trigger="mouseenter" icon="{{template.icon}}" ng-click="template.goToLayout()" ng-attr-style="{{template.iconFill}}; cursor: pointer;" size="42" class="pull-right"></ng-md-icon>
       </div>
-      <hr>
-      <ng-md-icon tooltip="{{template.tooltip}}" tooltip-trigger="mouseenter" icon="{{template.icon}}" ng-click="template.goToLayout()" ng-attr-style="{{template.iconFill}}; cursor: pointer;" size="42" class="pull-right"></ng-md-icon>
     </div>
   </div>
 </div>

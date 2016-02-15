@@ -354,28 +354,28 @@ angular.module('biprojectDevelopmentApp')
        var mobileGridSql = JSON.stringify('[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetPhoneGrid] '+ _FiledId);
        var apiCall = 'api/BiFormCreator/';
 
-        $http.post(webBaseUrl + apiCall, JSON.stringify('[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetFieldtype]')).success(function(results) {
+        $http.post(webBaseUrl + apiCall, mobileGridHeaderSql).success(function(results) {
           self.mobileDataSrc.header=results;
         });
-        //
-        // $http.post(webBaseUrl + apiCall, mobileGridSql).success(function(results) {
-        //     self.mobileDataSrc=results;
-        // });
-        //
-        // $http.post(webBaseUrl + apiCall, GridSql).success(function(results) {
-        //   self.gridOptions.data=results;
-        //   self.gridOptions.headerTemplate= '<div class="ui-grid-top-panel" style="padding: 5px; height: 30px;">'+
-        //     '  <a class="glyphicon glyphicon-plus" style="width: 4%;"></a>'+
-        //     '  <a class="glyphicon glyphicon-pencil" style="width: 4%;"></a>'+
-        //     '  <a class="glyphicon glyphicon-remove" style="width: 4%;"></a>'+
-        //     '  <a class="glyphicon glyphicon-trash" style="width: 4%;"></a>'+
-        //     '  <a class="glyphicon glyphicon-floppy-save" style="width: 4%;"></a>'+
-        //     '  <a class="glyphicon glyphicon-open" style="width: 4%;"></a></div>'+
-        //     '  <div class="ui-grid-top-panel ui-grid-header-cell sortable"'+
-        //     '  ng-repeat="col in colContainer.renderedColumns track by col.colDef.name"'+
-        //     '  ui-grid-header-cell="" col="col">'+
-        //     '  </div>';
-        // });
+
+        $http.post(webBaseUrl + apiCall, mobileGridSql).success(function(results) {
+            self.mobileDataSrc=results;
+        });
+
+        $http.post(webBaseUrl + apiCall, GridSql).success(function(results) {
+          self.gridOptions.data=results;
+          self.gridOptions.headerTemplate= '<div class="ui-grid-top-panel" style="padding: 5px; height: 30px;">'+
+            '  <a class="glyphicon glyphicon-plus" style="width: 4%;"></a>'+
+            '  <a class="glyphicon glyphicon-pencil" style="width: 4%;"></a>'+
+            '  <a class="glyphicon glyphicon-remove" style="width: 4%;"></a>'+
+            '  <a class="glyphicon glyphicon-trash" style="width: 4%;"></a>'+
+            '  <a class="glyphicon glyphicon-floppy-save" style="width: 4%;"></a>'+
+            '  <a class="glyphicon glyphicon-open" style="width: 4%;"></a></div>'+
+            '  <div class="ui-grid-top-panel ui-grid-header-cell sortable"'+
+            '  ng-repeat="col in colContainer.renderedColumns track by col.colDef.name"'+
+            '  ui-grid-header-cell="" col="col">'+
+            '  </div>';
+        });
 
 
         //

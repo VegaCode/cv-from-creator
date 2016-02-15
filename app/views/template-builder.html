@@ -1,0 +1,46 @@
+<application-header></application-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="row" ng-repeat="component in templateBuilder.components track by $index">
+        <div class="col-md-6">
+          <!-- this is used to keep consistensy in color, shape and same framework -->
+          <md-button class="md-raised md-primary bi-label-width"
+                      data-fieldtypeid="{{component.FieldTypeId}}"
+                      ng-click="templateBuilder.createComponent(component.Directive)">{{component.FieldType}}</md-button>
+        </div>
+        <div class="col-md-2">
+          <md-button class="md-raised md-primary"
+                      ng-click="templateBuilder.duplicateComponent(templateBuilder.fieldTypeId[$index])">Duplicate</md-button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <md-card>
+        <md-content>
+          <md-title class="text-center">
+            <h1 >PREVIEW</h1>
+          </md-title>
+          <hr>
+          <div id="testElement">
+            <h3>i'm appending</h3>
+          </div>
+          <form class="form-horizontal" role="form">
+            <div ng-repeat="component in  templateBuilder.componentConfig track by $index" ng-show="{{component.Access}}" style="padding-top: 20px">
+              <div ng-if="component.FieldTypeId !== 'Title' && component.FieldTypeId !== 'Subtitle'
+                                  && component.FieldTypeId !== 'Grid' && component.FieldTypeId !== 'Label'">
+                <md-card>
+                  <div bi-form-creator datasrc="component"></div>
+                </md-card>
+              </div>
+              <div ng-if="component.FieldTypeId === 'Title' || component.FieldTypeId === 'Subtitle'
+                                    || component.FieldTypeId === 'Grid' || component.FieldTypeId === 'Label'">
+                <div bi-form-creator datasrc="component"></div>
+              </div>
+            </div>
+          </form>
+        </md-content>
+      </md-card>
+    </div>
+  </div>
+</div>
