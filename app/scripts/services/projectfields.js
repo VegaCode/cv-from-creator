@@ -8,13 +8,9 @@
  * Controller of the biprojectDevelopmentApp
  */
 var webBaseUrl;
-webBaseUrl = 'http://localhost:64378/';
 webBaseUrl = 'https://tools.brandinstitute.com/BIWebServices/';
+webBaseUrl = 'http://localhost:64378/';
 angular.module('biprojectDevelopmentApp')
-
-  .factory("General", function generalFactory($resource){
-    return $resource ( webBaseUrl + 'api/BIFCWebApi', {}, {});
-  })
   .factory('bidocsGetProject', [
     '$http', '$q',
     function($http, $q) {
@@ -72,12 +68,13 @@ angular.module('biprojectDevelopmentApp')
       return factory;
     }
   ])
-  .factory('getProjectFields', function($http, $q) {
-      var apiCall, deferred, factory, _getFileds;
+  .factory('getProjectData', function($http, $q) {
+      var apiCall, deferred, factory, _getFileds,_getRegularGrid,_getMobileGrid,_getHeaders;
       factory = {};
       deferred = $q.defer();
       apiCall = 'api/BiFormCreator/';
-      _getFileds = function(data) {
+
+      _getFileds = function(data){
         $http.post(webBaseUrl + apiCall, data).success(function(results) {
           deferred.resolve(results);
         }).error(function(err) {
@@ -85,6 +82,34 @@ angular.module('biprojectDevelopmentApp')
         });
         return deferred.promise;
       };
+      // _getRegularGrid = function(data){
+      //   $http.post(webBaseUrl + apiCall, data).success(function(results) {
+      //     deferred.resolve(results);
+      //   }).error(function(err) {
+      //     deferred.reject(err);
+      //   });
+      //   return deferred.promise;
+      // };
+      // _getMobileGrid = function(data){
+      //   $http.post(webBaseUrl + apiCall, data).success(function(results) {
+      //     deferred.resolve(results);
+      //   }).error(function(err) {
+      //     deferred.reject(err);
+      //   });
+      //   return deferred.promise;
+      // };
+      // _getHeaders = function(data){
+      //   $http.post(webBaseUrl + apiCall, data).success(function(results) {
+      //     deferred.resolve(results);
+      //   }).error(function(err) {
+      //     deferred.reject(err);
+      //   });
+      //   return deferred.promise;
+      // };
+
       factory.getFileds = _getFileds;
+      // factory.getRegularGrid = _getRegularGrid;
+      // factory.getMobileGrid = _getMobileGrid;
+      // factory.getHeaders = _getHeaders;
       return factory;
   });

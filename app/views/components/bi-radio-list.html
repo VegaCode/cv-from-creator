@@ -10,7 +10,7 @@
         <md-radio-group layout="row" ng-model="datasrc.Answer" ng-repeat="option in RadioListCtrl.optionsArrayToDisplay track by $index" >
           <md-radio-button onblur-save
           class="reponsive-display-list"
-           data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+           data-fieldtypeid="{{datasrc.FieldTypeId}}"
            data-projectId=" {{datasrc.ProjectId}}" ng-value="option"
            ng-click="RadioListCtrl.selectedRadioButtonValue(option)">
            <div ng-attr-style="width: {{RadioListCtrl.labelSize}} !important">

@@ -32,22 +32,22 @@ angular.module('biprojectDevelopmentApp')
               oldValue = this.defaultValue;
               newValue = this.value;
                 $timeout(function() {
-                  if ($scope.datasrc.FieldType === 'Text'){
-                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'Textarea') {
-                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'Radio') {
-                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'Check') {
-                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'Dropdown') {
-                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'Typeahead') {
-                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'Grid') {
+                  if ($scope.datasrc.FieldType === 'TEXT'){
+                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'TEXT-AREA') {
+                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'RADIO-LIST') {
+                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'CHECK-LIST') {
+                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'DROPDOWN') {
+                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'TYPEAHEAD') {
+                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
+                  } else if ($scope.datasrc.FieldType === 'GRID') {
                     // this will only work for mobile Grid.
                     // latptops and desktops have their own saving method shown in directive 'biGrid' at line 540
-                    $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, mobileColumnName, mobileRowId, newValue, 'Admin');
+                    $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, mobileColumnName, mobileRowId, newValue, 'Admin');
                   }
 
                   // this piece of code is used to remove the array and send the information as a string
@@ -297,6 +297,9 @@ angular.module('biprojectDevelopmentApp')
               self.selectedAnswer.splice(idx, 1);
             }
           }
+          var answer = self.selectedAnswer.join(',');
+          var answer = '';
+
         };
       },
       controllerAs: 'CheckListCtrl'
@@ -336,237 +339,179 @@ angular.module('biprojectDevelopmentApp')
   .directive('biGrid', function() {
     return {
       restrict: "EA",
+        controllerAs:'grid',
       templateUrl: 'views/components/bi-grid.html',
-      controller: function($scope) {
-        $scope.gridOptions = {};
+      controller: function($scope, $http){
+       var self =this
+       var webBaseUrl;
+       webBaseUrl = 'https://tools.brandinstitute.com/BIWebServices/';
+       webBaseUrl = 'http://localhost:64378/';
+       self.gridOptions = {};
+       self.mobileDataSrc= {};
+       var _FiledId =$scope.datasrc.FieldTypeId;
+       var mobileGridHeaderSql = JSON.stringify('[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetPhoneGridHeader] '+ _FiledId);
+       var GridSql = JSON.stringify('[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetRegularGrid] '+ _FiledId);
+       var mobileGridSql = JSON.stringify('[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetPhoneGrid] '+ _FiledId);
+       var apiCall = 'api/BiFormCreator/';
 
-        $scope.mobileDataSrc = [{
-          "id": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "appropriately": [
-            "Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No",
-            "Not Applicable",
-            "",
-            ""
-          ],
-          "dosage": [
-            "Dosage Form/Route of Administration",
-            "None",
-            "",
-            ""
-          ],
-          "dosing": [
-            "Interval",
-            "None",
-            "",
-            ""
-          ],
-          "number": [
-            "0",
-            "1",
-            "2",
-            "3"
-          ],
-          "product": [
-            "Product Name/Medical Term/Prescription Abbreviation",
-            "None",
-            "",
-            ""
-          ],
-          "testNames": [
-            "Instructions ->",
-            "ANSLARA",
-            "ANZYLARA",
-            "LARTRANA"
-          ],
-          "projectId": [
-            "10023",
-            "10023",
-            "10023",
-            "10023"
-          ],
-          "projectInputControlId": [
-            "10643",
-            "10643",
-            "10643",
-            "10643"
-          ],
-          "rowId": [
-            "1437499370066",
-            "1437499432516",
-            "1437499437886",
-            "1440188008566"
-          ]
-        }, {
-          "header": [
-            "id",
-            "appropriately",
-            "dosage",
-            "dosing",
-            "number",
-            "product",
-            "testNames",
-            "projectId",
-            "projectInputControlId",
-            "rowId"
-          ]
-        }];
+        $http.post(webBaseUrl + apiCall, JSON.stringify('[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetFieldtype]')).success(function(results) {
+          self.mobileDataSrc.header=results;
+        });
+        //
+        // $http.post(webBaseUrl + apiCall, mobileGridSql).success(function(results) {
+        //     self.mobileDataSrc=results;
+        // });
+        //
+        // $http.post(webBaseUrl + apiCall, GridSql).success(function(results) {
+        //   self.gridOptions.data=results;
+        //   self.gridOptions.headerTemplate= '<div class="ui-grid-top-panel" style="padding: 5px; height: 30px;">'+
+        //     '  <a class="glyphicon glyphicon-plus" style="width: 4%;"></a>'+
+        //     '  <a class="glyphicon glyphicon-pencil" style="width: 4%;"></a>'+
+        //     '  <a class="glyphicon glyphicon-remove" style="width: 4%;"></a>'+
+        //     '  <a class="glyphicon glyphicon-trash" style="width: 4%;"></a>'+
+        //     '  <a class="glyphicon glyphicon-floppy-save" style="width: 4%;"></a>'+
+        //     '  <a class="glyphicon glyphicon-open" style="width: 4%;"></a></div>'+
+        //     '  <div class="ui-grid-top-panel ui-grid-header-cell sortable"'+
+        //     '  ng-repeat="col in colContainer.renderedColumns track by col.colDef.name"'+
+        //     '  ui-grid-header-cell="" col="col">'+
+        //     '  </div>';
+        // });
 
-        $scope.gridOptions = {
-          headerTemplate: '<div class="ui-grid-top-panel" style="padding: 5px; height: 30px;">'+
-          '  <a class="glyphicon glyphicon-plus" style="width: 4%;"></a>'+
-          '  <a class="glyphicon glyphicon-pencil" style="width: 4%;"></a>'+
-          '  <a class="glyphicon glyphicon-remove" style="width: 4%;"></a>'+
-          '  <a class="glyphicon glyphicon-trash" style="width: 4%;"></a>'+
-          '  <a class="glyphicon glyphicon-floppy-save" style="width: 4%;"></a>'+
-          '  <a class="glyphicon glyphicon-open" style="width: 4%;"></a></div>'+
-          '  <div class="ui-grid-top-panel ui-grid-header-cell sortable"'+
-          '  ng-repeat="col in colContainer.renderedColumns track by col.colDef.name"'+
-          '  ui-grid-header-cell="" col="col">'+
-          '  </div>',
-          data: [{
-            id: '1',
-            appropriately: 'Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No',
-            dosage: 'Dosage Form/Route of Administration',
-            dosing: 'Interval',
-            number: '0',
-            product: 'Product Name/Medical Term/Prescription Abbreviation',
-            testNames: 'Instructions ->',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1437499370066'
-          }, {
-            id: '2',
-            appropriately: 'Not Applicable',
-            dosage: 'None',
-            dosing: 'None',
-            number: '1',
-            product: 'None',
-            testNames: 'ANSLARA',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1437499432516'
-          }, {
-            id: '3',
-            appropriately: 'Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No',
-            dosage: 'Dosage Form/Route of Administration',
-            dosing: 'Interval',
-            number: '0',
-            product: 'Product Name/Medical Term/Prescription Abbreviation',
-            testNames: 'Instructions ->',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1437499370066'
-          }, {
-            id: '4',
-            appropriately: 'Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No',
-            dosage: 'Dosage Form/Route of Administration',
-            dosing: 'Interval',
-            number: '0',
-            product: 'Product Name/Medical Term/Prescription Abbreviation',
-            testNames: 'Instructions ->',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1437499370066'
-          }, {
-            id: '5',
-            appropriately: 'Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No',
-            dosage: 'Dosage Form/Route of Administration',
-            dosing: 'Interval',
-            number: '0',
-            product: 'Product Name/Medical Term/Prescription Abbreviation',
-            testNames: 'Instructions ->',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1437499370066'
-          }, {
-            id: '6',
-            appropriately: '',
-            dosage: '',
-            dosing: '',
-            number: '2',
-            product: '',
-            testNames: 'ANZYLARA',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1437499437886'
-          }, {
-            id: '7',
-            appropriately: '',
-            dosage: '',
-            dosing: '',
-            number: '3',
-            product: '',
-            testNames: 'LARTRANA',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1440188008566'
-          }, {
-            id: '8',
-            appropriately: '',
-            dosage: '',
-            dosing: '',
-            number: '3',
-            product: '',
-            testNames: 'LARTRANA',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1440188008566'
-          }, {
-            id: '9',
-            appropriately: '',
-            dosage: '',
-            dosing: '',
-            number: '3',
-            product: '',
-            testNames: 'LARTRANA',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1440188008566'
-          }, {
-            id: '10',
-            appropriately: '',
-            dosage: '',
-            dosing: '',
-            number: '3',
-            product: '',
-            testNames: 'LARTRANA',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1440188008566'
-          }, {
-            id: '11',
-            appropriately: '',
-            dosage: '',
-            dosing: '',
-            number: '3',
-            product: '',
-            testNames: 'LARTRANA',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1440188008566'
-          }, {
-            id: '12',
-            appropriately: '',
-            dosage: '',
-            dosing: '',
-            number: '3',
-            product: '',
-            testNames: 'LARTRANA',
-            projectId: '10023',
-            projectInputControlId: '10643',
-            rowId: '1440188008566'
-          }, ]
 
-        };
-        $scope.gridOptions.onRegisterApi = function(gridApi) {
-          //set gridApi on scope
-          $scope.gridApi = gridApi;
-          gridApi.edit.on.afterCellEdit($scope, function(rowEntity, colDef, newValue, oldValue) {
+        //
+        // getProjectData.getHeaders(JSON.stringify('[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetPhoneGridHeader] '+ _FiledId))
+        // .then(function (results) {
+        //   self.mobileDataSrc.header=results;
+        // })
+        //
+        // getProjectData.getRegularGrid(JSON.stringify('[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetRegularGrid] '+ _FiledId))
+        // .then(function (results) {
+        //   self.gridOptions.data=results;
+        //   self.gridOptions.headerTemplate= '<div class="ui-grid-top-panel" style="padding: 5px; height: 30px;">'+
+        //     '  <a class="glyphicon glyphicon-plus" style="width: 4%;"></a>'+
+        //     '  <a class="glyphicon glyphicon-pencil" style="width: 4%;"></a>'+
+        //     '  <a class="glyphicon glyphicon-remove" style="width: 4%;"></a>'+
+        //     '  <a class="glyphicon glyphicon-trash" style="width: 4%;"></a>'+
+        //     '  <a class="glyphicon glyphicon-floppy-save" style="width: 4%;"></a>'+
+        //     '  <a class="glyphicon glyphicon-open" style="width: 4%;"></a></div>'+
+        //     '  <div class="ui-grid-top-panel ui-grid-header-cell sortable"'+
+        //     '  ng-repeat="col in colContainer.renderedColumns track by col.colDef.name"'+
+        //     '  ui-grid-header-cell="" col="col">'+
+        //     '  </div>';
+        // })
+        //
+        // getProjectData.getMobileGrid(JSON.stringify('[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetPhoneGrid] '+ _FiledId))
+        // .then(function (results) {
+        //   self.mobileDataSrc=results;
+        // })
+
+        //
+        //
+        // self.mobileDataSrc = [{
+        //   "id": [
+        //     1,
+        //     2,
+        //     3,
+        //     4
+        //   ],
+        //   "appropriately": [
+        //     "Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No",
+        //     "Not Applicable",
+        //     "",
+        //     ""
+        //   ],
+        //   "dosage": [
+        //     "Dosage Form/Route of Administration",
+        //     "None",
+        //     "",
+        //     ""
+        //   ],
+        //   "dosing": [
+        //     "Interval",
+        //     "None",
+        //     "",
+        //     ""
+        //   ],
+        //   "number": [
+        //     "0",
+        //     "1",
+        //     "2",
+        //     "3"
+        //   ],
+        //   "product": [
+        //     "Product Name/Medical Term/Prescription Abbreviation",
+        //     "None",
+        //     "",
+        //     ""
+        //   ],
+        //   "testNames": [
+        //     "Instructions ->",
+        //     "ANSLARA",
+        //     "ANZYLARA",
+        //     "LARTRANA"
+        //   ],
+        //   "projectId": [
+        //     "10023",
+        //     "10023",
+        //     "10023",
+        //     "10023"
+        //   ],
+        //   "projectInputControlId": [
+        //     "10643",
+        //     "10643",
+        //     "10643",
+        //     "10643"
+        //   ],
+        //   "rowId": [
+        //     "1437499370066",
+        //     "1437499432516",
+        //     "1437499437886",
+        //     "1440188008566"
+        //   ]
+        // }, {
+        //   "header": [
+        //     "id",
+        //     "appropriately",
+        //     "dosage",
+        //     "dosing",
+        //     "number",
+        //     "product",
+        //     "testNames",
+        //     "projectId",
+        //     "projectInputControlId",
+        //     "rowId"
+        //   ]
+        // }];
+        //
+        // self.gridOptions = {
+        //   headerTemplate: '<div class="ui-grid-top-panel" style="padding: 5px; height: 30px;">'+
+        //   '  <a class="glyphicon glyphicon-plus" style="width: 4%;"></a>'+
+        //   '  <a class="glyphicon glyphicon-pencil" style="width: 4%;"></a>'+
+        //   '  <a class="glyphicon glyphicon-remove" style="width: 4%;"></a>'+
+        //   '  <a class="glyphicon glyphicon-trash" style="width: 4%;"></a>'+
+        //   '  <a class="glyphicon glyphicon-floppy-save" style="width: 4%;"></a>'+
+        //   '  <a class="glyphicon glyphicon-open" style="width: 4%;"></a></div>'+
+        //   '  <div class="ui-grid-top-panel ui-grid-header-cell sortable"'+
+        //   '  ng-repeat="col in colContainer.renderedColumns track by col.colDef.name"'+
+        //   '  ui-grid-header-cell="" col="col">'+
+        //   '  </div>',
+        //   data: [{
+        //     id: '1',
+        //     appropriately: 'Name appropriately includes or suggests   composition of the drug product (if applicable) Yes/No',
+        //     dosage: 'Dosage Form/Route of Administration',
+        //     dosing: 'Interval',
+        //     number: '0',
+        //     product: 'Product Name/Medical Term/Prescription Abbreviation',
+        //     testNames: 'Instructions ->',
+        //     projectId: '10023',
+        //     projectInputControlId: '10643',
+        //     rowId: '1437499370066'
+        //   }]
+        // };
+        self.gridOptions.onRegisterApi = function(gridApi) {
+          //set desktop gridApi on scope
+          self.gridApi = gridApi;
+          gridApi.edit.on.afterCellEdit($scope, function(rowEntity, colDef, newValue, oldValue){
             $scope.rowEntity = rowEntity;
             $scope.colDef = colDef;
             $scope.newValue = newValue;
@@ -576,5 +521,5 @@ angular.module('biprojectDevelopmentApp')
           });
         };
       }
-    };
+    }
   });

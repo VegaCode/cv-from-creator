@@ -8,7 +8,7 @@
  * Controller of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
-  .controller('ProjectCtrl',[ 'getProjectFields', '$routeParams', function (getProjectFields,$routeParams) {
+  .controller('ProjectCtrl',[ 'getProjectData', '$routeParams', function (getProjectData,$routeParams) {
     var self = this;
         self.toggleEditClass = 'glyphicon glyphicon-save ';
         self.btnColorClass = 'btn btn-success';
@@ -31,7 +31,7 @@ angular.module('biprojectDevelopmentApp')
 
         var value = '[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetFields] ' + '10008';
         value = JSON.stringify(value);
-        getProjectFields.getFileds(value).then(function (results) {
+        getProjectData.getFileds(value).then(function (results) {
            self.componentConfig = results;
         })
 

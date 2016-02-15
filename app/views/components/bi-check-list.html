@@ -11,7 +11,7 @@
             ng-repeat="option in CheckListCtrl.optionsArrayToDisplay track by $index">
           <md-checkbox onblur-save
               class="reponsive-display-list md-primary"
-              data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+              data-fieldtypeid="{{datasrc.FieldTypeId}}"
               data-projectId=" {{datasrc.ProjectId}}"
               ng-click="CheckListCtrl.selectedCheckBoxValue(option)"
               value="{{option}}">

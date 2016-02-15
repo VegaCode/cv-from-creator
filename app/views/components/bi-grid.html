@@ -1,14 +1,17 @@
 <div class="container-fluid">
-  <div class="row visible-md visible-lg">
-    <div ui-grid-edit class="grid" data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}"
-    data-ProjectId=" {{mobileDataSrc.ProjectId}}" ui-grid="gridOptions"></div>
+  <div  class="row visible-md visible-lg"
+        data-fieldtypeid="{{datasrc.FieldTypeId}}"
+        data-ProjectId=" {{datasrc.ProjectId}}" >
+    <div ui-grid-edit class="grid" ui-grid="grid.gridOptions"></div>
   </div>
-  <v-accordion class="vAccordion--default" multiple>
+  <v-accordion  class="vAccordion--default"
+                multiple data-fieldtypeid="{{datasrc.FieldTypeId}}"
+                data-ProjectId=" {{datasrc.ProjectId}}" >
   <!-- <v-accordion class="vAccordion--default visible-xs visible-sm" multiple> -->
     <!-- add expanded attribute to open the section -->
-    <v-pane data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}" data-ProjectId=" {{mobileDataSrc.ProjectId}}" enabled ng-model="mobileDataSrc[1].header" ng-repeat="item in mobileDataSrc[0] track by $index">
+    <v-pane enabled  ng-repeat="item in grid.mobileDataSrc[0] track by $index">
       <v-pane-header>
-        {{mobileDataSrc[1].header[$index]}}
+        {{grid.mobileDataSrc[1].header[$index]}}
       </v-pane-header>
       <v-pane-content>
         <div ng-repeat="content in item track by $index">
@@ -16,7 +19,8 @@
             <div class="col-xs-12">
               <span class="bi-mobile-grid">{{$index+1}}.</span>
               <!-- PLEASE DO NOT CHANGE POSITION OF data-header and data-index -->
-              <textarea data-header="{{mobileDataSrc[1].header[$index]}}" data-index="{{$index+1}}" bi-auto-expand onblur-save class="form-control bi-form-control-mobile-grid"
+              <textarea data-header="{{grid.mobileDataSrc[1].header[$index]}}" data-index="{{$index+1}}"
+              bi-auto-expand onblur-save class="form-control bi-form-control-mobile-grid"
               style="border: 0">{{content}}</textarea>
               <hr>
             </div>

@@ -15,7 +15,7 @@
           style="height: 100%;"
           placeholder={{datasrc.PlaceHolder}}
           data-ProjectId=" {{datasrc.ProjectId}}"
-          data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+          data-fieldtypeid="{{datasrc.FieldTypeId}}"
           ng-keyup="typeAheadCtrl.logKey($event)"
           typeahead-on-select="typeAheadCtrl.onSelect($item, $model, $label)"
           ng-model="selected">
