@@ -9,12 +9,13 @@
      <md-card-content>
       <div class="row">
         <div class="col-md-8 col-md-offset-4">
-           <select name="{{datasrc.Label}} "
+           <select onblur-save name="{{datasrc.Label}}"
      class="form-control" focus="someFocusVariable"
      data-projectId=" {{datasrc.ProjectID}}"
      data-ProjectInputControlId="{{datasrc.ProjectInputControlId}}"
      ng-model="answer"
      ng-show="datasrc.IsActive"
+     ng-change="optionSelected(answer)"
      ng-options="item for item in datasrc.OptionList.split(',')">
      <option value="">Choose One</option>
      </select>

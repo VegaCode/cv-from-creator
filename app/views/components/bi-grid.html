@@ -3,12 +3,17 @@
     <div class="grid" data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}"
     data-ProjectId=" {{mobileDataSrc.ProjectId}}" ui-grid="gridOptions"></div>
   </div>
-  <v-accordion class="vAccordion--default" multiple>
+  <v-accordion  class="vAccordion--default"
+                multiple data-fieldtypeid="{{datasrc.FieldTypeId}}"
+                data-ProjectId=" {{datasrc.ProjectId}}" >
   <!-- <v-accordion class="vAccordion--default visible-xs visible-sm" multiple> -->
     <!-- add expanded attribute to open the section -->
-    <v-pane data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}" data-ProjectId=" {{mobileDataSrc.ProjectId}}" enabled ng-model="mobileDataSrc[1].header" ng-repeat="item in mobileDataSrc[0] track by $index">
+    <v-pane data-ProjectFieldId="{{mobileDataSrc.ProjectFieldId}}"
+    data-ProjectId=" {{mobileDataSrc.ProjectId}}"
+    enabled ng-model="mobileDataSrc[1].header"
+    ng-repeat="item in mobileDataSrc[0] track by $index">
       <v-pane-header>
-        {{mobileDataSrc[1].header[$index]}}
+        {{grid.mobileDataSrc[1].header[$index]}}
       </v-pane-header>
       <v-pane-content>
         <div ng-repeat="content in item track by $index">

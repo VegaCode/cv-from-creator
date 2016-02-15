@@ -19,6 +19,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.grid',
+    'ui.grid.edit',
     'ui.grid.resizeColumns',
     'jqwidgets',
     'ngMdIcons',
@@ -32,6 +33,11 @@ angular
           templateUrl: 'views/main.html',
           controller: 'MainCtrl',
           controllerAs: 'main'
+        })
+      .when('/templateBuilder', {
+          templateUrl: 'views/template-builder.html',
+          controller: 'templateBuilderCtrl',
+          controllerAs: 'templateBuilder'
         })
       .when('/project/:project/:template/:templateid', {
         templateUrl: 'views/project.html',

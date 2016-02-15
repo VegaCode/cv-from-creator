@@ -9,7 +9,8 @@
      <md-card-content>
       <div class="row">
         <div class="col-md-8 col-md-offset-4">
-          <textarea type="{{datasrc.DataType}}"
+          <textarea onblur-save
+          type="{{datasrc.DataType}}"
  	        class="form-control"
  	        ng-attr-placeholder="{{datasrc.PlaceHolder}}"
  	        value="{{datasrc.Answer}}"
@@ -17,7 +18,7 @@
  	        tooltip-placement="{{datasrc.ToolTipPlacement}}"
  	        toolTip-trigger="{{datasrc.ToolTipTrigger}}"
  	        data-ProjectId=" {{datasrc.ProjectId}}"
- 	        data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+ 	        data-fieldtypeid="{{datasrc.FieldTypeId}}"
  	        ng-readonly="false"
  	        ng-model="datasrc.Answer"
  	        ng-show="datasrc.IsActive"></textarea>
