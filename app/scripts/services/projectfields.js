@@ -9,11 +9,8 @@
  */
 var webBaseUrl;
 webBaseUrl = 'https://tools.brandinstitute.com/BIWebServices/';
+webBaseUrl = 'http://localhost:64378/';
 angular.module('biprojectDevelopmentApp')
-
-  .factory("general", function generalFactory($resource){
-    return $resource ( webBaseUrl + 'api/BIFCWebApi', {}, {});
-  })
   .factory('bidocsGetProject', [
     '$http', '$q',
     function($http, $q) {
@@ -71,6 +68,7 @@ angular.module('biprojectDevelopmentApp')
       return factory;
     }
   ])
+<<<<<<< HEAD
   .factory('getProjectFields', function() {
     return {
       getProjectFields: function() {
@@ -298,53 +296,48 @@ angular.module('biprojectDevelopmentApp')
             "ImageUrl": "",
             "directive": "<bi-text-area>Text area directive</bi-text-area>"
           },
+=======
+  .factory('getProjectData', function($http, $q) {
+      var apiCall, deferred, factory, _getFileds,_getRegularGrid,_getMobileGrid,_getHeaders;
+      factory = {};
+      deferred = $q.defer();
+      apiCall = 'api/BiFormCreator/';
+>>>>>>> cacev-development
 
-          {
-            "ProjectId": "4",
-            "ProjecName": "4",
-            "ProjectFieldId": "124",
-            "FieldTypeId": 'Label',
-            "SortValue": "2",
-            "Access": 'true',
-            "Status": "Not Started",
-            "IsActive": "1Not Started",
-            "OptionList": "1,2,3,4",
-            "OptionListOrientation": "inline",
-            "ToolTip": "hello tooltip",
-            "ToolTipPlacement": "top",
-            "ToolTipTrigger": "mouseenter",
-            "Label": "INSERT IMAGES",
-            "PlaceHolder": "Text Place holder",
-            "Answer": "",
-            "VersionControl": '[{"oldValue":"Old record 1","datetime":"Jun /  29 / 2015 : 04:09:01 PM","adminUser":"cacev"},{"oldValue":"Other record 2","datetime":"Jun /  22 / 2015 : 04:09:01 PM","adminUser":"cacev"}]',
-            "TemplateName": "RX",
-            "width": "100%",
-            "ImageUrl": "",
-            "directive": "<bi-label>label Directive</bi-label>"
-          }, {
-            "ProjectId": "5",
-            "ProjecName": "5",
-            "ProjectFieldId": "125",
-            "FieldTypeId": '101',
-            "SortValue": "2",
-            "Access": 'true',
-            "Status": "",
-            "IsActive": "1",
-            "OptionList": "",
-            "OptionListOrientation": "",
-            "ToolTip": "hello tooltip",
-            "ToolTipPlacement": "top",
-            "ToolTipTrigger": "mouseenter",
-            "Label": "Label Directive",
-            "PlaceHolder": "Text Place holder",
-            "Answer": "",
-            "VersionControl": '[{"oldValue":"Old record 1","datetime":"Jun /  29 / 2015 : 04:09:01 PM","adminUser":"cacev"},{"oldValue":"Other record 2","datetime":"Jun /  22 / 2015 : 04:09:01 PM","adminUser":"cacev"}]',
-            "TemplateName": "RX",
-            "width": "100%",
-            "ImageUrl": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQrjr_RxTZY1x30vZ-FYOWrCwJm4JwJK_QBuj0nExUGpJk98y1Pjw",
-            "directive": "<bi-image>image Directive</bi-image>"
-          },
+      _getFileds = function(data){
+        $http.post(webBaseUrl + apiCall, data).success(function(results) {
+          deferred.resolve(results);
+        }).error(function(err) {
+          deferred.reject(err);
+        });
+        return deferred.promise;
+      };
+      // _getRegularGrid = function(data){
+      //   $http.post(webBaseUrl + apiCall, data).success(function(results) {
+      //     deferred.resolve(results);
+      //   }).error(function(err) {
+      //     deferred.reject(err);
+      //   });
+      //   return deferred.promise;
+      // };
+      // _getMobileGrid = function(data){
+      //   $http.post(webBaseUrl + apiCall, data).success(function(results) {
+      //     deferred.resolve(results);
+      //   }).error(function(err) {
+      //     deferred.reject(err);
+      //   });
+      //   return deferred.promise;
+      // };
+      // _getHeaders = function(data){
+      //   $http.post(webBaseUrl + apiCall, data).success(function(results) {
+      //     deferred.resolve(results);
+      //   }).error(function(err) {
+      //     deferred.reject(err);
+      //   });
+      //   return deferred.promise;
+      // };
 
+<<<<<<< HEAD
           {
             "ProjectId": "8",
             "ProjecName": "8",
@@ -394,4 +387,11 @@ angular.module('biprojectDevelopmentApp')
         ];
       }
     };
+=======
+      factory.getFileds = _getFileds;
+      // factory.getRegularGrid = _getRegularGrid;
+      // factory.getMobileGrid = _getMobileGrid;
+      // factory.getHeaders = _getHeaders;
+      return factory;
+>>>>>>> cacev-development
   });

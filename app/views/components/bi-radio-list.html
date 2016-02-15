@@ -8,9 +8,15 @@
   <md-card-content>
       <div class="col-md-8 col-md-offset-4 col-xs-12">
         <md-radio-group layout="row" ng-model="datasrc.Answer" ng-repeat="option in RadioListCtrl.optionsArrayToDisplay track by $index" >
+<<<<<<< HEAD
           <md-radio-button
           class="reponsive-display-list"
            data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
+=======
+          <md-radio-button onblur-save
+          class="reponsive-display-list"
+           data-fieldtypeid="{{datasrc.FieldTypeId}}"
+>>>>>>> cacev-development
            data-projectId=" {{datasrc.ProjectId}}" ng-value="option"
            ng-click="RadioListCtrl.selectedRadioButtonValue(option)">
            <div ng-attr-style="width: {{RadioListCtrl.labelSize}} !important">
