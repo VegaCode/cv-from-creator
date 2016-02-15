@@ -3,12 +3,13 @@
       <div class="row">
     <div ng-if="!hideToggle" style="height:4px;background-color:white;text-align:left;margin:0 5px">
       <span class="glyphicon glyphicon-minus text-primary" ng-click="showMenuToggle()" ng-hide="hideToggle"
-      style="font-size:25px;top:-10px;right:8px;"></span>
+      style="font-size:25px;cursor:pointer;position: absolute; top: -10px;right: -3px; "></span>
     </div>
     </div>
-
-      <div ng-if="hideToggle">
-        <div class="row">
+    <div class="row">
+      <div ng-if="hideToggle"
+      style="height:30px; width:114px; padding-right:6px;">
+        <div class="row" style="padding:4px 10px; float:left">
           <div class="col-xs-4">
             <md-checkbox aria-label class="bi-blue white-frame"></md-checkbox>
           </div>
@@ -24,7 +25,7 @@
             uib-tooltip-template="'views/components/tool-tip-template.html'"></ng-md-icon>
           </div>
         </div>
-
+      </div>
     </div>
   </div>
 </div>

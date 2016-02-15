@@ -23,14 +23,14 @@
           </div>
           <form class="form-horizontal" role="form">
             <div ng-repeat="component in  templateBuilder.componentConfig track by $index" ng-show="{{component.Access}}" style="padding-top: 20px">
-              <div ng-if="component.FieldTypeId !== 'Title' && component.FieldTypeId !== 'Subtitle'
-                                  && component.FieldTypeId !== 'Grid' && component.FieldTypeId !== 'Label'">
-                <md-card>
+              <div ng-if="component.FieldType !== 'TITLE' && component.FieldType !== 'SUBTITLE'
+                                  && component.FieldType !== 'GRID' && component.FieldType !== 'LABEL'">
+                <!-- <md-card> -->
                   <div bi-form-creator datasrc="component"></div>
-                </md-card>
+                <!-- </md-card> -->
               </div>
-              <div ng-if="component.FieldTypeId === 'Title' || component.FieldTypeId === 'Subtitle'
-                                    || component.FieldTypeId === 'Grid' || component.FieldTypeId === 'Label'">
+              <div ng-if="component.FieldType === 'TITLE' || component.FieldType === 'SUBTITLE'
+                                    || component.FieldType === 'GRID' || component.FieldType === 'Label'">
                 <div bi-form-creator datasrc="component"></div>
               </div>
             </div>

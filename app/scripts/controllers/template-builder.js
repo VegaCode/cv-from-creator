@@ -48,5 +48,5 @@ angular.module('biprojectDevelopmentApp')
     value = JSON.stringify(value);
     getProjectData.getFileds(value).then(function (results) {
        self.componentConfig = results;
-    })
+    });
   }]);

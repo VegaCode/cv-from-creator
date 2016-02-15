@@ -225,9 +225,10 @@ angular.module('biprojectDevelopmentApp')
       restrict: "EA",
       templateUrl: 'views/components/bi-text.html',
       scope: {
-      mydata: '='
+      datasrc: '='
     },
       controller: function($scope, $element) {
+        var self = this;
           setUpValues(self, $scope.$parent.datasrc, $element);
         },
         controllerAs: 'bitext'

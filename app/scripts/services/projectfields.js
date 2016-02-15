@@ -8,8 +8,8 @@
  * Controller of the biprojectDevelopmentApp
  */
 var webBaseUrl;
-webBaseUrl = 'https://tools.brandinstitute.com/BIWebServices/';
 webBaseUrl = 'http://localhost:64378/';
+webBaseUrl = 'https://tools.brandinstitute.com/BIWebServices/';
 angular.module('biprojectDevelopmentApp')
   .factory('bidocsGetProject', [
     '$http', '$q',

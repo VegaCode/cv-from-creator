@@ -1,26 +1,26 @@
-<md-card>
-   <tool-bar-menu></tool-bar-menu>
-    <md-card-title>
-      <md-card-title-text class="text-primary">
-        <span class="md-headline"  style="font-size:18px">{{bitext.Label}}</span>
-        <!-- <span class="md-subhead text-default">Card subheader</span> -->
-      </md-card-title-text>
-     </md-card-title>
-     <md-card-content>
-      <div class="row">
-         <div class="col-md-8 col-md-offset-4">
-           <input onblur-save type="{{bitext.FieldType}}"
-           class="form-control"
-           placeholder="{{bitext.PlaceHolder}}"
-           value="{{bitext.Answer}}"
-           uib-tooltip="{{bitext.ToolTip}}"
-           tooltip-placement="{{bitext.ToolTipPlacement}}"
-           toolTip-trigger="{{bitext.ToolTipTrigger}}"
-           data-ProjectId=" {{bitext.ProjectId}}"
-           data-ProjectFieldId="{{bitext.ProjectFieldId}}"
-           ng-model="bitext.Answer"
-          />
-         </div>
+<div class="container-fluid">
+  <tool-bar-menu></tool-bar-menu>
+  <md-card-title>
+    <md-card-title-text class="text-primary">
+      <span class="md-headline" style="font-size:18px">{{bitext.Label}}</span>
+      <!-- <span class="md-subhead text-default">Card subheader</span> -->
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-4">
+        <input class="form-control"
+        data-ProjectFieldId="{{bitext.ProjectFieldId}}"
+        data-ProjectId=" {{bitext.ProjectId}}"
+        datasrc="datasrc" ng-model="bitext.Answer"
+        onblur-save
+        placeholder="{{bitext.PlaceHolder}}"
+        toolTip-trigger="{{bitext.ToolTipTrigger}}"
+        tooltip-placement="{{bitext.ToolTipPlacement}}"
+        type="{{bitext.FieldType}}"
+        uib-tooltip="{{bitext.ToolTip}}" 
+        value="{{bitext.Answer}}"/>
       </div>
-    </md-card-content>
-</md-card>
+    </div>
+  </md-card-content>
+</div>

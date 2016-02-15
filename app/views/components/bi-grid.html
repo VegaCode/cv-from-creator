@@ -7,7 +7,9 @@
   <v-accordion  class="vAccordion--default"
                 multiple data-fieldtypeid="{{datasrc.FieldTypeId}}"
                 data-ProjectId=" {{datasrc.ProjectId}}" >
-  <!-- <v-accordion class="vAccordion--default visible-xs visible-sm" multiple> -->
+  <!-- <v-accordion class="vAccordion--default visible-xs visible-sm"
+                    multiple data-fieldtypeid="{{datasrc.FieldTypeId}}"
+                    data-ProjectId=" {{datasrc.ProjectId}}" > -->
     <!-- add expanded attribute to open the section -->
     <v-pane enabled  ng-repeat="item in grid.mobileDataSrc[0] track by $index">
       <v-pane-header>
