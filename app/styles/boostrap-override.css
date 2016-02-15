@@ -96,11 +96,10 @@ md-checkbox.white-frame .md-icon {
 }
 
 :focus {
-outline: none!important;
-
+   outline: none !important;
 }
 
-/**************** This area is USED ONLY in TEMPLATE-BUILDER.JS *******************************************************/
-.bi-label-width{
-  width: 90%;
+.md-card-no-style {
+    margin:0 !important;
+    box-shadow: 0 !important;
 }

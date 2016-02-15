@@ -9,7 +9,7 @@
  */
 angular.module('biprojectDevelopmentApp')
   .directive('applicationHeader', function() {
-  return {
+    return {
     restrict: "EA",
     template: '<section class="" style="margin-top:15px;">'+
     '      <md-toolbar md-primary>'+
@@ -42,7 +42,7 @@ angular.module('biprojectDevelopmentApp')
     '        </div>'+
     '     </md-toolbar></selection>'
   };
-})
+  })
   .directive('onblurSave', ['$timeout', function($timeout) {
       return {
         restrict: 'A',
@@ -66,56 +66,6 @@ angular.module('biprojectDevelopmentApp')
               mobileRowId = this.attributes[1].textContent;
               oldValue = this.defaultValue;
               newValue = this.value;
-            //     $timeout(function() {
-            //       if ($scope.datasrc.FieldType === 'TEXT'){
-            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-            //       } else if ($scope.datasrc.FieldType === 'TEXT-AREA') {
-            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-            //       } else if ($scope.datasrc.FieldType === 'RADIO-LIST') {
-            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-            //       } else if ($scope.datasrc.FieldType === 'CHECK-LIST') {
-            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-            //       } else if ($scope.datasrc.FieldType === 'DROPDOWN') {
-            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-            //       } else if ($scope.datasrc.FieldType === 'TYPEAHEAD') {
-            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, '', '', $scope.datasrc.Answer, 'Admin');
-            //       } else if ($scope.datasrc.FieldType === 'GRID') {
-            //         // this will only work for mobile Grid.
-            //         // latptops and desktops have their own saving method shown in directive 'biGrid' at line 540
-            //         $scope.response = new ObjectModel($scope.datasrc.FieldTypeId, mobileColumnName, mobileRowId, newValue, 'Admin');
-            //       }
-            //
-            //       // this piece of code is used to remove the array and send the information as a string
-            //       if($scope.response.Answer.length > 0){
-            //         $scope.str = JSON.stringify($scope.response.Answer);
-            //         $scope.answer = $scope.str.replace('[', '');
-            //         $scope.answer = $scope.answer.replace(']', '');
-            //         for(var i = 0; i < $scope.response.Answer.length; i++ ){
-            //           $scope.answer = $scope.answer.replace('","', ',');
-            //         }
-            //       }else{
-            //         $scope.answer = JSON.stringify($scope.response.Answer);
-            //       }
-            //
-            //       // USED for converting JSON string of fieldid to integer
-            //       $scope.str = JSON.stringify($scope.response.fieldid);
-            //       $scope.fieldid = $scope.str.replace('"', '');
-            //       $scope.fieldid = $scope.fieldid.replace('"', '');
-            //
-            //       // USED for converting JSON string to integer
-            //       if(JSON.stringify($scope.response.rowid) !== '""'){
-            //         $scope.str = JSON.stringify($scope.response.rowid);
-            //         $scope.rowid = $scope.str.replace('"', '');
-            //         $scope.rowid = $scope.rowid.replace('"', '');
-            //       }else{
-            //         $scope.rowid = JSON.stringify($scope.response.rowid);
-            //       }
-            //
-            //       var data = '[dbo].[pd_AddAnswer]' + ' '+ $scope.fieldid + ',' +
-            //       JSON.stringify($scope.response.columnname) + ',' + $scope.rowid + ',' +
-            //       $scope.answer+ ',' + JSON.stringify($scope.response.CreatedBy);
-            //       console.log(data);
-            //     }, 0);
              });
             element.bind('onblurSave', function() {
                 $timeout(function() {
@@ -224,12 +174,12 @@ angular.module('biprojectDevelopmentApp')
     return {
       restrict: "EA",
       templateUrl: 'views/components/bi-text.html',
-      scope: {mydata: '='},
-      controller: function($scope, $element) {
+      scope: {},
+      controller: function($scope) {
         var self = this;
-        setUpValues(self, $scope.$parent.datasrc, $element);
-      },
-      controllerAs:'bitext'
+          setUpValues(self, $scope.$parent.datasrc);
+        },
+        controllerAs: 'bitext'
     };
   })
   .directive('biDropdown', function() {
@@ -267,18 +217,25 @@ angular.module('biprojectDevelopmentApp')
     return {
       restrict: "EA",
       templateUrl: 'views/components/bi-title.html',
-      controller: function() {
+      scope: {},
+      controller: function($scope) {
         var self = this;
+          setUpValues(self, $scope.$parent.datasrc);
+        },
+        controllerAs: 'bititle'
       }
-    };
+
   })
   .directive('biSubTitle', function() {
     return {
       restrict: "EA",
       templateUrl: 'views/components/bi-sub-title.html',
-      controller: function() {
+      scope:{},
+      controller: function($scope) {
         var self = this;
-      }
+          setUpValues(self, $scope.$parent.datasrc);
+      },
+        controllerAs: 'bisubtitle'
     };
   })
   .directive('biTypeahead', function() {
@@ -315,14 +272,12 @@ angular.module('biprojectDevelopmentApp')
     return {
       restrict: "EA",
       templateUrl: 'views/components/bi-check-list.html',
+      scope:{},
       controller: function($scope) {
         var self = this;
-
         self.selectedAnswer = [];
-        self.arraysOfOptions = $scope.datasrc.OptionList.split(',');
-        self.optionsArrayToDisplay = self.arraysOfOptions;
-        self.labelSize = (self.arraysOfOptions.reduce(function (a, b) { return a.length > b.length ? a : b; }).length * 9) + 'px';
-
+        setUpValues(self, $scope.$parent.datasrc);
+        self.labelSize = ($scope.$parent.datasrc.OptionList.split(',').reduce(function (a, b) { return a.length > b.length ? a : b; }).length * 9) + 'px';
         self.selectedCheckBoxValue = function(selectedOption) {
           var idx = self.selectedAnswer.indexOf(selectedOption);
           if (idx < 0) {
@@ -335,7 +290,6 @@ angular.module('biprojectDevelopmentApp')
           }
           var answer = self.selectedAnswer.join(',');
           var answer = '';
-
         };
       },
       controllerAs: 'CheckListCtrl'
@@ -559,8 +513,9 @@ angular.module('biprojectDevelopmentApp')
       }
     }
   });
+
   //******* HELPER FUNCTIONS ***************************************************************************************
-function setUpValues(self , src, element) {
+function setUpValues(self , src) {
   if(src === undefined){
     self.Access = '';
     self.Answer = '';
@@ -568,7 +523,7 @@ function setUpValues(self , src, element) {
     self.ImageUrl = '';
     self.IsActive = '';
     self.Label = 'Default Label';
-    self.OptionList = '';
+    self.OptionList = 'One,Two, Three, Four, Five, Six';
     self.OptionListOrientation = '';
     self.PlaceHolder = 'Default PlaceHolder';
     self.ProjectFieldId = '';
@@ -590,7 +545,7 @@ function setUpValues(self , src, element) {
     self.ImageUrl = src.ImageUrl;
     self.IsActive = src.IsActive;
     self.Label = src.Label;
-    self.OptionList = src.OptionList;
+    self.OptionList = src.OptionList.split(',');
     self.OptionListOrientation = src.OptionListOrientation;
     self.PlaceHolder = src.PlaceHolder;
     self.ProjectFieldId = src.ProjectFieldId;

@@ -2,17 +2,17 @@
   <tool-bar-menu></tool-bar-menu>
   <md-card-title>
     <md-card-title-text class="text-primary">
-      <span class="md-headline" style="font-size:18px">{{datasrc.Label}}</span>
+      <span class="md-headline" style="font-size:18px">{{CheckListCtrl.Label}}</span>
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
       <div class="col-md-8 col-md-offset-4 col-xs-12" >
         <md-radio-group layout="row"
-            ng-repeat="option in CheckListCtrl.optionsArrayToDisplay track by $index">
-          <md-checkbox onblur-save
+            ng-repeat="option in CheckListCtrl.OptionList track by $index">
+          <md-checkbox
               class="reponsive-display-list md-primary"
-              data-fieldtypeid="{{datasrc.FieldTypeId}}"
-              data-projectId=" {{datasrc.ProjectId}}"
+              data-fieldtypeid="{{CheckListCtrl.FieldTypeId}}"
+              data-projectId=" {{CheckListCtrl.ProjectId}}"
               ng-click="CheckListCtrl.selectedCheckBoxValue(option)"
               value="{{option}}">
               <div ng-attr-style="width: {{CheckListCtrl.labelSize}} !important">

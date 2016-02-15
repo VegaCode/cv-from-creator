@@ -2,13 +2,13 @@
   <tool-bar-menu></tool-bar-menu>
   <md-card-title>
     <md-card-title-text class="text-primary">
-      <span class="md-headline" ng-show="datasrc.IsActive" style="font-size:18px">{{datasrc.Label}}</span>
+      <span class="md-headline" style="font-size:18px">{{datasrc.Label}}</span>
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
       <div class="col-md-8 col-md-offset-4 col-xs-12">
         <md-radio-group layout="row" ng-model="datasrc.Answer" ng-repeat="option in RadioListCtrl.optionsArrayToDisplay track by $index" >
-          <md-radio-button onblur-save
+          <md-radio-button
           class="reponsive-display-list"
            data-fieldtypeid="{{datasrc.FieldTypeId}}"
            data-projectId=" {{datasrc.ProjectId}}" ng-value="option"
