@@ -8,7 +8,7 @@
  * Controller of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
-  .controller('ProjectCtrl',[ 'getProjectFields', '$routeParams','$http', function (getProjectFields,$routeParams, $http) {
+  .controller('ProjectCtrl',[ 'getProjectFields', '$routeParams', function (getProjectFields,$routeParams) {
     var self = this;
         self.toggleEditClass = 'glyphicon glyphicon-save ';
         self.btnColorClass = 'btn btn-success';
@@ -16,6 +16,7 @@ angular.module('biprojectDevelopmentApp')
         self.isReadOnly = true;
         self.btnToolTip = 'Save';
         self.someFocusVariable = true;
+
 
        self.projectName = $routeParams.project;
         self.template = $routeParams.template;
@@ -28,6 +29,10 @@ angular.module('biprojectDevelopmentApp')
             $location.path('/projectTemplate/' + self.ProjectIdForTemplate);
         };
 
+        var value = '[BI_PROJECT_DEVELOPMENT].[dbo].[pd_GetFields] ' + '10008';
+        value = JSON.stringify(value);
+        getProjectFields.getFileds(value).then(function (results) {
+           self.componentConfig = results;
+        })
 
-     this.componentConfig = getProjectFields.getProjectFields();
   }]);
