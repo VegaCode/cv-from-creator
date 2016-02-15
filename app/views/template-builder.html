@@ -3,15 +3,11 @@
   <div class="row">
     <div class="col-md-5">
       <div class="row" ng-repeat="component in templateBuilder.components track by $index">
-        <div class="col-md-6">
+        <div class="col-md-2 col-md-offset-10">
           <!-- this is used to keep consistensy in color, shape and same framework -->
-          <md-button class="md-raised md-primary bi-label-width"
+          <md-button class="md-raised md-primary"
                       data-fieldtypeid="{{component.FieldTypeId}}"
                       ng-click="templateBuilder.createComponent(component.Directive)">{{component.FieldType}}</md-button>
-        </div>
-        <div class="col-md-2">
-          <md-button class="md-raised md-primary"
-                      ng-click="templateBuilder.duplicateComponent(templateBuilder.fieldTypeId[$index])">Duplicate</md-button>
         </div>
       </div>
     </div>

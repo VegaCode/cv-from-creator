@@ -1,18 +1,11 @@
 <div class="container">
   <application-header></application-header>
-<form class="form-horizontal" role="form">
-  <div ng-repeat="component in  project.componentConfig track by $index"
-   ng-show="{{component.Access}}" style="padding-top: 20px">
-    <div ng-if="component.FieldType !== 'TITLE' && component.FieldType !== 'SUBTITLE'
+  <form class="form-horizontal" role="form">
+    <div ng-repeat="component in  project.componentConfig track by $index" ng-show="{{component.Access}}" style="padding-top: 20px">
+      <div ng-if="component.FieldType !== 'TITLE' && component.FieldType !== 'SUBTITLE'
                 && component.FieldType !== 'GRID' && component.FieldType !== 'LABEL'">
-      <md-card>
         <div bi-form-creator datasrc="component"></div>
-      </md-card>
+      </div>
     </div>
-    <div ng-if="component.FieldType === 'TITLE' || component.FieldType === 'SUBTITLE'
-                || component.FieldType === 'GRID' || component.FieldType === 'LABEL'">
-      <div bi-form-creator datasrc="component"></div>
-    </div>
-  </div>
-</form>
+  </form>
 </div>
