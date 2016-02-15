@@ -34,6 +34,11 @@ angular
           controller: 'MainCtrl',
           controllerAs: 'main'
         })
+      .when('/templateBuilder', {
+          templateUrl: 'views/template-builder.html',
+          controller: 'templateBuilderCtrl',
+          controllerAs: 'templateBuilder'
+        })
       .when('/project/:project/:template/:templateid', {
         templateUrl: 'views/project.html',
         controller: 'ProjectCtrl',

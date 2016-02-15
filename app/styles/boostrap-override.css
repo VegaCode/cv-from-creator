@@ -99,3 +99,8 @@ md-checkbox.white-frame .md-icon {
 outline: none!important;
 
 }
+
+/**************** This area is USED ONLY in TEMPLATE-BUILDER.JS *******************************************************/
+.bi-label-width{
+  width: 90%;
+}

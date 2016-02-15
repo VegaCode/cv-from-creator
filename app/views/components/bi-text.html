@@ -2,37 +2,37 @@
    <tool-bar-menu></tool-bar-menu>
     <md-card-title>
       <md-card-title-text class="text-primary">
-        <span class="md-headline"  style="font-size:18px">{{datasrc.Label}}</span>
+        <span class="md-headline"  style="font-size:18px">{{bitext.Label}}</span>
         <!-- <span class="md-subhead text-default">Card subheader</span> -->
       </md-card-title-text>
      </md-card-title>
      <md-card-content>
       <div class="row">
          <div class="col-md-8 col-md-offset-4">
-           <input onblur-save type="{{datasrc.DataType}}"
+           <input onblur-save type="{{bitext.FieldType}}"
            class="form-control"
-           placeholder="{{datasrc.PlaceHolder}}"
-           value="{{datasrc.Answer}}"
-           uib-tooltip="{{datasrc.ToolTip}}"
-           tooltip-placement="{{datasrc.ToolTipPlacement}}"
-           toolTip-trigger="{{datasrc.ToolTipTrigger}}"
-           data-ProjectId=" {{datasrc.ProjectId}}"
-           data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
-           ng-model="datasrc.Answer"
+           placeholder="{{bitext.PlaceHolder}}"
+           value="{{bitext.Answer}}"
+           uib-tooltip="{{bitext.ToolTip}}"
+           tooltip-placement="{{bitext.ToolTipPlacement}}"
+           toolTip-trigger="{{bitext.ToolTipTrigger}}"
+           data-ProjectId=" {{bitext.ProjectId}}"
+           data-ProjectFieldId="{{bitext.ProjectFieldId}}"
+           ng-model="bitext.Answer"
           />
          </div>
         <!-- <div class="col-md-8 col-md-offset-4">
-          <input unblur-save type="{{datasrc.DataType}}"
+          <input unblur-save type="{{bitext.DataType}}"
           class="form-control"
-          placeholder="{{datasrc.PlaceHolder}}"
-          value="{{datasrc.Answer}}"
-          uib-tooltip="{{datasrc.ToolTip}}"
-          tooltip-placement="{{datasrc.ToolTipPlacement}}"
-          toolTip-trigger="{{datasrc.ToolTipTrigger}}"
-          data-ProjectId=" {{datasrc.ProjectId}}"
-          data-ProjectFieldId="{{datasrc.ProjectFieldId}}"
-          ng-model="datasrc.Answer"
-          ng-disabled="{{datasrc.Access}}"
+          placeholder="{{bitext.PlaceHolder}}"
+          value="{{bitext.Answer}}"
+          uib-tooltip="{{bitext.ToolTip}}"
+          tooltip-placement="{{bitext.ToolTipPlacement}}"
+          toolTip-trigger="{{bitext.ToolTipTrigger}}"
+          data-ProjectId=" {{bitext.ProjectId}}"
+          data-ProjectFieldId="{{bitext.ProjectFieldId}}"
+          ng-model="bitext.Answer"
+          ng-disabled="{{bitext.Access}}"
          />
         </div> -->
       </div>

@@ -33,9 +33,9 @@ angular.module('biprojectDevelopmentApp')
               oldValue = this.defaultValue;
               newValue = this.value;
                 $timeout(function() {
-                  if ($scope.datasrc.FieldType === 'Text'){
+                  if ($scope.datasrc.FieldType === 'TEXT'){
                     $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
-                  } else if ($scope.datasrc.FieldType === 'Textarea') {
+                  } else if ($scope.datasrc.FieldType === 'TEXT-AREA') {
                     $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
                   } else if ($scope.datasrc.FieldType === 'Radio') {
                     $scope.response = new ObjectModel($scope.datasrc.ProjectFieldId, '', '', $scope.datasrc.Answer, 'Admin');
@@ -145,6 +145,41 @@ angular.module('biprojectDevelopmentApp')
       }
     };
   })
+  .directive('applicationHeader', function() {
+    return {
+      restrict: "EA",
+      template: '<section class="" style="margin-top:15px;">'+
+      '      <md-toolbar md-primary>'+
+      '        <div class="md-toolbar-tools">'+
+      '          <h3 class="ng-binding">BI Form Creator Module</h3>'+
+      ' <!--          <span flex="" class="flex">  <div class="col-md-12 column">-->'+
+      ' <!--             <div class="row clearfix">-->'+
+      ' <!--               <div class="col-md-4 column">-->'+
+      ' <!--                 <div class="btn btn-success" type="button">-->'+
+      ' <!--                 <div class="glyphicon glyphicon-home" ng-click="project.goHome()"></div>-->'+
+      ' <!--                 </div>-->'+
+      ' <!--                 <div class="btn btn-success" type="button">-->'+
+      ' <!--                 <div class="glyphicon glyphicon-cog" ng-click="project.goEditTemplate()"></div>-->'+
+      ' <!--                 </div>-->'+
+      ' <!--               </div>-->'+
+      ' <!--               <div class="col-md-4 column">-->'+
+      ' <!--                 <div class="btn btn-primary" type="button">-->'+
+      ' <!--                   Project Name :-->'+
+      ' <!--                   <span class="badge">{{project.projectName}}</span>-->'+
+      ' <!--                 </div>-->'+
+      ' <!--               </div>-->'+
+      ' <!--               <div class="col-md-4 column">-->'+
+      ' <!--                 <div class="btn btn-success" type="button">-->'+
+      ' <!--                   Template:-->'+
+      ' <!--                   <span class="badge">{{project.template}}</span>-->'+
+      ' <!--                 </div>-->'+
+      ' <!--               </div>-->'+
+      ' <!--             </div>-->'+
+      ' <!--           </div></span> -->'+
+      '        </div>'+
+      '     </md-toolbar></selection>'
+    };
+  })
   .directive('toolBarMenu', function($compile) {
     return {
       restrict: "EA",
@@ -191,11 +226,14 @@ angular.module('biprojectDevelopmentApp')
     return {
       restrict: "EA",
       templateUrl: 'views/components/bi-text.html',
-      controller: function($scope) {
+      scope: {
+      mydata: '='
+    },
+      controller: function($scope, $element) {
         var self = this;
-        self.answer = $scope.datasrc.Answer;
-        //self.componentDisplay = $scope.datasrc.access;
-      }
+        setUpValues(self, $scope.$parent.datasrc, $element);
+    },
+    controllerAs:'bitext'
     };
   })
   .directive('biDropdown', function() {
@@ -340,6 +378,8 @@ angular.module('biprojectDevelopmentApp')
       restrict: "EA",
       templateUrl: 'views/components/bi-grid.html',
       controller: function($scope) {
+        var self = this;
+        self.variable = $scope.datasrc;
         $scope.gridOptions = {};
 
         $scope.mobileDataSrc = [{
@@ -580,3 +620,52 @@ angular.module('biprojectDevelopmentApp')
       }
     };
   });
+
+  //******* HELPER FUNCTIONS ***************************************************************************************
+function setUpValues(self , src, element, attr) {
+  if(src === undefined){
+    self.Access = '';
+    self.Answer = '';
+    self.FieldType = '';
+    self.ImageUrl = '';
+    self.IsActive = '';
+    self.Label = 'Default Label';
+    self.OptionList = '';
+    self.OptionListOrientation = '';
+    self.PlaceHolder = 'Default PlaceHolder';
+    self.ProjectFieldId = '';
+    self.ProjectId = '';
+    self.ProjectName = '';
+    self.SortValue = '0';
+    self.Status = '';
+    self.TemplateName = '';
+    self.ToolTip = 'Default ToolTip';
+    self.ToolTipPlacement = 'Top';
+    self.ToolTipTrigger = 'mouseenter';
+    self.VersionControl = 'No VersionControl at this Moment';
+    self.Directive = '';
+    self.Width = '';
+  }else{
+    self.Access = src.Access;
+    self.Answer = src.Answer;
+    self.FieldType = src.FieldType;
+    self.ImageUrl = src.ImageUrl;
+    self.IsActive = src.IsActive;
+    self.Label = src.Label;
+    self.OptionList = src.OptionList;
+    self.OptionListOrientation = src.OptionListOrientation;
+    self.PlaceHolder = src.PlaceHolder;
+    self.ProjectFieldId = src.ProjectFieldId;
+    self.ProjectId = src.ProjectId;
+    self.ProjectName = src.ProjectName;
+    self.SortValue = src.SortValue;
+    self.Status = src.Status;
+    self.TemplateName = src.TemplateName;
+    self.ToolTip = src.ToolTip;
+    self.ToolTipPlacement = src.ToolTipPlacement;
+    self.ToolTipTrigger = src.ToolTipTrigger;
+    self.VersionControl = src.VersionControl;
+    self.Directive = src.directive;
+    self.Width = src.width;
+  }
+}
