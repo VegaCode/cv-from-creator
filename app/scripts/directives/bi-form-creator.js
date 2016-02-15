@@ -8,8 +8,8 @@
  * Directives of the biprojectDevelopmentApp
  */
 angular.module('biprojectDevelopmentApp')
-.directive('applicationHeader', function() {
-  return {
+  .directive('applicationHeader', function() {
+    return {
     restrict: "EA",
     template: '<section class="" style="margin-top:15px;">'+
     '      <md-toolbar md-primary>'+
@@ -42,7 +42,7 @@ angular.module('biprojectDevelopmentApp')
     '        </div>'+
     '     </md-toolbar></selection>'
   };
-})
+  })
   .directive('onblurSave', ['$timeout', function($timeout) {
       return {
         restrict: 'A',
@@ -224,12 +224,13 @@ angular.module('biprojectDevelopmentApp')
     return {
       restrict: "EA",
       templateUrl: 'views/components/bi-text.html',
-      scope: {mydata: '='},
+      scope: {
+      mydata: '='
+    },
       controller: function($scope, $element) {
-        var self = this;
-        setUpValues(self, $scope.$parent.datasrc, $element);
-      },
-      controllerAs:'bitext'
+          setUpValues(self, $scope.$parent.datasrc, $element);
+        },
+        controllerAs: 'bitext'
     };
   })
   .directive('biDropdown', function() {
@@ -559,6 +560,7 @@ angular.module('biprojectDevelopmentApp')
       }
     }
   });
+
   //******* HELPER FUNCTIONS ***************************************************************************************
 function setUpValues(self , src, element) {
   if(src === undefined){
